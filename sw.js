@@ -1,0 +1,258 @@
+/**
+ * HomelabForge Service Worker
+ * Optimized for performance and offline capabilities
+ */
+
+const CACHE_VERSION = 'v1.0.0';
+const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
+
+// Assets to cache on install
+const STATIC_ASSETS = [
+    '/',
+    '/index.html',
+    '/assets/css/styles.css',
+    '/assets/js/main.js',
+    '/assets/img/logo.svg',
+    '/manifest.json'
+];
+
+// Cache strategies
+const CACHE_STRATEGIES = {
+    cacheFirst: ['css', 'js', 'woff2', 'woff', 'ttf', 'eot', 'svg', 'png', 'jpg', 'jpeg', 'gif', 'webp', 'ico'],
+    networkFirst: ['html'],
+    networkOnly: ['api']
+};
+
+/**
+ * Install Event - Cache static assets
+ */
+self.addEventListener('install', (event) => {
+    console.log('[SW] Installing service worker...');
+
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                console.log('[SW] Caching static assets');
+                return cache.addAll(STATIC_ASSETS);
+            })
+            .then(() => self.skipWaiting()) // Activate immediately
+            .catch((error) => {
+                console.error('[SW] Failed to cache static assets:', error);
+            })
+    );
+});
+
+/**
+ * Activate Event - Clean up old caches
+ */
+self.addEventListener('activate', (event) => {
+    console.log('[SW] Activating service worker...');
+
+    event.waitUntil(
+        caches.keys()
+            .then((cacheNames) => {
+                return Promise.all(
+                    cacheNames
+                        .filter((name) => name.startsWith('homelabforge-') && name !== CACHE_NAME)
+                        .map((name) => {
+                            console.log('[SW] Deleting old cache:', name);
+                            return caches.delete(name);
+                        })
+                );
+            })
+            .then(() => self.clients.claim()) // Take control immediately
+    );
+});
+
+/**
+ * Fetch Event - Serve from cache with network fallback
+ */
+self.addEventListener('fetch', (event) => {
+    const { request } = event;
+    const url = new URL(request.url);
+
+    // Skip cross-origin requests
+    if (url.origin !== location.origin) {
+        return;
+    }
+
+    // Skip non-GET requests
+    if (request.method !== 'GET') {
+        return;
+    }
+
+    // Determine cache strategy based on file extension
+    const fileExtension = url.pathname.split('.').pop();
+    const strategy = getStrategy(fileExtension);
+
+    event.respondWith(
+        strategy(request)
+    );
+});
+
+/**
+ * Get appropriate cache strategy for file type
+ */
+function getStrategy(fileExtension) {
+    if (CACHE_STRATEGIES.cacheFirst.includes(fileExtension)) {
+        return cacheFirstStrategy;
+    } else if (CACHE_STRATEGIES.networkFirst.includes(fileExtension)) {
+        return networkFirstStrategy;
+    } else {
+        return networkOnlyStrategy;
+    }
+}
+
+/**
+ * Cache First Strategy - Try cache, fallback to network
+ * Best for: CSS, JS, images, fonts
+ */
+async function cacheFirstStrategy(request) {
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(request);
+
+    if (cached) {
+        console.log('[SW] Serving from cache:', request.url);
+        return cached;
+    }
+
+    try {
+        const response = await fetch(request);
+
+        // Cache successful responses
+        if (response && response.status === 200) {
+            cache.put(request, response.clone());
+        }
+
+        return response;
+    } catch (error) {
+        console.error('[SW] Fetch failed:', error);
+
+        // Return offline page if available
+        const offlinePage = await cache.match('/offline.html');
+        if (offlinePage) {
+            return offlinePage;
+        }
+
+        // Return basic offline response
+        return new Response('Offline - Content not available', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: new Headers({
+                'Content-Type': 'text/plain'
+            })
+        });
+    }
+}
+
+/**
+ * Network First Strategy - Try network, fallback to cache
+ * Best for: HTML pages
+ */
+async function networkFirstStrategy(request) {
+    const cache = await caches.open(CACHE_NAME);
+
+    try {
+        const response = await fetch(request);
+
+        // Cache successful responses
+        if (response && response.status === 200) {
+            cache.put(request, response.clone());
+        }
+
+        return response;
+    } catch (error) {
+        console.log('[SW] Network failed, serving from cache:', request.url);
+
+        const cached = await cache.match(request);
+        if (cached) {
+            return cached;
+        }
+
+        // Return offline page if available
+        const offlinePage = await cache.match('/offline.html');
+        if (offlinePage) {
+            return offlinePage;
+        }
+
+        // Return basic offline response
+        return new Response('Offline - Content not available', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: new Headers({
+                'Content-Type': 'text/html'
+            })
+        });
+    }
+}
+
+/**
+ * Network Only Strategy - Always fetch from network
+ * Best for: API calls, dynamic content
+ */
+async function networkOnlyStrategy(request) {
+    return fetch(request);
+}
+
+/**
+ * Background Sync for offline form submissions (if needed)
+ */
+self.addEventListener('sync', (event) => {
+    if (event.tag === 'sync-forms') {
+        event.waitUntil(syncForms());
+    }
+});
+
+async function syncForms() {
+    // Placeholder for future implementation
+    console.log('[SW] Syncing offline form submissions');
+}
+
+/**
+ * Push Notifications (optional)
+ */
+self.addEventListener('push', (event) => {
+    const data = event.data ? event.data.json() : {};
+
+    const options = {
+        body: data.body || 'New update from HomelabForge',
+        icon: '/assets/icons/icon-192x192.png',
+        badge: '/assets/icons/icon-192x192.png',
+        vibrate: [200, 100, 200],
+        data: {
+            url: data.url || '/'
+        }
+    };
+
+    event.waitUntil(
+        self.registration.showNotification(data.title || 'HomelabForge', options)
+    );
+});
+
+/**
+ * Notification Click Handler
+ */
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+
+    event.waitUntil(
+        clients.openWindow(event.notification.data.url || '/')
+    );
+});
+
+/**
+ * Message Handler - Communicate with clients
+ */
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+
+    if (event.data && event.data.type === 'CACHE_URLS') {
+        event.waitUntil(
+            caches.open(CACHE_NAME).then((cache) => {
+                return cache.addAll(event.data.urls);
+            })
+        );
+    }
+});

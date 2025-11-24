@@ -1,0 +1,83 @@
+# Custom dictionary for HomelabForge
+# Technical terms, brand names, and proper nouns
+
+# Brand names
+HomelabForge
+homelabforge
+malpanez
+Alpañez
+Calendly
+Tally
+LeanPub
+Cloudflare
+
+# Technical terms
+Terraform
+Ansible
+DevOps
+Kubernetes
+DevContainers
+GitHub
+GitLab
+CI/CD
+IaC
+YAML
+JSON
+Dockerfile
+WCAG
+PWA
+SEO
+DNS
+SSL
+TLS
+HTTPS
+API
+APIs
+CLI
+SDK
+PAM
+SSSD
+YubiKey
+U2F
+FIDO2
+Kerberos
+
+# Linux/Unix terms
+sysadmin
+sysadmins
+homelab
+homelabs
+distros
+
+# Programming
+JavaScript
+TypeScript
+Python
+Golang
+LaTeX
+nginx
+Redis
+PostgreSQL
+MongoDB
+
+# Methodologies
+Gitflow
+Agile
+Scrum
+
+# File extensions
+yml
+json
+md
+html
+css
+js
+svg
+ico
+webp
+
+# Misc
+subdomains
+multi-factor
+multi-platform
+DRM-free
