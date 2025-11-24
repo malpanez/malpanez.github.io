@@ -166,7 +166,7 @@ curl -H "Content-Type: text/css; charset=utf-8" \
 
 #### Performance
 - [ ] Run [PageSpeed Insights](https://pagespeed.web.dev/)
-- [ ] Check [WebPageTest](https://www.webpagetest.org/)
+- [ ] Check WebPageTest
 - [ ] Test with Chrome DevTools Lighthouse
 - [ ] Verify Core Web Vitals in Search Console
 

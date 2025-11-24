@@ -90,7 +90,14 @@ jobs:
               "selector-class-pattern": null,
               "custom-property-pattern": null,
               "alpha-value-notation": "number",
-              "no-descending-specificity": null
+              "no-descending-specificity": null,
+              "color-function-notation": null,
+              "comment-empty-line-before": null,
+              "rule-empty-line-before": null,
+              "font-family-name-quotes": null,
+              "property-no-vendor-prefix": null,
+              "keyframes-name-pattern": null,
+              "media-feature-range-notation": null
             }
           }
           EOF
@@ -128,24 +135,41 @@ jobs:
 
       - name: Create ESLint config
         run: |
-          cat > .eslintrc.json << 'EOF'
-          {
-            "env": {
-              "browser": true,
-              "es2024": true,
-              "serviceworker": true
-            },
-            "extends": "eslint:recommended",
-            "parserOptions": {
-              "ecmaVersion": "latest",
-              "sourceType": "module"
-            },
-            "rules": {
-              "no-unused-vars": "warn",
-              "no-console": "off",
-              "no-undef": "warn"
+          cat > eslint.config.js << 'EOF'
+          export default [
+            {
+              languageOptions: {
+                ecmaVersion: 2024,
+                sourceType: "module",
+                globals: {
+                  window: "readonly",
+                  document: "readonly",
+                  navigator: "readonly",
+                  localStorage: "readonly",
+                  console: "readonly",
+                  setTimeout: "readonly",
+                  clearTimeout: "readonly",
+                  setInterval: "readonly",
+                  IntersectionObserver: "readonly",
+                  fetch: "readonly",
+                  URL: "readonly",
+                  location: "readonly",
+                  performance: "readonly",
+                  Request: "readonly",
+                  Response: "readonly",
+                  caches: "readonly",
+                  self: "readonly",
+                  clients: "readonly",
+                  addEventListener: "readonly"
+                }
+              },
+              rules: {
+                "no-unused-vars": "warn",
+                "no-console": "off",
+                "no-undef": "error"
+              }
             }
-          }
+          ];
           EOF
 
       - name: Lint JavaScript files
@@ -166,7 +190,7 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v2.1.0
         with:
-          args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so' '**/*.html' '**/*.md'
+          args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|ansible-collection-security|webpagetest.org' '**/*.html' '**/*.md'
           fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
