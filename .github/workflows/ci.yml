@@ -458,7 +458,7 @@ jobs:
   deploy:
     name: 🚀 Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    needs: [validate-html, validate-css, lint-javascript, check-links, lighthouse, accessibility, security-scan, seo-check, markdown-lint, spell-check, file-size-check]
+    needs: [validate-html, validate-css, lint-javascript, check-links, lighthouse, accessibility, security-scan, seo-check, lint-markdown, spell-check, performance-budget]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: github-pages
