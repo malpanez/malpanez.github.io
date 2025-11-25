@@ -516,11 +516,13 @@ a:hover {
 .newsletter iframe {
     display: block;
     width: 100%;
-    min-height: 540px;
+    min-height: 420px;
+    max-height: 640px;
     aspect-ratio: 3 / 4;
     border-radius: 12px;
     border: 1px solid var(--border-default);
     background: var(--bg-secondary);
+    color-scheme: dark;
 }
 
 /* Skills Grid */
