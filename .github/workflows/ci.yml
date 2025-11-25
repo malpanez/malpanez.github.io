@@ -80,31 +80,9 @@ jobs:
       - name: Install stylelint
         run: npm install -g stylelint stylelint-config-standard
 
-      - name: Create stylelint config
-        run: |
-          cat > .stylelintrc.json << 'EOF'
-          {
-            "extends": "stylelint-config-standard",
-            "rules": {
-              "color-hex-length": "long",
-              "selector-class-pattern": null,
-              "custom-property-pattern": null,
-              "alpha-value-notation": "number",
-              "no-descending-specificity": null,
-              "color-function-notation": null,
-              "comment-empty-line-before": null,
-              "rule-empty-line-before": null,
-              "font-family-name-quotes": null,
-              "property-no-vendor-prefix": null,
-              "keyframes-name-pattern": null,
-              "media-feature-range-notation": null
-            }
-          }
-          EOF
-
       - name: Lint CSS files
         run: |
-          find . -name "*.css" -not -path "./node_modules/*" | while read file; do
+          find . -name "*.css" -not -name "*.min.css" -not -path "./node_modules/*" | while read file; do
             echo "Linting $file..."
             stylelint "$file"
           done
