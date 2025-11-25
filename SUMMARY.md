@@ -2,7 +2,8 @@
 
 ## 📊 What We Built
 
-Tu sitio web ha sido transformado de una página simple a una **landing page profesional top de gama** con todas las mejores prácticas modernas de desarrollo web.
+Tu sitio web ha sido transformado de una página simple a una **landing page profesional top de
+gama** con todas las mejores prácticas modernas de desarrollo web.
 
 ______________________________________________________________________
 
@@ -111,7 +112,7 @@ ______________________________________________________________________
 
 ## 📁 Estructura del Proyecto
 
-```
+```bash
 homelabforge.dev/
 ├── .github/
 │   ├── workflows/
@@ -142,7 +143,7 @@ homelabforge.dev/
 ├── OPTIMIZATION.md             # Reporte de optimizaciones
 ├── SUMMARY.md                  # Este archivo
 └── CNAME                       # Custom domain config
-```
+```bash
 
 ______________________________________________________________________
 
@@ -255,7 +256,8 @@ ______________________________________________________________________
 
    ```
    # Add en Cloudflare → Rules → Transform Rules:
-   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' tally.so calendly.com; style-src 'self' 'unsafe-inline';
+   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' tally.so
+calendly.com; style-src 'self' 'unsafe-inline';
    X-Frame-Options: SAMEORIGIN
    X-Content-Type-Options: nosniff
    Referrer-Policy: strict-origin-when-cross-origin

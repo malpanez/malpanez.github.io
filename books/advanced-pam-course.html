@@ -453,12 +453,15 @@
 
         <!-- Hero Section -->
         <section class="book-hero">
-            <img src="/assets/books/pam-course/cover-en.jpg"
-                 alt="Advanced PAM Course for Linux book cover"
-                 class="book-cover"
-                 width="350"
-                 height="500"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <picture>
+                <source srcset="/assets/books/pam-course/cover-en.webp" type="image/webp">
+                <source srcset="/assets/books/pam-course/cover-en.jpg" type="image/jpeg">
+                <img src="/assets/books/pam-course/cover-en.jpg"
+                     alt="Advanced PAM Course for Linux book cover"
+                     class="book-cover"
+                     width="350"
+                     height="500">
+            </picture>
             <div class="cover-placeholder">
                 🔐
             </div>
@@ -628,25 +631,25 @@
             <h2 class="section-title">Free Resources</h2>
 
             <div class="features-grid">
-                <div class="feature-card" class="text-center">
+                <div class="feature-card text-center">
                     <div class="feature-icon">📄</div>
                     <h3 class="feature-title">Sample Chapter</h3>
                     <p class="mb-20">Download Chapter 3: "Account Lockout with pam_faillock" (25 pages)</p>
-                    <a href="/assets/books/pam-course/sample-chapter.pdf" class="btn btn-secondary" class="fs-09">Download PDF</a>
+                    <a href="/assets/books/pam-course/sample-chapter.pdf" class="btn btn-secondary fs-09">Download PDF</a>
                 </div>
 
-                <div class="feature-card" class="text-center">
+                <div class="feature-card text-center">
                     <div class="feature-icon">📋</div>
                     <h3 class="feature-title">PAM Cheatsheet</h3>
                     <p class="mb-20">Quick reference guide for common PAM modules and configurations</p>
-                    <a href="/assets/books/pam-course/cheatsheet.pdf" class="btn btn-secondary" class="fs-09">Download PDF</a>
+                    <a href="/assets/books/pam-course/cheatsheet.pdf" class="btn btn-secondary fs-09">Download PDF</a>
                 </div>
 
-                <div class="feature-card" class="text-center">
+                <div class="feature-card text-center">
                     <div class="feature-icon">🤖</div>
                     <h3 class="feature-title">Ansible Collection</h3>
                     <p class="mb-20">Production-ready Ansible roles for PAM hardening (coming soon)</p>
-                    <a href="https://github.com/malpanez/ansible-collection-security" class="btn btn-secondary" class="fs-09" target="_blank" rel="noopener">View on GitHub</a>
+                    <a href="https://github.com/malpanez/ansible-collection-security" class="btn btn-secondary fs-09" target="_blank" rel="noopener">View on GitHub</a>
                 </div>
             </div>
         </section>
@@ -659,20 +662,20 @@
             </p>
 
             <div class="maxw-600">
-                <div class="buy-option" class="text-center">
+                <div class="buy-option text-center">
                     <h3 class="fs-18 mb-20">📬 Get Notified at Launch</h3>
                     <p class="mb-25">
                         Sign up to receive updates on the book's progress and get notified
                         when it's available for purchase.
                     </p>
 
-                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" class="btn-large" target="_blank" rel="noopener">
+                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary btn-large" target="_blank" rel="noopener">
                         Join Waitlist
                     </a>
 
                     <div class="section-divider">
                         <h4 class="text-accent mb-15 fs-12">🎁 Waitlist Benefits:</h4>
-                        <ul class="benefits" class="benefits-narrow">
+                        <ul class="benefits benefits-narrow">
                             <li>✅ Early bird discount at launch</li>
                             <li>✅ Exclusive bonus chapters</li>
                             <li>✅ Free updates for life (LeanPub)</li>

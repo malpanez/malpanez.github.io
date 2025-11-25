@@ -106,7 +106,7 @@ ______________________________________________________________________
 - ✅ **Touch Targets** - Min 44x44px for all buttons
 - ✅ **Viewport Meta** - Proper mobile scaling
 
-#### Performance
+#### Performance Targets
 
 - ✅ **Small Assets** - SVG logo, optimized CSS/JS
 - ✅ **No Heavy Images** - Vector graphics where possible
@@ -182,18 +182,19 @@ curl -H "Content-Type: text/css; charset=utf-8" \
 
 ### Manual Testing
 
-#### Performance
+#### Performance Checklist
 
 - [ ] Run [PageSpeed Insights](https://pagespeed.web.dev/)
 - [ ] Check WebPageTest
 - [ ] Test with Chrome DevTools Lighthouse
 - [ ] Verify Core Web Vitals in Search Console
 
-#### Accessibility
+#### Accessibility Targets
 
 - [ ] Test with screen reader (NVDA/JAWS/VoiceOver)
 - [ ] Verify keyboard navigation (Tab, Shift+Tab, Enter, Space)
-- [ ] Check color contrast with [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [ ] Check color contrast with [WebAIM Contrast
+Checker](https://webaim.org/resources/contrastchecker/)
 - [ ] Test with [WAVE](https://wave.webaim.org/)
 
 #### Mobile
@@ -203,14 +204,14 @@ curl -H "Content-Type: text/css; charset=utf-8" \
 - [ ] Use Chrome DevTools device emulation
 - [ ] Check touch targets (min 44x44px)
 
-#### SEO
+#### SEO Targets
 
 - [ ] Verify structured data with [Rich Results Test](https://search.google.com/test/rich-results)
 - [ ] Check Open Graph with [Facebook Debugger](https://developers.facebook.com/tools/debug/)
 - [ ] Validate Twitter Cards with [Card Validator](https://cards-dev.twitter.com/validator)
 - [ ] Submit sitemap to [Google Search Console](https://search.google.com/search-console)
 
-#### PWA
+#### PWA Targets
 
 - [ ] Test offline mode (disable network in DevTools)
 - [ ] Try "Install App" prompt (Chrome, Edge)
@@ -323,19 +324,19 @@ ______________________________________________________________________
 - [WebPageTest](https://www.webpagetest.org/)
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 
-### Accessibility
+### Accessibility Tools
 
 - [WAVE Web Accessibility Tool](https://wave.webaim.org/)
 - [axe DevTools](https://www.deque.com/axe/devtools/)
 - [A11y Project Checklist](https://www.a11yproject.com/checklist/)
 
-### SEO
+### SEO Tools
 
 - [Google Search Console](https://search.google.com/search-console)
 - [Bing Webmaster Tools](https://www.bing.com/webmasters)
 - [Ahrefs Webmaster Tools](https://ahrefs.com/webmaster-tools)
 
-### PWA
+### PWA Tools
 
 - [PWA Builder](https://www.pwabuilder.com/)
 - [Workbox](https://developers.google.com/web/tools/workbox)

@@ -2,9 +2,10 @@
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fhomelabforge.dev)](https://homelabforge.dev)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing-1)
 
-Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and enterprise DevOps.
+Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and
+enterprise DevOps.
 
 **🌐 Live Site:** [homelabforge.dev](https://homelabforge.dev)
 
@@ -31,7 +32,8 @@ Multi-stack development environments for Ansible, Terraform, Golang, and LaTeX.
 - ✅ CI/CD ready with GitHub Actions
 - ✅ Zero local setup required
 
-**Repository:** [malpanez/ansible-devcontainer-vscode](https://github.com/malpanez/ansible-devcontainer-vscode)
+**Repository:**
+[malpanez/ansible-devcontainer-vscode](https://github.com/malpanez/ansible-devcontainer-vscode)
 
 ### 2. **Terraform Cloudflare Module**
 
@@ -41,7 +43,8 @@ Automate DNS, SSL, and security headers for GitHub Pages.
 - 🔒 Production-ready security configurations
 - 📦 Terraform Registry ready
 
-**Repository:** [malpanez/terraform-cloudflare-github-pages](https://github.com/malpanez/terraform-cloudflare-github-pages)
+**Repository:**
+[malpanez/terraform-cloudflare-github-pages](https://github.com/malpanez/terraform-cloudflare-github-pages)
 
 ### 3. **Advanced PAM Course** (Coming Soon)
 
@@ -95,7 +98,7 @@ ______________________________________________________________________
 
 ## 🧰 Project Structure
 
-```
+```bash
 homelabforge.dev/
 ├── assets/
 │   ├── css/
@@ -236,13 +239,13 @@ ______________________________________________________________________
 
 ## 👤 Author
 
-**Miguel Alpañez**
+*### Miguel Alpañez*
 
 - 🌐 Website: [homelabforge.dev](https://homelabforge.dev)
 - 📝 Blog: [blog.homelabforge.dev](https://blog.homelabforge.dev)
 - 🐙 GitHub: [@malpanez](https://github.com/malpanez)
 - 💼 LinkedIn: [Miguel Alpañez](https://www.linkedin.com/in/miguel-alpa%C3%B1ez/)
-- 📧 Email: miguel@homelabforge.dev
+- 📧 Email: <mailto:miguel@homelabforge.dev>
 
 ______________________________________________________________________
 
@@ -297,7 +300,8 @@ ______________________________________________________________________
 
 If you find this project useful, please consider giving it a star ⭐
 
-[![Star History Chart](https://api.star-history.com/svg?repos=malpanez/malpanez.github.io&type=Date)](https://star-history.com/#malpanez/malpanez.github.io&Date)
+[![Star History
+Chart](https://api.star-history.com/svg?repos=malpanez/malpanez.github.io&type=Date)](https://star-history.com/#malpanez/malpanez.github.io&Date)
 
 ______________________________________________________________________
 

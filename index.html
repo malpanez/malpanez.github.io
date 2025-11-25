@@ -47,6 +47,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="preload" as="image" href="/assets/img/logo.webp" imagesizes="(max-width: 768px) 130px, 150px" imagesrcset="/assets/img/logo.webp 2x">
     <link rel="preload" as="image" href="/assets/img/logo.png" imagesrcset="/assets/img/logo.png 2x" imagesizes="(max-width: 768px) 130px, 150px">
 
     <!-- PWA Manifest -->
@@ -127,8 +128,8 @@
     </style>
 
     <!-- Deferred CSS for non-critical styles -->
-    <link rel="preload" href="/assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/assets/css/styles.css"></noscript>
+    <link rel="preload" href="/assets/css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/styles.min.css"></noscript>
 
     <!-- Schema.org Structured Data for SEO -->
     <script type="application/ld+json">
@@ -174,7 +175,11 @@
 
         <header class="header">
             <div class="logo-container">
-                <img src="/assets/img/logo.png" alt="HomelabForge logo - hf monogram with circuit traces and spark" class="logo-img" width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
+                <picture>
+                    <source srcset="/assets/img/logo.webp" type="image/webp">
+                    <source srcset="/assets/img/logo.png" type="image/png">
+                    <img src="/assets/img/logo.png" alt="HomelabForge logo - hf monogram with circuit traces and spark" class="logo-img" width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
+                </picture>
             </div>
             <h1 class="logo">HomelabForge</h1>
             <p class="tagline">Open Source DevOps Tools</p>
@@ -200,13 +205,12 @@
                         <h3 class="project-title">Infrastructure Dev Containers</h3>
                         <p class="project-description">Multi-stack dev environments for Ansible, Terraform, Golang, and LaTeX. Signed images, CI/CD ready, zero local setup.</p>
                         <p class="project-tech">VS Code • Docker • GitHub Actions • Cosign</p>
-                        <a href="https://github.com/malpanez/ansible-devcontainer-vscode"
-                           class="project-button"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="View Infrastructure Dev Containers on GitHub">
-                            View on GitHub
-                        </a>
+                <a href="https://github.com/malpanez/ansible-devcontainer-vscode"
+                   class="project-button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View on GitHub
+                </a>
                     </article>
 
                     <article class="project-card">
@@ -214,13 +218,12 @@
                         <h3 class="project-title">Terraform Cloudflare Module</h3>
                         <p class="project-description">Automate DNS, SSL, security headers for GitHub Pages. 2 hours of clicks → 5 minutes of code.</p>
                         <p class="project-tech">Terraform • Cloudflare • GitHub Pages</p>
-                        <a href="https://github.com/malpanez/terraform-cloudflare-github-pages"
-                           class="project-button"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="View Terraform Cloudflare Module on GitHub">
-                            View on GitHub
-                        </a>
+                <a href="https://github.com/malpanez/terraform-cloudflare-github-pages"
+                   class="project-button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View on GitHub
+                </a>
                     </article>
 
                     <article class="project-card">
@@ -228,13 +231,12 @@
                         <h3 class="project-title">PAM for ADHD Brains</h3>
                         <p class="project-description">Deep-dive course on Linux PAM. Clear explanations, step-by-step labs, designed for neurodivergent learners.</p>
                         <p class="project-tech">Linux • Security • Education</p>
-                        <a href="https://tally.so/r/eqqYzO"
-                           class="project-button"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="Join PAM course waitlist">
-                            Join Waitlist
-                        </a>
+                    <a href="https://tally.so/r/eqqYzO"
+                       class="project-button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Join Waitlist
+                    </a>
                     </article>
                 </div>
             </section>
@@ -249,8 +251,7 @@
                     <a href="https://blog.homelabforge.dev"
                        class="link-card"
                        target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Visit HomelabForge blog">
+                       rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">📝</div>
                         <h3 class="link-title">Blog</h3>
                         <p class="link-description">Tutorials &amp; guides</p>
@@ -259,8 +260,7 @@
                     <a href="https://github.com/malpanez"
                        class="link-card"
                        target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Visit Miguel Alpañez GitHub profile">
+                       rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">🐙</div>
                         <h3 class="link-title">GitHub</h3>
                         <p class="link-description">All projects</p>
@@ -269,16 +269,14 @@
                     <a href="https://www.linkedin.com/in/miguel-alpañez/"
                        class="link-card"
                        target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Connect with Miguel Alpañez on LinkedIn">
+                       rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">💼</div>
                         <h3 class="link-title">LinkedIn</h3>
                         <p class="link-description">Professional</p>
                     </a>
 
                     <a href="mailto:miguel@homelabforge.dev"
-                       class="link-card"
-                       aria-label="Send email to Miguel Alpañez">
+                       class="link-card">
                         <div class="link-icon" aria-hidden="true">✉️</div>
                         <h3 class="link-title">Contact</h3>
                         <p class="link-description">Get in touch</p>
@@ -309,8 +307,7 @@
                 <a href="https://calendly.com/miguel-alpanez"
                    class="cta-button"
                    target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Schedule a consulting call with Miguel Alpañez">
+                   rel="noopener noreferrer">
                     Schedule a Call
                 </a>
             </section>
@@ -353,13 +350,13 @@
                 <a href="/sitemap.xml">Sitemap</a>
             </p>
             <p class="footer-note">
-                &copy; <span id="current-year">2025</span> HomelabForge. Open source with <span aria-label="love">❤️</span>
+                &copy; <span id="current-year">2025</span> HomelabForge. Open source with <span aria-hidden="true">❤️</span>
             </p>
         </footer>
     </div>
 
     <!-- Main JavaScript - Deferred for performance -->
-    <script type="module" src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/main.min.js"></script>
 
     <!-- Plausible Analytics (Privacy-friendly, optional) -->
     <!-- <script defer data-domain="homelabforge.dev" src="https://plausible.io/js/script.js"></script> -->

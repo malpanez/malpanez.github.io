@@ -107,19 +107,19 @@ develop (staging)
 feature/xyz (your work)
 ```
 
-#### 1. **`main` branch:**
+#### 1. **`main` branch**
 
 - Always deployable
 - Protected (require PR reviews)
 - Auto-deploys to production
 
-#### 2. **`develop` branch:**
+#### 2. **`develop` branch**
 
 - Integration branch
 - For testing before production
 - Runs CI on every push
 
-#### 3. **Feature branches:**
+#### 3. **Feature branches**
 
 - Create from `develop`
 - Name format: `feature/add-blog-section`
@@ -240,12 +240,12 @@ ______________________________________________________________________
 
 ## 🔒 Protecting `main` Branch
 
-### GitHub Settings Configuration:
+### GitHub Settings Configuration
 
 1. Go to **Settings** → **Branches**
 1. Add branch protection rule for `main`:
 
-#### Required Settings:
+#### Required Settings
 
 - ✅ **Require pull request before merging**
 - ✅ **Require status checks to pass before merging**
@@ -253,7 +253,7 @@ ______________________________________________________________________
 - ✅ **Require conversation resolution before merging**
 - ✅ **Do not allow bypassing the above settings**
 
-#### Optional (for teams):
+#### Optional (for teams)
 
 - ✅ **Require approvals** (1+ reviewers)
 - ✅ **Dismiss stale pull request approvals**
@@ -289,7 +289,7 @@ ______________________________________________________________________
 
 ## 🚨 Troubleshooting
 
-### CI Fails: HTML Validation Error
+### CI Fails – HTML Validation Error
 
 ```bash
 # Common issue: Missing closing tags
@@ -297,7 +297,7 @@ ______________________________________________________________________
 html-validate index.html
 ```
 
-### CI Fails: Lighthouse Performance < 90
+### CI Fails – Lighthouse Performance < 90
 
 ```bash
 # Check for:
@@ -307,7 +307,7 @@ html-validate index.html
 # - Too many external scripts
 ```
 
-### CI Fails: Accessibility Score < 100
+### CI Fails – Accessibility Score < 100
 
 ```bash
 # Common issues:
@@ -317,7 +317,7 @@ html-validate index.html
 # - No skip-to-content link
 ```
 
-### CI Fails: File Size Too Large
+### CI Fails – File Size Too Large
 
 ```bash
 # Check file sizes
@@ -398,21 +398,21 @@ ______________________________________________________________________
 
 ## 🔄 Continuous Improvement
 
-### Weekly Tasks:
+### Weekly Tasks
 
 - [ ] Review failed CI runs
 - [ ] Check Lighthouse trends
 - [ ] Monitor Core Web Vitals in Search Console
 - [ ] Review security alerts
 
-### Monthly Tasks:
+### Monthly Tasks
 
 - [ ] Update dependencies (if using npm)
 - [ ] Review and update CI config
 - [ ] Optimize assets (compress images, minify code)
 - [ ] Review and improve accessibility
 
-### Quarterly Tasks:
+### Quarterly Tasks
 
 - [ ] Comprehensive Lighthouse audit
 - [ ] Security audit (manual review)
@@ -423,7 +423,7 @@ ______________________________________________________________________
 
 ## 🆘 Getting Help
 
-### CI/CD Issues:
+### CI/CD Issues
 
 1. Check workflow logs in **Actions** tab
 1. Look for red ❌ indicators
