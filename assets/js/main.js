@@ -12,7 +12,8 @@
     // ============================================
     class ThemeManager {
         constructor() {
-            this.theme = localStorage.getItem('theme') || 'auto';
+            this.storageAvailable = this.checkStorage();
+            this.theme = this.getStoredTheme() || 'auto';
             this.button = null;
             this.init();
         }
@@ -21,6 +22,35 @@
             this.applyTheme();
             this.createToggleButton();
             this.watchSystemTheme();
+        }
+
+        checkStorage() {
+            try {
+                const key = '__theme_test__';
+                localStorage.setItem(key, '1');
+                localStorage.removeItem(key);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        getStoredTheme() {
+            if (!this.storageAvailable) return null;
+            try {
+                return localStorage.getItem('theme');
+            } catch (e) {
+                return null;
+            }
+        }
+
+        setStoredTheme(theme) {
+            if (!this.storageAvailable) return;
+            try {
+                localStorage.setItem('theme', theme);
+            } catch (e) {
+                // Ignore storage errors (e.g., blocked cookies)
+            }
         }
 
         applyTheme() {
@@ -60,7 +90,7 @@
                 document.body.classList.add('light-mode');
             }
 
-            localStorage.setItem('theme', this.theme);
+            this.setStoredTheme(this.theme);
             this.button.innerHTML = this.getIcon();
         }
 
