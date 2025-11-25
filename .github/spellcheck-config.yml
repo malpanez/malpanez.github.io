@@ -1,11 +1,8 @@
 matrix:
 - name: Markdown
-  aspell:
-    lang: en
-    dictionaries:
-    - es
-  dictionary:
-    encoding: utf-8
+  sources:
+  - '**/*.md'
+  default_encoding: utf-8
   pipeline:
   - pyspelling.filters.markdown:
   - pyspelling.filters.html:
@@ -13,17 +10,17 @@ matrix:
       ignores:
       - code
       - pre
-  sources:
-  - '**/*.md'
-  default_encoding: utf-8
-
-- name: HTML
+  dictionary:
+    wordlists:
+    - .github/wordlist.txt
+    encoding: utf-8
   aspell:
     lang: en
-    dictionaries:
-    - es
-  dictionary:
-    encoding: utf-8
+
+- name: HTML
+  sources:
+  - '**/*.html'
+  default_encoding: utf-8
   pipeline:
   - pyspelling.filters.html:
       comments: false
@@ -32,10 +29,9 @@ matrix:
       - style
       - code
       - pre
-  sources:
-  - '**/*.html'
-  default_encoding: utf-8
-
-# Custom dictionary words
-wordlists:
-- .github/wordlist.txt
+  dictionary:
+    wordlists:
+    - .github/wordlist.txt
+    encoding: utf-8
+  aspell:
+    lang: en
