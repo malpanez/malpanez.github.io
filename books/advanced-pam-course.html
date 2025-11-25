@@ -19,6 +19,8 @@
     <meta property="og:title" content="Advanced PAM Course for Linux">
     <meta property="og:description" content="Master enterprise authentication with 15+ hands-on labs covering PAM, U2F/FIDO2, Active Directory, and Ansible automation. 202 pages.">
     <meta property="og:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="book:author" content="Miguel Alpañez Alcalde">
     <meta property="book:isbn" content="">
     <meta property="book:release_date" content="2025-02-01">
@@ -29,13 +31,17 @@
     <meta name="twitter:title" content="Advanced PAM Course for Linux">
     <meta name="twitter:description" content="Master Linux PAM with 15+ hands-on labs. U2F/FIDO2, YubiKey, Active Directory, Ansible automation. 202 pages.">
     <meta name="twitter:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
+    <meta name="twitter:image:alt" content="Advanced PAM Course cover">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://homelabforge.dev/books/advanced-pam-course">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
-    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="any" href="/assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://amazon.com" crossorigin>
@@ -80,6 +86,102 @@
 
         h1, h2, h3 {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .text-accent { color: var(--accent-orange); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-light { color: var(--text-light); }
+        .text-center { text-align: center; }
+        .link-accent { color: var(--accent-orange); text-decoration: none; font-weight: 600; }
+        .stack-m-30 { margin: 30px 0; }
+        .mt-20 { margin-top: 20px; }
+        .mt-30 { margin-top: 30px; }
+        .mt-40 { margin-top: 40px; }
+        .mt-15 { margin-top: 15px; }
+        .mb-15 { margin-bottom: 15px; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-25 { margin-bottom: 25px; }
+        .mb-40 { margin-bottom: 40px; }
+        .mx-15 { margin: 0 15px; }
+        .my-20 { margin: 20px 0; }
+        .py-20 { padding: 20px 0; }
+        .fs-09 { font-size: 0.9rem; }
+        .fs-095 { font-size: 0.95rem; }
+        .fs-11 { font-size: 1.1rem; }
+        .fs-12 { font-size: 1.2rem; }
+        .fs-13 { font-size: 1.3rem; }
+        .fs-18 { font-size: 1.8rem; }
+        .fs-25 { font-size: 2.5rem; }
+        .fs-15 { font-size: 1.5rem; }
+        .maxw-800 { max-width: 800px; margin: 0 auto; }
+        .maxw-700 { max-width: 700px; margin: 0 auto; }
+        .maxw-600 { max-width: 600px; margin: 0 auto; }
+        .maxw-500 { max-width: 500px; margin: 20px auto; text-align: left; }
+        .chip-accent {
+            display: inline-block;
+            background: rgba(255, 140, 66, 0.2);
+            border: 2px solid var(--accent-orange);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--accent-orange);
+        }
+        .cover-placeholder {
+            display: none;
+            background: var(--bg-card);
+            max-width: 350px;
+            height: 500px;
+            margin: 0 auto 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .list-inside-secondary {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        .list-plain {
+            list-style: none;
+            font-size: 1.05rem;
+            line-height: 2;
+            padding-left: 0;
+            color: var(--text-secondary);
+        }
+        .list-plain-secondary {
+            list-style: none;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            padding-left: 0;
+        }
+        .text-success { color: #4CAF50; }
+        .text-danger { color: #f44336; }
+        .btn-large { font-size: 1.1rem; padding: 15px 50px; }
+        .section-divider {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .benefits-narrow {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .avatar-small {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .footer-simple {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
         }
     </style>
 
@@ -343,8 +445,8 @@
 <body>
     <div class="container">
         <!-- Header with Back to Home -->
-        <header style="padding: 20px 0;">
-            <a href="/" style="color: var(--accent-orange); text-decoration: none; font-weight: 600;">
+        <header class="py-20">
+            <a href="/" class="link-accent">
                 ← Back to HomelabForge
             </a>
         </header>
@@ -357,11 +459,11 @@
                  width="350"
                  height="500"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; background: var(--bg-card); max-width: 350px; height: 500px; margin: 0 auto 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+            <div class="cover-placeholder">
                 🔐
             </div>
 
-            <div style="display: inline-block; background: rgba(255, 140, 66, 0.2); border: 2px solid var(--accent-orange); padding: 8px 20px; border-radius: 30px; margin-bottom: 20px; font-weight: 600; color: var(--accent-orange);">
+            <div class="chip-accent">
                 📚 COMING SOON - In Production
             </div>
 
@@ -383,8 +485,8 @@
                 <a href="#sample" class="btn btn-secondary">Free Resources</a>
             </div>
 
-            <p style="text-align: center; color: var(--text-secondary); margin-top: 20px; font-size: 0.95rem;">
-                📅 Expected release: February 2025 | Available on Amazon KDP & LeanPub
+            <p class="text-center text-secondary mt-20 fs-095">
+                📅 Expected release: February 2025 | Available on Amazon KDP &amp; LeanPub
             </p>
         </section>
 
@@ -392,20 +494,20 @@
         <section class="section">
             <h2 class="section-title">Why This Book?</h2>
 
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h3 style="color: var(--accent-orange); font-size: 1.5rem; margin: 30px 0 15px;">The Problem</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+            <div class="maxw-800">
+                <h3 class="text-accent fs-15 mt-30 mb-15">The Problem</h3>
+                <p class="fs-11 mb-20">
                     Most Linux sysadmins treat PAM as a "black box" - copying config snippets from
                     StackOverflow without understanding the security implications. When things break
                     (and they will), you're locked out with no idea how to fix it.
                 </p>
 
-                <h3 style="color: var(--accent-orange); font-size: 1.5rem; margin: 30px 0 15px;">The Solution</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                <h3 class="text-accent fs-15 mt-30 mb-15">The Solution</h3>
+                <p class="fs-11 mb-20">
                     This course teaches you PAM from first principles, then builds up to advanced
                     scenarios like:
                 </p>
-                <ul style="list-style-position: inside; color: var(--text-secondary); font-size: 1.05rem;">
+                <ul class="list-inside-secondary">
                     <li>Multi-factor authentication with YubiKeys</li>
                     <li>Active Directory integration with SSSD and Smart Cards</li>
                     <li>Automated hardening with Ansible (CIS/STIG compliant)</li>
@@ -503,17 +605,17 @@
         <section class="section">
             <h2 class="section-title">Who Is This For?</h2>
 
-            <div style="max-width: 700px; margin: 0 auto;">
-                <h3 style="color: #4CAF50; font-size: 1.3rem; margin: 20px 0;">✅ Perfect for:</h3>
-                <ul style="list-style: none; font-size: 1.05rem; line-height: 2;">
+            <div class="maxw-700">
+                <h3 class="text-success fs-13 my-20">✅ Perfect for:</h3>
+                <ul class="list-plain">
                     <li>✓ Linux SysAdmins managing enterprise authentication</li>
                     <li>✓ DevOps Engineers implementing security automation</li>
                     <li>✓ Security Engineers hardening Linux systems</li>
                     <li>✓ IT teams migrating to centralized authentication</li>
                 </ul>
 
-                <h3 style="color: #f44336; font-size: 1.3rem; margin: 30px 0 20px;">❌ Not for:</h3>
-                <ul style="list-style: none; font-size: 1.05rem; line-height: 2; color: var(--text-secondary);">
+                <h3 class="text-danger fs-13 mt-30 mb-20">❌ Not for:</h3>
+                <ul class="list-plain-secondary">
                     <li>✗ Complete Linux beginners (requires basic Linux knowledge)</li>
                     <li>✗ Windows-only administrators</li>
                     <li>✗ Those looking for a quick reference (get the cheatsheet instead)</li>
@@ -526,51 +628,51 @@
             <h2 class="section-title">Free Resources</h2>
 
             <div class="features-grid">
-                <div class="feature-card" style="text-align: center;">
+                <div class="feature-card" class="text-center">
                     <div class="feature-icon">📄</div>
                     <h3 class="feature-title">Sample Chapter</h3>
-                    <p style="margin-bottom: 20px;">Download Chapter 3: "Account Lockout with pam_faillock" (25 pages)</p>
-                    <a href="/assets/books/pam-course/sample-chapter.pdf" class="btn btn-secondary" style="font-size: 0.9rem;">Download PDF</a>
+                    <p class="mb-20">Download Chapter 3: "Account Lockout with pam_faillock" (25 pages)</p>
+                    <a href="/assets/books/pam-course/sample-chapter.pdf" class="btn btn-secondary" class="fs-09">Download PDF</a>
                 </div>
 
-                <div class="feature-card" style="text-align: center;">
+                <div class="feature-card" class="text-center">
                     <div class="feature-icon">📋</div>
                     <h3 class="feature-title">PAM Cheatsheet</h3>
-                    <p style="margin-bottom: 20px;">Quick reference guide for common PAM modules and configurations</p>
-                    <a href="/assets/books/pam-course/cheatsheet.pdf" class="btn btn-secondary" style="font-size: 0.9rem;">Download PDF</a>
+                    <p class="mb-20">Quick reference guide for common PAM modules and configurations</p>
+                    <a href="/assets/books/pam-course/cheatsheet.pdf" class="btn btn-secondary" class="fs-09">Download PDF</a>
                 </div>
 
-                <div class="feature-card" style="text-align: center;">
+                <div class="feature-card" class="text-center">
                     <div class="feature-icon">🤖</div>
                     <h3 class="feature-title">Ansible Collection</h3>
-                    <p style="margin-bottom: 20px;">Production-ready Ansible roles for PAM hardening (coming soon)</p>
-                    <a href="https://github.com/malpanez/ansible-collection-security" class="btn btn-secondary" style="font-size: 0.9rem;" target="_blank" rel="noopener">View on GitHub</a>
+                    <p class="mb-20">Production-ready Ansible roles for PAM hardening (coming soon)</p>
+                    <a href="https://github.com/malpanez/ansible-collection-security" class="btn btn-secondary" class="fs-09" target="_blank" rel="noopener">View on GitHub</a>
                 </div>
             </div>
         </section>
 
         <!-- Waitlist Section -->
         <section class="buy-section" id="buy">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Join the Waitlist</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 40px; color: var(--text-light);">
+            <h2 class="fs-25 mb-20">Join the Waitlist</h2>
+            <p class="fs-11 mb-40 text-light">
                 Be the first to know when the book is released • Early bird discount • Exclusive launch bonuses
             </p>
 
-            <div style="max-width: 600px; margin: 0 auto;">
-                <div class="buy-option" style="text-align: center;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">📬 Get Notified at Launch</h3>
-                    <p style="margin-bottom: 25px;">
+            <div class="maxw-600">
+                <div class="buy-option" class="text-center">
+                    <h3 class="fs-18 mb-20">📬 Get Notified at Launch</h3>
+                    <p class="mb-25">
                         Sign up to receive updates on the book's progress and get notified
                         when it's available for purchase.
                     </p>
 
-                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 50px;" target="_blank" rel="noopener">
+                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" class="btn-large" target="_blank" rel="noopener">
                         Join Waitlist
                     </a>
 
-                    <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2);">
-                        <h4 style="color: var(--accent-orange); margin-bottom: 15px; font-size: 1.2rem;">🎁 Waitlist Benefits:</h4>
-                        <ul class="benefits" style="text-align: left; max-width: 400px; margin: 0 auto;">
+                    <div class="section-divider">
+                        <h4 class="text-accent mb-15 fs-12">🎁 Waitlist Benefits:</h4>
+                        <ul class="benefits" class="benefits-narrow">
                             <li>✅ Early bird discount at launch</li>
                             <li>✅ Exclusive bonus chapters</li>
                             <li>✅ Free updates for life (LeanPub)</li>
@@ -579,14 +681,14 @@
                         </ul>
                     </div>
 
-                    <p style="margin-top: 30px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <p class="mt-30 fs-09 text-secondary">
                         📅 Expected release: <strong>February 2025</strong><br>
-                        📍 Available on: Amazon KDP (Kindle/Paperback) & LeanPub (DRM-Free PDF/EPUB)
+                        📍 Available on: Amazon KDP (Kindle/Paperback) &amp; LeanPub (DRM-Free PDF/EPUB)
                     </p>
                 </div>
             </div>
 
-            <p style="margin-top: 40px; font-size: 0.95rem;">
+            <p class="mt-40 fs-095">
                 📖 While you wait, check out the free resources below
             </p>
         </section>
@@ -595,26 +697,26 @@
         <section class="section">
             <h2 class="section-title">About the Author</h2>
 
-            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-                <img src="/assets/img/logo.svg" alt="Miguel Alpañez" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 20px;">
+            <div class="maxw-700 text-center">
+                <img src="/assets/img/logo.png" alt="Miguel Alpañez" class="avatar-small">
 
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                    <strong style="color: var(--accent-orange);">Miguel Alpañez Alcalde</strong> is a systems engineer specializing in Linux security
+                <p class="fs-11 mb-20">
+                    <strong class="text-accent">Miguel Alpañez Alcalde</strong> is a systems engineer specializing in Linux security
                     and enterprise authentication. He has implemented PAM-based authentication systems
                     for organizations across Europe and Latin America.
                 </p>
 
-                <ul style="list-style: none; font-size: 1.05rem; text-align: left; max-width: 500px; margin: 20px auto;">
+                <ul class="list-plain maxw-500">
                     <li>🏢 Founder of Winning Concepts Limited</li>
-                    <li>🔧 Creator of <a href="https://github.com/malpanez/ansible-collection-security" style="color: var(--accent-orange);">malpanez.security</a> Ansible collection</li>
+                    <li>🔧 Creator of <a href="https://github.com/malpanez/ansible-collection-security" class="text-accent">malpanez.security</a> Ansible collection</li>
                     <li>🌐 Contributor to open-source security tools</li>
                     <li>📝 Technical writer and educator</li>
                 </ul>
 
-                <div style="margin-top: 30px;">
-                    <a href="https://github.com/malpanez" target="_blank" rel="noopener" style="color: var(--accent-orange); margin: 0 15px;">GitHub</a>
-                    <a href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener" style="color: var(--accent-orange); margin: 0 15px;">LinkedIn</a>
-                    <a href="https://homelabforge.dev" style="color: var(--accent-orange); margin: 0 15px;">Website</a>
+                <div class="mt-30">
+                    <a href="https://github.com/malpanez" target="_blank" rel="noopener" class="text-accent mx-15">GitHub</a>
+                    <a href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener" class="text-accent mx-15">LinkedIn</a>
+                    <a href="https://homelabforge.dev" class="text-accent mx-15">Website</a>
                 </div>
             </div>
         </section>
@@ -623,48 +725,48 @@
         <section class="section">
             <h2 class="section-title">Frequently Asked Questions</h2>
 
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Do I need prior PAM experience?</h3>
+            <div class="maxw-800">
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Do I need prior PAM experience?</h3>
                     <p>A: No, but you should be comfortable with Linux command line and basic system administration.</p>
                 </div>
 
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Which Linux distributions are covered?</h3>
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Which Linux distributions are covered?</h3>
                     <p>A: RHEL 8/9, Debian 12, Ubuntu 22.04/24.04. Most concepts apply to any distro.</p>
                 </div>
 
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Do I need a YubiKey to follow the labs?</h3>
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Do I need a YubiKey to follow the labs?</h3>
                     <p>A: No, the U2F labs are optional. All core PAM concepts work without hardware.</p>
                 </div>
 
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Is the Ansible code production-ready?</h3>
-                    <p>A: The book contains educational examples. For production use, see the <a href="https://github.com/malpanez/ansible-collection-security" style="color: var(--accent-orange);">malpanez.security collection</a>.</p>
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Is the Ansible code production-ready?</h3>
+                    <p>A: The book contains educational examples. For production use, see the <a href="https://github.com/malpanez/ansible-collection-security" class="text-accent">malpanez.security collection</a>.</p>
                 </div>
 
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Will there be updates?</h3>
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Will there be updates?</h3>
                     <p>A: LeanPub version receives free updates. Amazon KDP follows a fixed edition model.</p>
                 </div>
 
-                <div style="margin: 30px 0;">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 10px;">Q: Can I get a refund?</h3>
+                <div class="stack-m-30">
+                    <h3 class="text-accent mb-10">Q: Can I get a refund?</h3>
                     <p>A: Amazon: 7 days. LeanPub: 60-day happiness guarantee.</p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);">
+        <footer class="footer-simple">
             <p>
-                <a href="/" style="color: var(--accent-orange);">← Back to HomelabForge</a>
+                <a href="/" class="text-accent">← Back to HomelabForge</a>
             </p>
-            <p style="margin-top: 15px;">
-                📧 Questions? <a href="mailto:miguel@homelabforge.dev" style="color: var(--accent-orange);">miguel@homelabforge.dev</a>
+            <p class="mt-15">
+                📧 Questions? <a href="mailto:miguel@homelabforge.dev" class="text-accent">miguel@homelabforge.dev</a>
             </p>
-            <p style="margin-top: 15px; font-size: 0.9rem;">
+            <p class="mt-15 fs-09">
                 &copy; 2025 Miguel Alpañez. All rights reserved.
             </p>
         </footer>

@@ -1,9 +1,11 @@
+/* eslint-env serviceworker */
+/* global Headers */
 /**
  * HomelabForge Service Worker
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.0.2';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
 // Assets to cache on install
@@ -12,7 +14,13 @@ const STATIC_ASSETS = [
     '/index.html',
     '/assets/css/styles.css',
     '/assets/js/main.js',
-    '/assets/img/logo.svg',
+    '/assets/img/logo.png',
+    '/assets/icons/favicon-16x16.png',
+    '/assets/icons/favicon-32x32.png',
+    '/assets/icons/favicon-64x64.png',
+    '/assets/icons/apple-touch-icon.png',
+    '/assets/icons/icon-192x192.png',
+    '/assets/icons/icon-512x512.png',
     '/manifest.json'
 ];
 
@@ -22,6 +30,8 @@ const CACHE_STRATEGIES = {
     networkFirst: ['html'],
     networkOnly: ['api']
 };
+
+const STATIC_CACHE_HEADER = 'public, max-age=31536000, immutable';
 
 /**
  * Install Event - Cache static assets
@@ -112,8 +122,7 @@ async function cacheFirstStrategy(request) {
     const cached = await cache.match(request);
 
     if (cached) {
-        console.log('[SW] Serving from cache:', request.url);
-        return cached;
+        return addCacheHeaders(cached);
     }
 
     try {
@@ -121,7 +130,9 @@ async function cacheFirstStrategy(request) {
 
         // Cache successful responses
         if (response && response.status === 200) {
-            cache.put(request, response.clone());
+            const cachedResponse = addCacheHeaders(response.clone());
+            cache.put(request, cachedResponse.clone());
+            return cachedResponse;
         }
 
         return response;
@@ -146,6 +157,22 @@ async function cacheFirstStrategy(request) {
 }
 
 /**
+ * Ensure cached assets carry long-lived cache headers
+ */
+function addCacheHeaders(response) {
+    if (!response) return response;
+
+    const headers = new Headers(response.headers);
+    headers.set('Cache-Control', STATIC_CACHE_HEADER);
+
+    return new Response(response.clone().body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers
+    });
+}
+
+/**
  * Network First Strategy - Try network, fallback to cache
  * Best for: HTML pages
  */
@@ -162,7 +189,7 @@ async function networkFirstStrategy(request) {
 
         return response;
     } catch (error) {
-        console.log('[SW] Network failed, serving from cache:', request.url);
+        console.log('[SW] Network failed, serving from cache:', request.url, error);
 
         const cached = await cache.match(request);
         if (cached) {

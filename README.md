@@ -8,7 +8,7 @@ Production-ready Terraform modules, Ansible playbooks, and dev containers for ho
 
 **🌐 Live Site:** [homelabforge.dev](https://homelabforge.dev)
 
----
+______________________________________________________________________
 
 ## 🎯 What is HomelabForge?
 
@@ -19,11 +19,12 @@ HomelabForge is a curated collection of open-source DevOps tools and templates d
 - **System administrators** seeking Infrastructure as Code solutions
 - **Students and learners** exploring modern DevOps practices
 
----
+______________________________________________________________________
 
 ## 🛠️ Featured Projects
 
 ### 1. **Infrastructure Dev Containers**
+
 Multi-stack development environments for Ansible, Terraform, Golang, and LaTeX.
 
 - ✅ Signed images with Cosign
@@ -33,6 +34,7 @@ Multi-stack development environments for Ansible, Terraform, Golang, and LaTeX.
 **Repository:** [malpanez/ansible-devcontainer-vscode](https://github.com/malpanez/ansible-devcontainer-vscode)
 
 ### 2. **Terraform Cloudflare Module**
+
 Automate DNS, SSL, and security headers for GitHub Pages.
 
 - ⚡ 2 hours of clicks → 5 minutes of code
@@ -42,13 +44,14 @@ Automate DNS, SSL, and security headers for GitHub Pages.
 **Repository:** [malpanez/terraform-cloudflare-github-pages](https://github.com/malpanez/terraform-cloudflare-github-pages)
 
 ### 3. **Advanced PAM Course** (Coming Soon)
+
 Deep-dive course on Linux PAM authentication.
 
 - 📚 Designed for neurodivergent learners
 - 🔐 15+ hands-on labs
 - 🎯 Enterprise-ready patterns
 
----
+______________________________________________________________________
 
 ## 🚀 Tech Stack
 
@@ -71,7 +74,7 @@ This website is built with modern web technologies optimized for performance:
 - ♿ **A11y focused** - WCAG AAA compliant
 - 🧠 **Neurodivergent-friendly** - Clear typography, no distractions
 
----
+______________________________________________________________________
 
 ## 📊 Performance Scores
 
@@ -88,7 +91,7 @@ Target metrics (test with [PageSpeed Insights](https://pagespeed.web.dev/)):
 - **FID** (First Input Delay): < 100ms
 - **CLS** (Cumulative Layout Shift): < 0.1
 
----
+______________________________________________________________________
 
 ## 🧰 Project Structure
 
@@ -100,7 +103,7 @@ homelabforge.dev/
 │   ├── js/
 │   │   └── main.js             # Interactive features
 │   ├── img/
-│   │   └── logo.svg            # Brand logo
+│   │   └── logo.png            # Brand logo
 │   └── icons/                  # PWA icons (generated)
 ├── index.html                  # Main landing page
 ├── manifest.json               # PWA manifest
@@ -111,7 +114,7 @@ homelabforge.dev/
 └── README.md                   # This file
 ```
 
----
+______________________________________________________________________
 
 ## 🔧 Local Development
 
@@ -150,10 +153,10 @@ http-server -p 8000
 #### Option 3: VS Code Live Server
 
 1. Install "Live Server" extension
-2. Right-click `index.html`
-3. Select "Open with Live Server"
+1. Right-click `index.html`
+1. Select "Open with Live Server"
 
----
+______________________________________________________________________
 
 ## 🎨 Customization
 
@@ -173,20 +176,21 @@ Edit CSS variables in `assets/css/styles.css`:
 ### Content
 
 Edit `index.html` to update:
+
 - Projects
 - Skills
 - Links
 - Contact information
 
----
+______________________________________________________________________
 
 ## 🚢 Deployment
 
 ### GitHub Pages (Automatic)
 
 1. Push to `main` branch
-2. GitHub Actions deploys automatically
-3. Site live at `homelabforge.dev`
+1. GitHub Actions deploys automatically
+1. Site live at `homelabforge.dev`
 
 ### Manual Deployment
 
@@ -203,17 +207,17 @@ git push origin main
 
 GitHub Pages will deploy automatically within 1-2 minutes.
 
----
+______________________________________________________________________
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
 1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit your changes**: `git commit -m 'Add amazing feature'`
-4. **Push to the branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
+1. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+1. **Commit your changes**: `git commit -m 'Add amazing feature'`
+1. **Push to the branch**: `git push origin feature/amazing-feature`
+1. **Open a Pull Request**
 
 ### Code Style
 
@@ -222,13 +226,13 @@ Contributions are welcome! Please follow these guidelines:
 - Vanilla JavaScript (no frameworks)
 - Keep it simple and performant
 
----
+______________________________________________________________________
 
 ## 📝 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
----
+______________________________________________________________________
 
 ## 👤 Author
 
@@ -237,10 +241,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - 🌐 Website: [homelabforge.dev](https://homelabforge.dev)
 - 📝 Blog: [blog.homelabforge.dev](https://blog.homelabforge.dev)
 - 🐙 GitHub: [@malpanez](https://github.com/malpanez)
-- 💼 LinkedIn: [Miguel Alpañez](https://www.linkedin.com/in/miguel-alpañez/)
+- 💼 LinkedIn: [Miguel Alpañez](https://www.linkedin.com/in/miguel-alpa%C3%B1ez/)
 - 📧 Email: miguel@homelabforge.dev
 
----
+______________________________________________________________________
 
 ## 🎓 Certifications
 
@@ -248,7 +252,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - 🤖 Red Hat Certified Specialist in Ansible Automation
 - 🔵 Azure Fundamentals (AZ-900)
 
----
+______________________________________________________________________
 
 ## 🙏 Acknowledgments
 
@@ -257,43 +261,44 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [Tally](https://tally.so/) for beautiful forms
 - [Calendly](https://calendly.com/) for scheduling
 
----
+______________________________________________________________________
 
 ## 📚 Resources
 
-- [Terraform Documentation](https://www.terraform.io/docs)
+- [Terraform Documentation](https://developer.hashicorp.com/terraform/docs)
 - [Ansible Documentation](https://docs.ansible.com/)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [Web.dev Performance](https://web.dev/performance/)
 
----
+______________________________________________________________________
 
 ## 🐛 Bug Reports & Feature Requests
 
 Found a bug or have a feature request?
 
-1. Check existing [Issues](https://github.com/malpanez/malpanez.github.io-1/issues)
-2. If not found, [create a new issue](https://github.com/malpanez/malpanez.github.io-1/issues/new)
-3. Provide clear description and steps to reproduce
+1. Check existing [Issues](https://github.com/malpanez/malpanez.github.io/issues)
+1. If not found, [create a new issue](https://github.com/malpanez/malpanez.github.io/issues/new)
+1. Provide clear description and steps to reproduce
 
----
+______________________________________________________________________
 
 ## 📈 Analytics
 
 This site uses privacy-friendly analytics (optional):
+
 - No cookies
 - No personal data collection
 - GDPR compliant
 - Respects Do Not Track (DNT)
 
----
+______________________________________________________________________
 
 ## 🌟 Star History
 
 If you find this project useful, please consider giving it a star ⭐
 
-[![Star History Chart](https://api.star-history.com/svg?repos=malpanez/malpanez.github.io-1&type=Date)](https://star-history.com/#malpanez/malpanez.github.io-1&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=malpanez/malpanez.github.io&type=Date)](https://star-history.com/#malpanez/malpanez.github.io&Date)
 
----
+______________________________________________________________________
 
 **Built with ❤️ by Miguel Alpañez | Open Source | Neurodivergent Friendly**

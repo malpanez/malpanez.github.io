@@ -2,89 +2,104 @@
 
 ## Overview
 
-This project uses **GitHub Actions** for continuous integration and deployment. Every push and pull request is automatically tested to ensure quality.
+This project uses **GitHub Actions** for continuous integration and deployment.
+Every push and pull request is automatically tested to ensure quality.
 
 ## 📋 What Gets Checked
 
 ### 1. **HTML Validation** ✅
+
 - Validates all `.html` files
 - Checks semantic HTML5 compliance
 - Ensures proper structure and accessibility
 
 ### 2. **CSS Validation** 🎨
+
 - Lints CSS with Stylelint
 - Checks for syntax errors
 - Enforces consistent formatting
 
 ### 3. **JavaScript Linting** 📜
+
 - ESLint checks for code quality
 - Identifies potential bugs
 - Enforces coding standards
 
 ### 4. **Link Checking** 🔗
+
 - Scans for broken internal links
 - Validates external links (with exclusions)
 - Prevents 404 errors
 
 ### 5. **Lighthouse Performance** ⚡
+
 - **Performance Score:** Target 90+
 - **Accessibility Score:** Target 100
 - **Best Practices:** Target 90+
 - **SEO:** Target 100
 
 **Core Web Vitals:**
+
 - FCP (First Contentful Paint): < 2.0s
 - LCP (Largest Contentful Paint): < 2.5s
 - CLS (Cumulative Layout Shift): < 0.1
 - TBT (Total Blocking Time): < 300ms
 
 ### 6. **Accessibility Audit** ♿
+
 - WCAG AAA compliance testing
 - Screen reader compatibility
 - Keyboard navigation
 - Color contrast validation
 
 ### 7. **Security Scan** 🔒
+
 - Trivy vulnerability scanner
 - Checks for security issues
 - Uploads results to GitHub Security tab
 
 ### 8. **SEO Validation** 🔍
+
 - Verifies `robots.txt` exists
 - Validates `sitemap.xml` structure
 - Checks meta tags (description, OG, canonical)
 - Ensures proper indexing
 
 ### 9. **File Size Monitoring** 📊
+
 - HTML: Max 100KB per file
 - CSS: Max 50KB per file
 - JS: Max 30KB per file
 - Warnings for large files
 
----
+______________________________________________________________________
 
 ## 🔧 Workflow Triggers
 
-### Automatic Triggers:
+### Automatic Triggers
+
 - **Push to `main`:** Runs CI + Deploy
 - **Push to `develop`:** Runs CI only
 - **Pull Requests to `main`:** Runs full CI suite
 
-### Manual Trigger:
+### Manual Trigger
+
 ```bash
 # From GitHub UI: Actions → Deploy to GitHub Pages → Run workflow
 ```
 
----
+______________________________________________________________________
 
 ## 🌿 Branching Strategy (Recommended)
 
 ### Current Setup (Single Branch)
-You're currently working directly on `main`. This works for solo projects, but here's a better approach:
+
+You're currently working directly on `main`. This works for solo projects, but
+here's a better approach:
 
 ### Recommended Setup (Gitflow Lite)
 
-```
+```text
 main (production)
   ↓
 develop (staging)
@@ -93,21 +108,24 @@ feature/xyz (your work)
 ```
 
 #### 1. **`main` branch:**
-   - Always deployable
-   - Protected (require PR reviews)
-   - Auto-deploys to production
+
+- Always deployable
+- Protected (require PR reviews)
+- Auto-deploys to production
 
 #### 2. **`develop` branch:**
-   - Integration branch
-   - For testing before production
-   - Runs CI on every push
+
+- Integration branch
+- For testing before production
+- Runs CI on every push
 
 #### 3. **Feature branches:**
-   - Create from `develop`
-   - Name format: `feature/add-blog-section`
-   - Delete after merge
 
----
+- Create from `develop`
+- Name format: `feature/add-blog-section`
+- Delete after merge
+
+______________________________________________________________________
 
 ## 📝 Git Workflow Examples
 
@@ -155,7 +173,7 @@ git push -u origin feature/add-consulting-page
 # After merge to main, GitHub Actions auto-deploys
 ```
 
----
+______________________________________________________________________
 
 ## 🛠️ Local Testing Before Push
 
@@ -218,16 +236,17 @@ npm install -g @lhci/cli
 lhci autorun --config=.github/lighthouserc.json
 ```
 
----
+______________________________________________________________________
 
 ## 🔒 Protecting `main` Branch
 
 ### GitHub Settings Configuration:
 
 1. Go to **Settings** → **Branches**
-2. Add branch protection rule for `main`:
+1. Add branch protection rule for `main`:
 
 #### Required Settings:
+
 - ✅ **Require pull request before merging**
 - ✅ **Require status checks to pass before merging**
   - Select: `validate-html`, `validate-css`, `lighthouse`, etc.
@@ -235,33 +254,38 @@ lhci autorun --config=.github/lighthouserc.json
 - ✅ **Do not allow bypassing the above settings**
 
 #### Optional (for teams):
+
 - ✅ **Require approvals** (1+ reviewers)
 - ✅ **Dismiss stale pull request approvals**
 - ✅ **Require review from Code Owners**
 
----
+______________________________________________________________________
 
 ## 📊 Viewing CI/CD Results
 
 ### 1. **GitHub Actions Tab**
+
 - Go to **Actions** tab in your repo
 - See all workflow runs
 - Click on run to see details
 
 ### 2. **Pull Request Checks**
+
 - Open any PR
 - Scroll down to "Checks" section
 - See pass/fail status for each job
 
 ### 3. **Lighthouse Reports**
+
 - Available as artifacts in workflow runs
 - Download from **Actions** → **Workflow Run** → **Artifacts**
 
 ### 4. **Security Alerts**
+
 - Go to **Security** → **Code scanning**
 - View Trivy scan results
 
----
+______________________________________________________________________
 
 ## 🚨 Troubleshooting
 
@@ -304,7 +328,7 @@ du -h assets/css/*.css assets/js/*.js
 # JS: Use terser
 ```
 
----
+______________________________________________________________________
 
 ## 🎯 Best Practices
 
@@ -325,6 +349,7 @@ git commit -m "refactor: extract common styles to variables"
 ```
 
 **Types:**
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation only
@@ -344,13 +369,13 @@ git commit -m "refactor: extract common styles to variables"
 ### Pull Request Best Practices
 
 1. **Keep PRs small** - Easier to review (< 400 lines changed)
-2. **Write descriptive titles** - "Add consulting page with pricing"
-3. **Add description** - Explain what and why
-4. **Link issues** - Use "Closes #123" if fixing an issue
-5. **Request reviews** - Tag reviewers explicitly
-6. **Respond to feedback** - Address all comments before merging
+1. **Write descriptive titles** - "Add consulting page with pricing"
+1. **Add description** - Explain what and why
+1. **Link issues** - Use "Closes #123" if fixing an issue
+1. **Request reviews** - Tag reviewers explicitly
+1. **Respond to feedback** - Address all comments before merging
 
----
+______________________________________________________________________
 
 ## 📈 Performance Budget
 
@@ -366,41 +391,47 @@ Our targets (monitored by Lighthouse):
 | LCP | < 2.5s | < 4.0s |
 | CLS | < 0.1 | < 0.25 |
 
-If metrics fall below "Target", investigate. If below "Critical", **block the PR**.
+If metrics fall below "Target", investigate.
+If below "Critical", **block the PR**.
 
----
+______________________________________________________________________
 
 ## 🔄 Continuous Improvement
 
 ### Weekly Tasks:
+
 - [ ] Review failed CI runs
 - [ ] Check Lighthouse trends
 - [ ] Monitor Core Web Vitals in Search Console
 - [ ] Review security alerts
 
 ### Monthly Tasks:
+
 - [ ] Update dependencies (if using npm)
 - [ ] Review and update CI config
 - [ ] Optimize assets (compress images, minify code)
 - [ ] Review and improve accessibility
 
 ### Quarterly Tasks:
+
 - [ ] Comprehensive Lighthouse audit
 - [ ] Security audit (manual review)
 - [ ] Performance optimization sprint
 - [ ] Update documentation
 
----
+______________________________________________________________________
 
 ## 🆘 Getting Help
 
 ### CI/CD Issues:
+
 1. Check workflow logs in **Actions** tab
-2. Look for red ❌ indicators
-3. Read error messages carefully
-4. Google the error + "GitHub Actions"
+1. Look for red ❌ indicators
+1. Read error messages carefully
+1. Google the error + "GitHub Actions"
 
 ### Need to Skip CI? (Emergency Only)
+
 ```bash
 # Add [skip ci] to commit message
 git commit -m "docs: minor typo fix [skip ci]"
@@ -408,16 +439,18 @@ git commit -m "docs: minor typo fix [skip ci]"
 # ⚠️ Use sparingly! CI is there to protect you.
 ```
 
----
+______________________________________________________________________
 
 ## 📚 Resources
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [Lighthouse CI Guide](https://github.com/GoogleChrome/lighthouse-ci)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-- [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+- [Gitflow Workflow][gitflow]
 
----
+______________________________________________________________________
 
 **Last Updated:** 2025-01-24
 **Maintained by:** Miguel Alpañez
+
+[gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow

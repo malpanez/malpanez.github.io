@@ -2,6 +2,7 @@
  * HomelabForge - Main JavaScript
  * Modern ES6+ features with progressive enhancement
  */
+/* global Tally */
 
 (function() {
     'use strict';
@@ -122,6 +123,10 @@
         }
 
         init() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', (e) => {
                     const href = anchor.getAttribute('href');
@@ -136,8 +141,8 @@
                         });
 
                         // Update URL without jumping
-                        if (history.pushState) {
-                            history.pushState(null, null, href);
+                        if (window.history && window.history.pushState) {
+                            window.history.pushState(null, null, href);
                         }
                     }
                 });
@@ -239,7 +244,7 @@
         }
 
         observeLCP() {
-            const observer = new PerformanceObserver((list) => {
+            const observer = new window.PerformanceObserver((list) => {
                 const entries = list.getEntries();
                 const lastEntry = entries[entries.length - 1];
                 this.metrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
@@ -248,7 +253,7 @@
         }
 
         observeFID() {
-            const observer = new PerformanceObserver((list) => {
+            const observer = new window.PerformanceObserver((list) => {
                 const entries = list.getEntries();
                 entries.forEach(entry => {
                     this.metrics.fid = entry.processingStart - entry.startTime;
@@ -259,7 +264,7 @@
 
         observeCLS() {
             let clsValue = 0;
-            const observer = new PerformanceObserver((list) => {
+            const observer = new window.PerformanceObserver((list) => {
                 for (const entry of list.getEntries()) {
                     if (!entry.hadRecentInput) {
                         clsValue += entry.value;
@@ -312,24 +317,42 @@
             const iframe = document.querySelector('iframe[data-tally-src]');
             if (!iframe) return;
 
-            // Load Tally only when iframe is visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const script = document.createElement('script');
-                        script.src = 'https://tally.so/widgets/embed.js';
-                        script.onload = () => {
-                            if (typeof Tally !== 'undefined') {
-                                Tally.loadEmbeds();
-                            }
-                        };
-                        document.body.appendChild(script);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { rootMargin: '200px' });
+            const loadEmbed = () => {
+                if (!iframe.src) {
+                    iframe.src = iframe.dataset.tallySrc;
+                }
 
-            observer.observe(iframe);
+                if (document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
+                    if (typeof Tally !== 'undefined') {
+                        Tally.loadEmbeds();
+                    }
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://tally.so/widgets/embed.js';
+                script.onload = () => {
+                    if (typeof Tally !== 'undefined') {
+                        Tally.loadEmbeds();
+                    }
+                };
+                document.body.appendChild(script);
+            };
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            loadEmbed();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '200px' });
+
+                observer.observe(iframe);
+            } else {
+                loadEmbed();
+            }
         }
     }
 
@@ -392,7 +415,7 @@
                     this.button.style.opacity = '0';
                     this.button.style.visibility = 'hidden';
                 }
-            });
+            }, { passive: true });
 
             this.button.addEventListener('click', () => {
                 window.scrollTo({
@@ -409,6 +432,12 @@
     function init() {
         // Set animation orders
         setAnimationOrder();
+
+        // Update copyright year
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
 
         // Initialize modules
         new ThemeManager();

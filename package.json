@@ -1,0 +1,8 @@
+{
+  "name": "homelabforge-site",
+  "version": "1.0.0",
+  "description": "Static site for homelabforge.dev",
+  "license": "MIT",
+  "private": true,
+  "type": "module"
+}

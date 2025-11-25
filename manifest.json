@@ -3,17 +3,13 @@
   "short_name": "HomelabForge",
   "description": "Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and enterprise DevOps",
   "start_url": "/",
+  "scope": "/",
+  "display_override": ["standalone", "minimal-ui"],
   "display": "standalone",
   "background_color": "#0D1117",
   "theme_color": "#FF9900",
   "orientation": "any",
   "icons": [
-    {
-      "src": "/assets/img/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
     {
       "src": "/assets/icons/icon-192x192.png",
       "sizes": "192x192",
@@ -50,8 +46,9 @@
       "url": "/#projects-heading",
       "icons": [
         {
-          "src": "/assets/icons/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/assets/img/logo.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
         }
       ]
     },
@@ -62,8 +59,9 @@
       "url": "https://blog.homelabforge.dev",
       "icons": [
         {
-          "src": "/assets/icons/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/assets/img/logo.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
         }
       ]
     },
@@ -74,8 +72,9 @@
       "url": "mailto:miguel@homelabforge.dev",
       "icons": [
         {
-          "src": "/assets/icons/icon-192x192.png",
-          "sizes": "192x192"
+          "src": "/assets/img/logo.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
         }
       ]
     }
