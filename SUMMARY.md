@@ -209,7 +209,7 @@ ______________________________________________________________________
 
 ### Esta Semana
 
-4. **Generar iconos PWA:**
+1. **Generar iconos PWA:**
 
    ```bash
    # Necesitas crear iconos desde el logo.png:
@@ -237,7 +237,7 @@ ______________________________________________________________________
 
 ### Antes del Launch del Libro
 
-7. **Actualizar landing page del libro:**
+1. **Actualizar landing page del libro:**
 
    - Reemplazar "Coming Soon" por botones de compra
    - Añadir ASINs de Amazon KDP
@@ -252,17 +252,17 @@ ______________________________________________________________________
 
 ### Optimizaciones Futuras (Opcional)
 
-9. **Cloudflare Headers:**
+1. **Cloudflare Headers:**
 
-   ```
-   # Add en Cloudflare → Rules → Transform Rules:
-   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' tally.so
+```text
+# Add en Cloudflare → Rules → Transform Rules:
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' tally.so
 calendly.com; style-src 'self' 'unsafe-inline';
-   X-Frame-Options: SAMEORIGIN
-   X-Content-Type-Options: nosniff
-   Referrer-Policy: strict-origin-when-cross-origin
-   Permissions-Policy: geolocation=(), microphone=(), camera=()
-   ```
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+```
 
 1. **GitHub Projects:**
 

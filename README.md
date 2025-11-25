@@ -212,6 +212,8 @@ GitHub Pages will deploy automatically within 1-2 minutes.
 
 ______________________________________________________________________
 
+<a id="contributing-1"></a>
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these guidelines:
@@ -239,7 +241,7 @@ ______________________________________________________________________
 
 ## 👤 Author
 
-*### Miguel Alpañez*
+### Miguel Alpañez
 
 - 🌐 Website: [homelabforge.dev](https://homelabforge.dev)
 - 📝 Blog: [blog.homelabforge.dev](https://blog.homelabforge.dev)
@@ -305,4 +307,4 @@ Chart](https://api.star-history.com/svg?repos=malpanez/malpanez.github.io&type=D
 
 ______________________________________________________________________
 
-**Built with ❤️ by Miguel Alpañez | Open Source | Neurodivergent Friendly**
+### Built with ❤️ by Miguel Alpañez | Open Source | Neurodivergent Friendly
