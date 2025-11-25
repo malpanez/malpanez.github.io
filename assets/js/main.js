@@ -30,7 +30,7 @@
                 localStorage.setItem(key, '1');
                 localStorage.removeItem(key);
                 return true;
-            } catch (e) {
+            } catch {
                 return false;
             }
         }
@@ -39,7 +39,7 @@
             if (!this.storageAvailable) return null;
             try {
                 return localStorage.getItem('theme');
-            } catch (e) {
+            } catch {
                 return null;
             }
         }
@@ -48,7 +48,7 @@
             if (!this.storageAvailable) return;
             try {
                 localStorage.setItem('theme', theme);
-            } catch (e) {
+            } catch {
                 // Ignore storage errors (e.g., blocked cookies)
             }
         }
