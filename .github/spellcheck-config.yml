@@ -2,6 +2,8 @@ matrix:
 - name: Markdown
   aspell:
     lang: en
+    dictionaries:
+    - es
   dictionary:
     encoding: utf-8
   pipeline:
@@ -18,6 +20,8 @@ matrix:
 - name: HTML
   aspell:
     lang: en
+    dictionaries:
+    - es
   dictionary:
     encoding: utf-8
   pipeline:

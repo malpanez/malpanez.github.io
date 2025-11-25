@@ -25,7 +25,9 @@ APIs
 AVIF
 Ahrefs
 Ansible
+ansible
 Async
+BEM
 Bing
 Brotli
 CI/CD
@@ -38,13 +40,16 @@ DevOps
 DevTools
 DNS
 Dockerfile
+DNT
 FIDO2
 FID
 GDPR
 GitHub
 GitLab
+github
 Golang
 GTmetrix
+HTTP
 HTTPS
 IaC
 Iframes
@@ -66,13 +71,18 @@ PostgreSQL
 Prefetch
 Preconnect
 Redis
+redis
+RFC
 SDK
 SEO
+seo
 SSL
+ssl
 SSSD
 STIG
 TLS
 Terraform
+terraform
 TypeScript
 URL
 Viewport
@@ -86,10 +96,17 @@ XSS
 YAML
 YubiKey
 YubiKeys
+cd
+favicon
 gzipped
+http
 inlined
+io
+localhost
 nav
 url
+vscode
+www
 
 # Linux/Unix terms
 distro
@@ -127,11 +144,12 @@ xml
 # Misc
 ADHD
 Alcalde
-Alpañez
 Autor
 Autoplay
 CoP
+Creado
 DRM-free
+Fecha
 KDP
 Neurodivergent
 NVDA
@@ -146,16 +164,13 @@ cheatsheet
 cli
 competir
 config
-Creado
 creado
 dev
 document
 estás
-Fecha
 fecha
 glyphs
-http
-inlined
+https
 js
 las
 ld
@@ -165,7 +180,6 @@ miguel
 neurodivergent
 prefetch
 profesionales
-Versión
 seguro
 subdomains
 theming
