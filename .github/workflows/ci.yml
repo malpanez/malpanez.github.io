@@ -15,6 +15,8 @@ permissions:
   pull-requests: write
   security-events: write
   actions: read
+  pages: write
+  id-token: write
 
 jobs:
   # Job 1: HTML Validation with W3C Validator
@@ -135,10 +137,12 @@ jobs:
                   performance: "readonly",
                   Request: "readonly",
                   Response: "readonly",
+                  Headers: "readonly",
                   caches: "readonly",
                   self: "readonly",
                   clients: "readonly",
-                  addEventListener: "readonly"
+                  addEventListener: "readonly",
+                  importScripts: "readonly"
                 }
               },
               rules: {
@@ -449,3 +453,40 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "🎉 **Pipeline completed!** Check individual job results above." >> $GITHUB_STEP_SUMMARY
+
+  # Job 14: Deploy to GitHub Pages (only on main branch, after all checks pass)
+  deploy:
+    name: 🚀 Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [validate-html, validate-css, lint-javascript, check-links, lighthouse, accessibility, security-scan, seo-check, markdown-lint, spell-check, file-size-check]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5.0.0
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
+
+      - name: Post deployment summary
+        run: |
+          echo "## 🚀 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Website URL:** https://homelabforge.dev" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed from:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed at:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All quality checks passed before deployment!" >> $GITHUB_STEP_SUMMARY
