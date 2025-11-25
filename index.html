@@ -45,7 +45,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
     <link rel="icon" type="image/png" href="/assets/icons/favicon-transparent.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="preload" as="image" href="/assets/img/logo-512.webp" imagesrcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" imagesizes="150px">
+    <link rel="preload" as="image" href="/assets/img/hero-logo.png" fetchpriority="high">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -171,11 +171,7 @@
 
         <header class="header">
             <div class="logo-container">
-                <picture>
-                    <source srcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" type="image/webp">
-                    <source srcset="/assets/img/logo-256.png 1x, /assets/img/logo-512.png 2x" type="image/png">
-                    <img src="/assets/img/logo-256.webp" alt="HomelabForge logo - hf monogram with circuit traces and spark" class="logo-img" width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
-                </picture>
+                <img src="/assets/img/hero-logo.png" alt="HomelabForge - Production DevOps for Homelabs" class="logo-img" width="200" height="200" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <h1 class="logo">HomelabForge</h1>
             <p class="tagline">Open Source DevOps Tools</p>
