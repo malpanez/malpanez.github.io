@@ -5,7 +5,7 @@
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v1.0.2';
+const CACHE_VERSION = 'v1.0.3';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
 // Assets to cache on install
@@ -16,7 +16,8 @@ const STATIC_ASSETS = [
     '/assets/css/styles.min.css',
     '/assets/js/main.js',
     '/assets/js/main.min.js',
-    '/assets/img/logo.png',
+    '/assets/img/logo-256.webp',
+    '/assets/img/logo-512.webp',
     '/assets/icons/favicon-16x16.png',
     '/assets/icons/favicon-32x32.png',
     '/assets/icons/favicon-64x64.png',

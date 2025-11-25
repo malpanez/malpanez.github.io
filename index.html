@@ -47,8 +47,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="preload" as="image" href="/assets/img/logo.webp" imagesizes="(max-width: 768px) 130px, 150px" imagesrcset="/assets/img/logo.webp 2x">
-    <link rel="preload" as="image" href="/assets/img/logo.png" imagesrcset="/assets/img/logo.png 2x" imagesizes="(max-width: 768px) 130px, 150px">
+    <link rel="preload" as="image" href="/assets/img/logo-512.webp" imagesrcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" imagesizes="150px">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -175,9 +174,9 @@
         <header class="header">
             <div class="logo-container">
                 <picture>
-                    <source srcset="/assets/img/logo.webp" type="image/webp">
-                    <source srcset="/assets/img/logo.png" type="image/png">
-                    <img src="/assets/img/logo.png" alt="HomelabForge logo - hf monogram with circuit traces and spark" class="logo-img" width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
+                    <source srcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" type="image/webp">
+                    <source srcset="/assets/img/logo-256.png 1x, /assets/img/logo-512.png 2x" type="image/png">
+                    <img src="/assets/img/logo-256.webp" alt="HomelabForge logo - hf monogram with circuit traces and spark" class="logo-img" width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
                 </picture>
             </div>
             <h1 class="logo">HomelabForge</h1>
