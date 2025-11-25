@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fhomelabforge.dev)](https://homelabforge.dev)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing-1)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
 Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and
 enterprise DevOps.
@@ -212,9 +212,7 @@ GitHub Pages will deploy automatically within 1-2 minutes.
 
 ______________________________________________________________________
 
-<a id="contributing-1"></a>
-
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
