@@ -717,14 +717,14 @@ a:hover {
     }
 
     .logo-container {
-        width: 160px;
-        height: 160px;
+        width: 120px;
+        height: 120px;
         padding: var(--space-sm);
     }
 
     .logo-img {
-        max-width: 140px;
-        max-height: 140px;
+        max-width: 100px;
+        max-height: 100px;
     }
 
     .logo {
@@ -763,16 +763,6 @@ a:hover {
         height: 45px;
         top: 15px;
         right: 15px;
-    }
-
-    .logo-img {
-        max-width: 100px;
-        max-height: 100px;
-    }
-
-    .logo-container {
-        width: 120px;
-        height: 120px;
     }
 }
 
