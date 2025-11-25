@@ -658,7 +658,8 @@ a:hover {
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    will-change: transform, opacity;
 }
 
 .reveal.active {
