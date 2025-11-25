@@ -11,6 +11,12 @@
   "orientation": "any",
   "icons": [
     {
+      "src": "/assets/icons/favicon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/assets/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
