@@ -293,6 +293,8 @@ a:hover {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
     animation-delay: calc(var(--animation-order) * 0.1s);
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -353,6 +355,7 @@ a:hover {
     border: 1px solid rgb(255 153 0 / 0.3);
     position: relative;
     overflow: hidden;
+    margin-top: auto;
 }
 
 .project-button::before {
