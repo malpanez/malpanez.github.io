@@ -519,9 +519,9 @@ a:hover {
 .newsletter iframe {
     display: block;
     width: 100%;
-    min-height: 420px;
-    max-height: 640px;
-    aspect-ratio: 3 / 4;
+    height: 200px;
+    min-height: 180px;
+    max-height: 250px;
     border-radius: 12px;
     border: 1px solid var(--border-default);
     background: var(--bg-secondary) !important;
@@ -531,7 +531,7 @@ a:hover {
 
 /* Force dark theme on Tally iframes */
 .newsletter iframe[data-tally-src*="tally.so"] {
-    background: transparent !important;
+    background: var(--bg-secondary) !important;
     mix-blend-mode: normal;
 }
 
