@@ -519,20 +519,9 @@ a:hover {
 .newsletter iframe {
     display: block;
     width: 100%;
-    height: 200px;
-    min-height: 180px;
-    max-height: 250px;
+    height: 520px;
     border-radius: 12px;
     border: 1px solid var(--border-default);
-    background: var(--bg-secondary) !important;
-    background-color: var(--bg-secondary) !important;
-    color-scheme: dark;
-}
-
-/* Force dark theme on Tally iframes */
-.newsletter iframe[data-tally-src*="tally.so"] {
-    background: var(--bg-secondary) !important;
-    mix-blend-mode: normal;
 }
 
 /* Skills Grid */
