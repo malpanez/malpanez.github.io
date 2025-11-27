@@ -11,6 +11,7 @@ export default [
         navigator: "readonly",
         localStorage: "readonly",
         console: "readonly",
+        process: "readonly",
         setTimeout: "readonly",
         clearTimeout: "readonly",
         setInterval: "readonly",

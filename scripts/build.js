@@ -2,7 +2,7 @@
 import fs from 'fs-extra';
 import { glob } from 'glob';
 import CleanCSS from 'clean-css';
-import terser from 'terser';
+import { minify as terserMinify } from 'terser';
 import { minify as htmlMinify } from 'html-minifier-terser';
 import path from 'path';
 import postcss from 'postcss';
@@ -67,7 +67,7 @@ async function main() {
     const jsFiles = await glob('assets/js/**/*.js', { ignore: [`${DIST_DIR}/**`] });
     for (const file of jsFiles) {
       const content = await fs.readFile(file, 'utf-8');
-      const result = await terser.minify(content, {
+      const result = await terserMinify(content, {
         compress: {
           drop_console: true,
         },
