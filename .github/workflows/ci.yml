@@ -90,6 +90,7 @@ jobs:
 
       - name: Upload Lighthouse results
         uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('.lighthouseci/**') != '' }}
         with:
           name: lighthouse-results
           path: .lighthouseci/
