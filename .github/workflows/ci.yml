@@ -83,7 +83,7 @@ jobs:
 
       - name: Run Lighthouse CI
         run: |
-          lhci autorun --config=.github/lighthouserc.json
+          npx lhci autorun --config=.github/lighthouserc.json
         continue-on-error: true
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
@@ -141,8 +141,8 @@ jobs:
 
       - name: Run axe accessibility tests
         run: |
-          axe http://localhost:8080 --stdout --exit
-          axe http://localhost:8080/books/advanced-pam-course.html --stdout --exit
+          npx axe http://localhost:8080 --stdout --exit
+          npx axe http://localhost:8080/books/advanced-pam-course.html --stdout --exit
 
   # Job 5: Security Scan with Trivy
   security-scan:

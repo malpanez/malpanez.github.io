@@ -47,7 +47,6 @@
     color: var(--accent-orange);
 }
 .cover-placeholder {
-    display: none;
     background: var(--bg-card);
     max-width: 350px;
     height: 500px;
