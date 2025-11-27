@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@v1.9.3
         with:
           args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|ansible-collection-security|webpagetest.org' '**/*.html' '**/*.md'
           fail: false
@@ -153,7 +153,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Trivy security scanner
-        uses: aquasecurity/trivy-action@0
+        uses: aquasecurity/trivy-action@0.50.1
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -271,7 +271,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check spelling
-        uses: rojopolis/spellcheck-github-actions@v0
+        uses: rojopolis/spellcheck-github-actions@0.46.0
         with:
           config_path: .github/spellcheck-config.yml
 

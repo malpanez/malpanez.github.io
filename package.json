@@ -10,7 +10,7 @@
     "build": "node scripts/build.js",
     "lint": "npm-run-all --parallel lint:*",
     "lint:html": "html-validate .",
-    "lint:css": "stylelint \\"assets/css/**/*.css\\"",
+    "lint:css": "stylelint 'assets/css/**/*.css'",
     "lint:js": "eslint .",
     "start": "http-server .",
     "start:dist": "http-server dist"
