@@ -12,9 +12,8 @@ const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 const STATIC_ASSETS = [
     '/',
     '/index.html',
-    '/assets/css/styles.css',
+    '/offline.html',
     '/assets/css/styles.min.css',
-    '/assets/js/main.js',
     '/assets/js/main.min.js',
     '/assets/img/logo-256.webp',
     '/assets/img/logo-512.webp',

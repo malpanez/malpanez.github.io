@@ -171,7 +171,11 @@
 
         <header class="header">
             <div class="logo-container">
-                <img src="/assets/img/og-image.png" alt="HomelabForge - Production DevOps for Homelabs" class="logo-img" width="400" height="210" loading="eager" fetchpriority="high" decoding="async">
+                <picture>
+                    <source srcset="/assets/img/og-image.webp" type="image/webp">
+                    <source srcset="/assets/img/og-image.png" type="image/png">
+                    <img src="/assets/img/og-image.png" alt="HomelabForge - Production DevOps for Homelabs" class="logo-img" width="400" height="210" loading="eager" fetchpriority="high" decoding="async">
+                </picture>
             </div>
             <h1 class="logo">HomelabForge</h1>
             <p class="tagline">Open Source DevOps Tools</p>
@@ -186,16 +190,16 @@
         <main id="main-content">
             <!-- Open Source Projects -->
             <section aria-labelledby="projects-heading">
-                <div class="section-header">
+                <div class="section-header js-reveal">
                     <h2 id="projects-heading" class="section-title">🛠️ Open Source Projects</h2>
                     <p class="section-subtitle">Battle-tested tools I use in production</p>
                 </div>
 
                 <div class="projects-grid">
-                    <article class="project-card">
+                    <article class="project-card js-reveal">
                         <span class="project-badge">Open Source</span>
                         <h3 class="project-title">Dev Environments That Just Work</h3>
-                        <div style="margin-bottom: 10px;">
+                        <div class="github-stats">
                             <img src="https://img.shields.io/github/stars/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub stars" loading="lazy">
                             <img src="https://img.shields.io/github/forks/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub forks" loading="lazy">
                         </div>
@@ -209,10 +213,10 @@
                 </a>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card js-reveal">
                         <span class="project-badge">Open Source</span>
                         <h3 class="project-title">Automate Cloudflare in 5 Minutes</h3>
-                        <div style="margin-bottom: 10px;">
+                        <div class="github-stats">
                             <img src="https://img.shields.io/github/stars/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub stars" loading="lazy">
                             <img src="https://img.shields.io/github/forks/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub forks" loading="lazy">
                         </div>
@@ -226,7 +230,7 @@
                 </a>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card js-reveal">
                         <span class="project-badge coming">Coming Soon</span>
                         <h3 class="project-title">Linux Security for ADHD Brains</h3>
                         <p class="project-description">Deep-dive PAM course with clear explanations and step-by-step labs designed for neurodivergent learners. Early access Q1 2026.</p>
@@ -255,13 +259,13 @@
 
             <!-- Connect Section -->
             <section aria-labelledby="connect-heading">
-                <div class="section-header">
+                <div class="section-header js-reveal">
                     <h2 id="connect-heading" class="section-title">📚 Learn &amp; Connect</h2>
                 </div>
 
                 <nav class="links-grid" aria-label="External links">
                     <a href="https://blog.homelabforge.dev"
-                       class="link-card"
+                       class="link-card js-reveal"
                        target="_blank"
                        rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">📝</div>
@@ -270,7 +274,7 @@
                     </a>
 
                     <a href="https://github.com/malpanez"
-                       class="link-card"
+                       class="link-card js-reveal"
                        target="_blank"
                        rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">🐙</div>
@@ -279,7 +283,7 @@
                     </a>
 
                     <a href="https://www.linkedin.com/in/miguel-alpañez/"
-                       class="link-card"
+                       class="link-card js-reveal"
                        target="_blank"
                        rel="noopener noreferrer">
                         <div class="link-icon" aria-hidden="true">💼</div>
@@ -288,7 +292,7 @@
                     </a>
 
                     <a href="mailto:miguel@homelabforge.dev"
-                       class="link-card">
+                       class="link-card js-reveal">
                         <div class="link-icon" aria-hidden="true">✉️</div>
                         <h3 class="link-title">Contact</h3>
                         <p class="link-description">Get in touch</p>
@@ -314,25 +318,25 @@
             <!-- Skills -->
             <section aria-labelledby="skills-heading">
                 <ul class="skills-grid">
-                    <li class="skill-card">
+                    <li class="skill-card js-reveal">
                         <div class="skill-icon" aria-hidden="true">🏗️</div>
                         <h3 class="skill-title">IaC</h3>
                         <p class="skill-description">Terraform, Ansible</p>
                     </li>
 
-                    <li class="skill-card">
+                    <li class="skill-card js-reveal">
                         <div class="skill-icon" aria-hidden="true">☁️</div>
                         <h3 class="skill-title">Cloud</h3>
                         <p class="skill-description">AWS, Azure</p>
                     </li>
 
-                    <li class="skill-card">
+                    <li class="skill-card js-reveal">
                         <div class="skill-icon" aria-hidden="true">🔄</div>
                         <h3 class="skill-title">CI/CD</h3>
                         <p class="skill-description">GitHub Actions, Jenkins</p>
                     </li>
 
-                    <li class="skill-card">
+                    <li class="skill-card js-reveal">
                         <div class="skill-icon" aria-hidden="true">🐳</div>
                         <h3 class="skill-title">Containers</h3>
                         <p class="skill-description">Docker, Podman</p>

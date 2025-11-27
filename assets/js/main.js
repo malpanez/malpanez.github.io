@@ -108,7 +108,7 @@
     // ============================================
     class ScrollReveal {
         constructor() {
-            this.elements = document.querySelectorAll('.section-header, .project-card, .link-card, .skill-card');
+            this.elements = document.querySelectorAll('.js-reveal');
             this.observer = null;
             this.init();
         }
@@ -415,35 +415,15 @@
             this.button.className = 'back-to-top';
             this.button.setAttribute('aria-label', 'Back to top');
             this.button.innerHTML = '↑';
-            this.button.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background: var(--primary-orange);
-                color: white;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 999;
-                box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
-            `;
             document.body.appendChild(this.button);
         }
 
         attachListeners() {
             window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 500) {
-                    this.button.style.opacity = '1';
-                    this.button.style.visibility = 'visible';
+                    this.button.classList.add('visible');
                 } else {
-                    this.button.style.opacity = '0';
-                    this.button.style.visibility = 'hidden';
+                    this.button.classList.remove('visible');
                 }
             }, { passive: true });
 

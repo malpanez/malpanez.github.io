@@ -4,5 +4,38 @@
   "description": "Static site for homelabforge.dev",
   "license": "MIT",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "node scripts/build.js",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:html": "html-validate .",
+    "lint:css": "stylelint \\"assets/css/**/*.css\\"",
+    "lint:js": "eslint .",
+    "start": "http-server .",
+    "start:dist": "http-server dist"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "^4.9.1",
+    "@lhci/cli": "^0.13.0",
+    "autoprefixer": "^10.4.19",
+    "clean-css": "^5.3.3",
+    "eslint": "^9.6.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.4.1",
+    "html-minifier-terser": "^7.2.0",
+    "html-validate": "^8.20.0",
+    "http-server": "^14.1.1",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "imagemin-webp": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.38",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "terser": "^5.31.1"
+  }
 }

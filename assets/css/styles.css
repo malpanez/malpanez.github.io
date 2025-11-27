@@ -328,6 +328,10 @@ a:hover {
     color: var(--text-primary);
 }
 
+.github-stats {
+    margin-bottom: var(--space-xs);
+}
+
 .project-description {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -693,6 +697,31 @@ a:hover {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-orange);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Responsive Design */
