@@ -171,7 +171,7 @@ jobs:
   seo-check:
     name: 🔍 SEO Validation
     runs-on: ubuntu-latest
-    steps:.
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 

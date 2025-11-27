@@ -84,30 +84,44 @@ async function main() {
 
     // 5. Optimize and copy images
     console.log('Optimizing and copying images...');
-    await imagemin(['assets/img/**/*.{jpg,jpeg,png,gif,svg}', 'assets/books/**/*.{jpg,jpeg,png,gif,svg}'], {
-      destination: 'dist/assets',
-      plugins: [
+    const imagePlugins = [
         imageminGifsicle(),
         imageminMozjpeg({ quality: 80 }),
         imageminPngquant({ quality: [0.6, 0.8] }),
         imageminSvgo(),
-      ],
+    ];
+    // Process assets/img
+    await imagemin(['assets/img/**/*.{jpg,jpeg,png,gif,svg}'], {
+      destination: 'dist/assets/img',
+      plugins: imagePlugins,
+    });
+    // Process assets/books
+    await imagemin(['assets/books/**/*.{jpg,jpeg,png,gif,svg}'], {
+        destination: 'dist/assets/books',
+        plugins: imagePlugins,
     });
     console.log('Successfully optimized images.');
 
     // 6. Create WebP versions
     console.log('Creating WebP versions of images...');
-    await imagemin(['assets/img/**/*.{jpg,jpeg,png}', 'assets/books/**/*.{jpg,jpeg,png}'], {
-      destination: 'dist/assets',
-      plugins: [imageminWebp({ quality: 80 })],
+    const webpPlugin = [imageminWebp({ quality: 80 })];
+    // Process assets/img for webp
+    await imagemin(['assets/img/**/*.{jpg,jpeg,png}'], {
+      destination: 'dist/assets/img',
+      plugins: webpPlugin,
+    });
+    // Process assets/books for webp
+    await imagemin(['assets/books/**/*.{jpg,jpeg,png}'], {
+        destination: 'dist/assets/books',
+        plugins: webpPlugin,
     });
     console.log('Successfully created WebP images.');
     
     // 7. Copy other assets
     console.log('Copying other assets...');
-    const assetFolders = ['assets/icons'];
+    const assetFolders = ['assets/icons']; // books and img are handled by imagemin
     for (const folder of assetFolders) {
-        const destPath = path.join(DIST_DIR, 'assets', path.basename(folder));
+        const destPath = path.join(DIST_DIR, 'assets', folder.replace('assets/', ''));
         await fs.copy(folder, destPath);
         console.log(`Successfully copied ${folder} to ${destPath}`);
     }
