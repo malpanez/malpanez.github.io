@@ -30,20 +30,6 @@
     }
   ],
   "categories": ["development", "education", "productivity"],
-  "screenshots": [
-    {
-      "src": "/assets/img/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/assets/img/screenshot-mobile.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Projects",
