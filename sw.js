@@ -120,31 +120,35 @@ function getStrategy(fileExtension) {
  * Best for: CSS, JS, images, fonts
  */
 async function cacheFirstStrategy(request) {
-    const cache = await caches.open(CACHE_NAME);
-    const cached = await cache.match(request);
-
-    if (cached) {
-        return addCacheHeaders(cached);
-    }
-
     try {
+        const cache = await caches.open(CACHE_NAME);
+        const cached = await cache.match(request);
+
+        if (cached) {
+            return addCacheHeaders(cached);
+        }
+
         const response = await fetch(request);
 
         // Cache successful responses
         if (response && response.status === 200) {
-            const cachedResponse = addCacheHeaders(response.clone());
-            cache.put(request, cachedResponse.clone());
-            return cachedResponse;
+            cache.put(request, response.clone());
+            return addCacheHeaders(response);
         }
 
         return response;
     } catch (error) {
-        console.error('[SW] Fetch failed:', error);
+        console.error('[SW] Cache-first strategy failed:', error);
 
-        // Return offline page if available
-        const offlinePage = await cache.match('/offline.html');
-        if (offlinePage) {
-            return offlinePage;
+        // Try to get from cache as fallback
+        try {
+            const cache = await caches.open(CACHE_NAME);
+            const offlinePage = await cache.match('/offline.html');
+            if (offlinePage) {
+                return offlinePage;
+            }
+        } catch (cacheError) {
+            console.error('[SW] Failed to retrieve offline page:', cacheError);
         }
 
         // Return basic offline response
@@ -165,9 +169,13 @@ function addCacheHeaders(response) {
     if (!response) return response;
 
     const headers = new Headers(response.headers);
-    headers.set('Cache-Control', STATIC_CACHE_HEADER);
 
-    return new Response(response.clone().body, {
+    // Only add cache headers if not already present
+    if (!headers.has('Cache-Control')) {
+        headers.set('Cache-Control', STATIC_CACHE_HEADER);
+    }
+
+    return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
         headers
@@ -179,9 +187,8 @@ function addCacheHeaders(response) {
  * Best for: HTML pages
  */
 async function networkFirstStrategy(request) {
-    const cache = await caches.open(CACHE_NAME);
-
     try {
+        const cache = await caches.open(CACHE_NAME);
         const response = await fetch(request);
 
         // Cache successful responses
@@ -191,17 +198,22 @@ async function networkFirstStrategy(request) {
 
         return response;
     } catch (error) {
-        console.log('[SW] Network failed, serving from cache:', request.url, error);
+        console.log('[SW] Network failed, serving from cache:', request.url);
 
-        const cached = await cache.match(request);
-        if (cached) {
-            return cached;
-        }
+        try {
+            const cache = await caches.open(CACHE_NAME);
+            const cached = await cache.match(request);
+            if (cached) {
+                return cached;
+            }
 
-        // Return offline page if available
-        const offlinePage = await cache.match('/offline.html');
-        if (offlinePage) {
-            return offlinePage;
+            // Return offline page if available
+            const offlinePage = await cache.match('/offline.html');
+            if (offlinePage) {
+                return offlinePage;
+            }
+        } catch (cacheError) {
+            console.error('[SW] Cache retrieval failed:', cacheError);
         }
 
         // Return basic offline response

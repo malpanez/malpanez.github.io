@@ -125,7 +125,7 @@
     </style>
 
     <!-- Main stylesheet (render-blocking to avoid FOUC/CLS) -->
-    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css" media="all">
 
     <!-- Schema.org Structured Data for SEO -->
     <script type="application/ld+json">
@@ -174,7 +174,7 @@
                 <picture>
                     <source srcset="/assets/img/og-image.webp" type="image/webp">
                     <source srcset="/assets/img/og-image.png" type="image/png">
-                    <img src="/assets/img/og-image.png" alt="HomelabForge - Production DevOps for Homelabs" class="logo-img" width="400" height="210" loading="eager" fetchpriority="high" decoding="async">
+                    <img src="/assets/img/og-image.png" alt="HomelabForge logo - Production DevOps tools and templates for homelabs" class="logo-img" width="400" height="210" loading="eager" fetchpriority="high" decoding="async">
                 </picture>
             </div>
             <h1 class="logo">HomelabForge</h1>
@@ -200,8 +200,8 @@
                         <span class="project-badge">Open Source</span>
                         <h3 class="project-title">Dev Environments That Just Work</h3>
                         <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub stars" loading="lazy">
-                            <img src="https://img.shields.io/github/forks/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub forks" loading="lazy">
+                            <img src="https://img.shields.io/github/stars/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub stars for ansible-devcontainer-vscode repository" loading="lazy" width="100" height="20">
+                            <img src="https://img.shields.io/github/forks/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub forks for ansible-devcontainer-vscode repository" loading="lazy" width="100" height="20">
                         </div>
                         <p class="project-description">Multi-stack dev environments for Ansible, Terraform, Golang, and LaTeX. Signed images, CI/CD ready, zero local setup.</p>
                         <p class="project-tech">VS Code • Docker • GitHub Actions • Cosign</p>
@@ -217,8 +217,8 @@
                         <span class="project-badge">Open Source</span>
                         <h3 class="project-title">Automate Cloudflare in 5 Minutes</h3>
                         <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub stars" loading="lazy">
-                            <img src="https://img.shields.io/github/forks/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub forks" loading="lazy">
+                            <img src="https://img.shields.io/github/stars/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub stars for terraform-cloudflare-github-pages repository" loading="lazy" width="100" height="20">
+                            <img src="https://img.shields.io/github/forks/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub forks for terraform-cloudflare-github-pages repository" loading="lazy" width="100" height="20">
                         </div>
                         <p class="project-description">DNS, SSL, and security headers for GitHub Pages. Transform 2 hours of clicking into 5 minutes of code.</p>
                         <p class="project-tech">Terraform • Cloudflare • GitHub Pages</p>
@@ -345,7 +345,7 @@
             </section>
         </main>
 
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <p>
                 Built by Miguel Alpañez |
                 <a href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">Blog</a> |
@@ -360,8 +360,5 @@
 
     <!-- Main JavaScript - Deferred for performance -->
     <script type="module" src="/assets/js/main.min.js"></script>
-
-    <!-- Plausible Analytics (Privacy-friendly, optional) -->
-    <!-- <script defer data-domain="homelabforge.dev" src="https://plausible.io/js/script.js"></script> -->
 </body>
 </html>

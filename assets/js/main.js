@@ -75,7 +75,7 @@
         }
 
         getIcon() {
-            const isDark = document.body.classList.contains('light-mode') ? false : true;
+            const isDark = !document.body.classList.contains('light-mode');
             return `<span class="theme-toggle-icon">${isDark ? '☀️' : '🌙'}</span>`;
         }
 
@@ -330,9 +330,20 @@
                     navigator.serviceWorker.register('/sw.js')
                         .then(registration => {
                             console.log('✅ Service Worker registered:', registration.scope);
+
+                            // Listen for updates
+                            registration.addEventListener('updatefound', () => {
+                                const newWorker = registration.installing;
+                                newWorker.addEventListener('statechange', () => {
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                        console.log('🔄 New Service Worker available, refresh to update');
+                                    }
+                                });
+                            });
                         })
                         .catch(error => {
-                            console.log('❌ Service Worker registration failed:', error);
+                            console.error('❌ Service Worker registration failed:', error);
+                            // Continue without PWA capabilities - not critical
                         });
                 });
             }
@@ -419,12 +430,17 @@
         }
 
         attachListeners() {
+            let scrollTimeout;
             window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 500) {
-                    this.button.classList.add('visible');
-                } else {
-                    this.button.classList.remove('visible');
-                }
+                if (scrollTimeout) return;
+                scrollTimeout = setTimeout(() => {
+                    if (window.pageYOffset > 500) {
+                        this.button.classList.add('visible');
+                    } else {
+                        this.button.classList.remove('visible');
+                    }
+                    scrollTimeout = null;
+                }, 100);
             }, { passive: true });
 
             this.button.addEventListener('click', () => {
@@ -440,30 +456,35 @@
     // Initialize Everything
     // ============================================
     function init() {
-        // Set animation orders
-        setAnimationOrder();
+        try {
+            // Set animation orders
+            setAnimationOrder();
 
-        // Update copyright year
-        const yearEl = document.getElementById('current-year');
-        if (yearEl) {
-            yearEl.textContent = new Date().getFullYear();
+            // Update copyright year
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // Initialize modules
+            new ThemeManager();
+            new ScrollReveal();
+            new SmoothScroll();
+            new Analytics();
+            new PerformanceMonitor();
+            new ServiceWorkerManager();
+            new BackToTop();
+
+            // Lazy load external scripts
+            ScriptLoader.loadTally();
+
+            // Log initialization
+            console.log('%c🔥 HomelabForge', 'font-size: 20px; font-weight: bold; color: #FF9900;');
+            console.log('%cWebsite initialized successfully', 'color: #8b949e;');
+        } catch (error) {
+            console.error('Failed to initialize website:', error);
+            // Continue anyway - page should still be usable
         }
-
-        // Initialize modules
-        new ThemeManager();
-        new ScrollReveal();
-        new SmoothScroll();
-        new Analytics();
-        new PerformanceMonitor();
-        new ServiceWorkerManager();
-        new BackToTop();
-
-        // Lazy load external scripts
-        ScriptLoader.loadTally();
-
-        // Log initialization
-        console.log('%c🔥 HomelabForge', 'font-size: 20px; font-weight: bold; color: #FF9900;');
-        console.log('%cWebsite initialized successfully', 'color: #8b949e;');
     }
 
     // ============================================

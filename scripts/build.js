@@ -48,38 +48,65 @@ async function main() {
 
     // 3. Process and minify CSS files
     console.log('Processing and minifying CSS files...');
-    const cssFiles = await glob('assets/css/**/*.css', { ignore: [`${DIST_DIR}/**`] });
-    const cleanCSS = new CleanCSS({ level: 1 });
+    const cssFiles = await glob('assets/css/**/*.css', { ignore: [`${DIST_DIR}/**`, '**/*.min.css'] });
+    const cleanCSS = new CleanCSS({
+      level: 2,
+      compatibility: 'ie11',
+    });
     const postcssProcessor = postcss([autoprefixer]);
 
     for (const file of cssFiles) {
-      const content = await fs.readFile(file, 'utf-8');
-      const postCssResult = await postcssProcessor.process(content, { from: file, to: file });
-      const minifiedContent = cleanCSS.minify(postCssResult.css).styles;
-      const destPath = path.join(DIST_DIR, file.replace(/\.css$/, '.min.css'));
-      await fs.ensureDir(path.dirname(destPath));
-      await fs.writeFile(destPath, minifiedContent);
-      console.log(`Successfully processed and minified ${file} to ${destPath}`);
+      try {
+        const content = await fs.readFile(file, 'utf-8');
+        const postCssResult = await postcssProcessor.process(content, { from: file, to: file });
+        const minified = cleanCSS.minify(postCssResult.css);
+
+        if (minified.errors.length > 0) {
+          console.error(`CSS errors in ${file}:`, minified.errors);
+          throw new Error(`CSS minification failed for ${file}`);
+        }
+
+        if (minified.warnings.length > 0) {
+          console.warn(`CSS warnings in ${file}:`, minified.warnings);
+        }
+
+        const destPath = path.join(DIST_DIR, file.replace(/\.css$/, '.min.css'));
+        await fs.ensureDir(path.dirname(destPath));
+        await fs.writeFile(destPath, minified.styles);
+        console.log(`Successfully processed and minified ${file} to ${destPath}`);
+      } catch (error) {
+        console.error(`Failed to process ${file}:`, error.message);
+        throw error;
+      }
     }
 
     // 4. Minify and copy JS files
     console.log('Minifying JavaScript files...');
-    const jsFiles = await glob('assets/js/**/*.js', { ignore: [`${DIST_DIR}/**`] });
+    const jsFiles = await glob('assets/js/**/*.js', { ignore: [`${DIST_DIR}/**`, '**/*.min.js'] });
     for (const file of jsFiles) {
-      const content = await fs.readFile(file, 'utf-8');
-      const result = await terserMinify(content, {
-        compress: {
-          drop_console: true,
-        },
-        mangle: true,
-      });
-      if (result.error) {
-        throw result.error;
+      try {
+        const content = await fs.readFile(file, 'utf-8');
+        const result = await terserMinify(content, {
+          compress: {
+            drop_console: process.env.NODE_ENV === 'production',
+            drop_debugger: true,
+          },
+          mangle: true,
+          format: {
+            comments: false,
+          },
+        });
+        if (result.error) {
+          throw result.error;
+        }
+        const destPath = path.join(DIST_DIR, file.replace(/\.js$/, '.min.js'));
+        await fs.ensureDir(path.dirname(destPath));
+        await fs.writeFile(destPath, result.code);
+        console.log(`Successfully minified and copied ${file} to ${destPath}`);
+      } catch (error) {
+        console.error(`Failed to minify ${file}:`, error.message);
+        throw error;
       }
-      const destPath = path.join(DIST_DIR, file.replace(/\.js$/, '.min.js'));
-      await fs.ensureDir(path.dirname(destPath));
-      await fs.writeFile(destPath, result.code);
-      console.log(`Successfully minified and copied ${file} to ${destPath}`);
     }
 
     // 5. Optimize and copy images
@@ -129,18 +156,23 @@ async function main() {
     // 8. Copy root files
     console.log('Copying root files...');
     const rootFiles = [
+      'sw.js',
+      '_headers',
       'CNAME',
       'robots.txt',
       'sitemap.xml',
       'manifest.json',
       'og-image.png',
       'LICENSE',
+      '.nojekyll',
     ];
     for (const file of rootFiles) {
         if (await fs.pathExists(file)) {
             const destPath = path.join(DIST_DIR, file);
             await fs.copy(file, destPath);
             console.log(`Successfully copied ${file} to ${destPath}`);
+        } else {
+            console.warn(`Warning: ${file} not found, skipping...`);
         }
     }
 
