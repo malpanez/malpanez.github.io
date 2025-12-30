@@ -197,7 +197,7 @@ async function networkFirstStrategy(request) {
         }
 
         return response;
-    } catch (error) {
+    } catch {
         console.log('[SW] Network failed, serving from cache:', request.url);
 
         try {
