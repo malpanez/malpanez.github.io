@@ -11,7 +11,7 @@ export class Analytics {
     }
 
     track(eventName, eventData = {}) {
-        const dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+        const dnt = navigator.doNotTrack || globalThis.doNotTrack || navigator.msDoNotTrack;
         if (dnt === '1' || dnt === 'yes') return;
 
         this.events.push({
@@ -20,18 +20,18 @@ export class Analytics {
             timestamp: new Date().toISOString()
         });
 
-        if (window.plausible) {
-            window.plausible(eventName, { props: eventData });
+        if (globalThis.plausible) {
+            globalThis.plausible(eventName, { props: eventData });
         }
 
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        if (globalThis.location.hostname === 'localhost' || globalThis.location.hostname === '127.0.0.1') {
             console.log('📊 Analytics Event:', eventName, eventData);
         }
     }
 
     trackOutboundLinks() {
         document.querySelectorAll('a[href^="http"]').forEach((link) => {
-            if (!link.href.includes(window.location.hostname)) {
+            if (!link.href.includes(globalThis.location.hostname)) {
                 link.addEventListener('click', () => {
                     this.track('Outbound Link', {
                         url: link.href,

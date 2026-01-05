@@ -6,7 +6,7 @@ export class ScrollReveal {
     }
 
     init() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             this.elements.forEach((el) => {
                 el.style.opacity = '1';
             });

@@ -1,6 +1,7 @@
 export class BackToTop {
+    button = null;
+
     constructor() {
-        this.button = null;
         this.init();
     }
 

@@ -4,7 +4,7 @@ export class SmoothScroll {
     }
 
     init() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             return;
         }
 
@@ -21,9 +21,7 @@ export class SmoothScroll {
                         block: 'start'
                     });
 
-                    if (window.history && window.history.pushState) {
-                        window.history.pushState(null, null, href);
-                    }
+                    globalThis.history?.pushState(null, null, href);
                 }
             });
         });

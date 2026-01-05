@@ -47,7 +47,7 @@ export class ThemeManager {
         } else if (this.theme === 'dark') {
             document.body.classList.remove('light-mode');
         } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const prefersDark = globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
             document.body.classList.toggle('light-mode', !prefersDark);
         }
     }
@@ -86,18 +86,13 @@ export class ThemeManager {
             return;
         }
 
-        const media = window.matchMedia('(prefers-color-scheme: dark)');
-        if (typeof media.addEventListener === 'function') {
-            media.addEventListener('change', (e) => {
-                document.body.classList.toggle('light-mode', !e.matches);
-            });
+        const media = globalThis.matchMedia('(prefers-color-scheme: dark)');
+        if (typeof media.addEventListener !== 'function') {
             return;
         }
 
-        if (typeof media.addListener === 'function') {
-            media.addListener((e) => {
-                document.body.classList.toggle('light-mode', !e.matches);
-            });
-        }
+        media.addEventListener('change', (e) => {
+            document.body.classList.toggle('light-mode', !e.matches);
+        });
     }
 }

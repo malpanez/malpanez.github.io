@@ -26,7 +26,7 @@ export function loadTallyEmbed() {
         document.body.appendChild(script);
     };
 
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in globalThis) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
