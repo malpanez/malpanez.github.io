@@ -38,7 +38,7 @@ const STATIC_CACHE_HEADER = 'public, max-age=31536000, immutable';
 /**
  * Install Event - Cache static assets
  */
-self.addEventListener('install', (event) => {
+globalThis.addEventListener('install', (event) => {
     console.log('[SW] Installing service worker...');
 
     event.waitUntil(
@@ -47,7 +47,7 @@ self.addEventListener('install', (event) => {
                 console.log('[SW] Caching static assets');
                 return cache.addAll(STATIC_ASSETS);
             })
-            .then(() => self.skipWaiting()) // Activate immediately
+            .then(() => globalThis.skipWaiting()) // Activate immediately
             .catch((error) => {
                 console.error('[SW] Failed to cache static assets:', error);
             })
@@ -57,7 +57,7 @@ self.addEventListener('install', (event) => {
 /**
  * Activate Event - Clean up old caches
  */
-self.addEventListener('activate', (event) => {
+globalThis.addEventListener('activate', (event) => {
     console.log('[SW] Activating service worker...');
 
     event.waitUntil(
@@ -72,14 +72,14 @@ self.addEventListener('activate', (event) => {
                         })
                 );
             })
-            .then(() => self.clients.claim()) // Take control immediately
+            .then(() => globalThis.clients.claim()) // Take control immediately
     );
 });
 
 /**
  * Fetch Event - Serve from cache with network fallback
  */
-self.addEventListener('fetch', (event) => {
+globalThis.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
 
@@ -238,7 +238,7 @@ async function networkOnlyStrategy(request) {
 /**
  * Background Sync for offline form submissions (if needed)
  */
-self.addEventListener('sync', (event) => {
+globalThis.addEventListener('sync', (event) => {
     if (event.tag === 'sync-forms') {
         event.waitUntil(syncForms());
     }
@@ -252,7 +252,7 @@ async function syncForms() {
 /**
  * Push Notifications (optional)
  */
-self.addEventListener('push', (event) => {
+globalThis.addEventListener('push', (event) => {
     const data = event.data ? event.data.json() : {};
 
     const options = {
@@ -266,14 +266,14 @@ self.addEventListener('push', (event) => {
     };
 
     event.waitUntil(
-        self.registration.showNotification(data.title || 'HomelabForge', options)
+        globalThis.registration.showNotification(data.title || 'HomelabForge', options)
     );
 });
 
 /**
  * Notification Click Handler
  */
-self.addEventListener('notificationclick', (event) => {
+globalThis.addEventListener('notificationclick', (event) => {
     event.notification.close();
 
     event.waitUntil(
@@ -284,10 +284,10 @@ self.addEventListener('notificationclick', (event) => {
 /**
  * Message Handler - Communicate with clients
  */
-self.addEventListener('message', (event) => {
+globalThis.addEventListener('message', (event) => {
     const verifyMessageOrigin = async () => {
         if (event.origin) {
-            return event.origin === self.location.origin;
+            return event.origin === globalThis.location.origin;
         }
 
         if (event.source?.id) {
@@ -296,7 +296,7 @@ self.addEventListener('message', (event) => {
                 return false;
             }
 
-            return new URL(client.url).origin === self.location.origin;
+            return new URL(client.url).origin === globalThis.location.origin;
         }
 
         return false;
@@ -308,7 +308,7 @@ self.addEventListener('message', (event) => {
         }
 
         if (event.data?.type === 'SKIP_WAITING') {
-            self.skipWaiting();
+            globalThis.skipWaiting();
         }
 
         if (event.data?.type === 'CACHE_URLS' && Array.isArray(event.data.urls)) {
