@@ -34,6 +34,8 @@ const JS_MINIFY_OPTIONS = {
     drop_debugger: true,
   },
   mangle: true,
+  module: true,
+  ecma: 2020,
   format: {
     comments: false,
   },
@@ -125,7 +127,7 @@ async function minifyJsFiles() {
       if (result.error) {
         throw result.error;
       }
-      const destPath = path.join(DIST_DIR, file.replace(/\.js$/, '.min.js'));
+      const destPath = path.join(DIST_DIR, file);
       await fs.ensureDir(path.dirname(destPath));
       await fs.writeFile(destPath, result.code);
       console.log(`Successfully minified and copied ${file} to ${destPath}`);

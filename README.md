@@ -185,6 +185,17 @@ Edit `index.html` to update:
 - Links
 - Contact information
 
+### Analytics (optional)
+
+If you want analytics, add the provider script tag to the pages you want to track.
+For example, to enable Plausible on the book page:
+
+```html
+<script defer data-domain="homelabforge.dev" src="https://plausible.io/js/script.js"></script>
+```
+
+Place it near the end of the `<body>` in `books/advanced-pam-course.html`.
+
 ______________________________________________________________________
 
 ## 🚢 Deployment

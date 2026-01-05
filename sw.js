@@ -5,7 +5,7 @@
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v1.0.3';
+const CACHE_VERSION = 'v1.0.4';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
 // Assets to cache on install
@@ -14,7 +14,17 @@ const STATIC_ASSETS = [
     '/index.html',
     '/offline.html',
     '/assets/css/styles.min.css',
-    '/assets/js/main.min.js',
+    '/assets/js/main.js',
+    '/assets/js/book-page.js',
+    '/assets/js/modules/analytics.js',
+    '/assets/js/modules/animation-order.js',
+    '/assets/js/modules/back-to-top.js',
+    '/assets/js/modules/performance-monitor.js',
+    '/assets/js/modules/scroll-reveal.js',
+    '/assets/js/modules/script-loader.js',
+    '/assets/js/modules/service-worker-manager.js',
+    '/assets/js/modules/smooth-scroll.js',
+    '/assets/js/modules/theme-manager.js',
     '/assets/img/logo-256.webp',
     '/assets/img/logo-512.webp',
     '/assets/icons/favicon-16x16.png',
