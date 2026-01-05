@@ -290,9 +290,9 @@ self.addEventListener('message', (event) => {
             return event.origin === self.location.origin;
         }
 
-        if (event.source && event.source.id) {
+        if (event.source?.id) {
             const client = await clients.get(event.source.id);
-            if (!client || !client.url) {
+            if (!client?.url) {
                 return false;
             }
 
