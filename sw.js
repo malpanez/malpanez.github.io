@@ -131,7 +131,7 @@ async function cacheFirstStrategy(request) {
         const response = await fetch(request);
 
         // Cache successful responses
-        if (response && response.status === 200) {
+        if (response?.status === 200) {
             cache.put(request, response.clone());
             return addCacheHeaders(response);
         }
@@ -192,7 +192,7 @@ async function networkFirstStrategy(request) {
         const response = await fetch(request);
 
         // Cache successful responses
-        if (response && response.status === 200) {
+        if (response?.status === 200) {
             cache.put(request, response.clone());
         }
 
@@ -285,15 +285,35 @@ self.addEventListener('notificationclick', (event) => {
  * Message Handler - Communicate with clients
  */
 self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        self.skipWaiting();
-    }
+    const verifyMessageOrigin = async () => {
+        if (event.origin) {
+            return event.origin === self.location.origin;
+        }
 
-    if (event.data && event.data.type === 'CACHE_URLS') {
-        event.waitUntil(
-            caches.open(CACHE_NAME).then((cache) => {
-                return cache.addAll(event.data.urls);
-            })
-        );
-    }
+        if (event.source && event.source.id) {
+            const client = await clients.get(event.source.id);
+            if (!client || !client.url) {
+                return false;
+            }
+
+            return new URL(client.url).origin === self.location.origin;
+        }
+
+        return false;
+    };
+
+    event.waitUntil((async () => {
+        if (!(await verifyMessageOrigin())) {
+            return;
+        }
+
+        if (event.data?.type === 'SKIP_WAITING') {
+            self.skipWaiting();
+        }
+
+        if (event.data?.type === 'CACHE_URLS' && Array.isArray(event.data.urls)) {
+            const cache = await caches.open(CACHE_NAME);
+            await cache.addAll(event.data.urls);
+        }
+    })());
 });
