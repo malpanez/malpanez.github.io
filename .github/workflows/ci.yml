@@ -140,6 +140,9 @@ jobs:
           npm run start:dist > /dev/null 2>&1 &
           sleep 5
 
+      - name: Sync Chrome and ChromeDriver versions
+        run: npx browser-driver-manager install chrome
+
       - name: Run axe accessibility tests
         run: |
           npx axe http://localhost:8080 --stdout --exit
