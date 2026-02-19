@@ -21,6 +21,7 @@ Vimeo
 Waitlist
 
 # Technical terms
+ASD
 API
 APIs
 AVIF
@@ -38,6 +39,8 @@ CLI
 CTA
 Contentful
 DevContainers
+Dotfiles
+dotfiles
 devcontainer
 DevOps
 DevTools
@@ -87,8 +90,10 @@ ssl
 SSSD
 STIG
 TLS
+Tempus
 Terraform
 terraform
+timezones
 TypeScript
 URL
 Viewport
