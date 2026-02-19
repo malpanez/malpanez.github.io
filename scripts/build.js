@@ -87,7 +87,7 @@ async function processCssFiles() {
   const cssFiles = await glob('assets/css/**/*.css', { ignore: [`${DIST_DIR}/**`, '**/*.min.css'] });
   const cleanCSS = new CleanCSS({
     level: 2,
-    compatibility: 'ie11',
+    compatibility: '*',
   });
   const postcssProcessor = postcss([autoprefixer]);
 
@@ -117,20 +117,63 @@ async function processCssFiles() {
   }
 }
 
-async function minifyJsFiles() {
-  console.log('Minifying JavaScript files...');
-  const jsFiles = await glob('assets/js/**/*.js', { ignore: [`${DIST_DIR}/**`, '**/*.min.js'] });
-  for (const file of jsFiles) {
+async function bundleAndMinifyJs() {
+  console.log('Bundling and minifying JavaScript...');
+
+  // Bundle main.js with all its module imports into a single file
+  const mainEntry = 'assets/js/main.js';
+  const modulesDir = 'assets/js/modules';
+  const modules = await glob(`${modulesDir}/*.js`);
+
+  // Read all module files and main entry
+  const moduleContents = {};
+  for (const mod of modules) {
+    const content = await fs.readFile(mod, 'utf-8');
+    const basename = path.basename(mod);
+    moduleContents[`./modules/${basename}`] = content;
+  }
+  const mainContent = await fs.readFile(mainEntry, 'utf-8');
+
+  // Inline all imports: strip import/export statements and concatenate
+  let bundled = '(function(){\n"use strict";\n';
+  for (const [modPath, content] of Object.entries(moduleContents)) {
+    const stripped = content
+      .replace(/^\s*export\s+(class|function|const|let|var)\s/gm, '$1 ')
+      .replace(/^\s*export\s*\{[^}]*\}.*$/gm, '');
+    bundled += `// --- ${modPath} ---\n${stripped}\n`;
+  }
+  // Strip imports from main and add it
+  const mainStripped = mainContent
+    .replace(/^\s*import\s+.*$/gm, '');
+  bundled += `// --- main ---\n${mainStripped}\n`;
+  bundled += '})();\n';
+
+  const result = await terserMinify(bundled, {
+    ...JS_MINIFY_OPTIONS,
+    module: false,
+  });
+  if (result.error) {
+    throw result.error;
+  }
+
+  const destPath = path.join(DIST_DIR, 'assets/js/main.js');
+  await fs.ensureDir(path.dirname(destPath));
+  await fs.writeFile(destPath, result.code);
+  console.log(`Successfully bundled and minified JS to ${destPath} (${result.code.length} bytes)`);
+
+  // Also minify standalone JS files (book-page.js, etc.)
+  const standaloneFiles = await glob('assets/js/*.js', {
+    ignore: [`${DIST_DIR}/**`, '**/*.min.js', mainEntry],
+  });
+  for (const file of standaloneFiles) {
     try {
       const content = await fs.readFile(file, 'utf-8');
-      const result = await terserMinify(content, JS_MINIFY_OPTIONS);
-      if (result.error) {
-        throw result.error;
-      }
-      const destPath = path.join(DIST_DIR, file);
-      await fs.ensureDir(path.dirname(destPath));
-      await fs.writeFile(destPath, result.code);
-      console.log(`Successfully minified and copied ${file} to ${destPath}`);
+      const minResult = await terserMinify(content, JS_MINIFY_OPTIONS);
+      if (minResult.error) throw minResult.error;
+      const dest = path.join(DIST_DIR, file);
+      await fs.ensureDir(path.dirname(dest));
+      await fs.writeFile(dest, minResult.code);
+      console.log(`Successfully minified ${file} to ${dest}`);
     } catch (error) {
       console.error(`Failed to minify ${file}:`, error.message);
       throw error;
@@ -191,7 +234,7 @@ try {
   await cleanDist();
   await minifyHtmlFiles();
   await processCssFiles();
-  await minifyJsFiles();
+  await bundleAndMinifyJs();
   await optimizeImages();
   await createWebpImages();
   await copyOtherAssets();

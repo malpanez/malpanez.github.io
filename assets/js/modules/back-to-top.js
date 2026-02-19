@@ -23,7 +23,7 @@ export class BackToTop {
         window.addEventListener('scroll', () => {
             if (scrollTimeout) return;
             scrollTimeout = setTimeout(() => {
-                if (window.pageYOffset > 500) {
+                if (window.scrollY > 500) {
                     this.button.classList.add('visible');
                 } else {
                     this.button.classList.remove('visible');

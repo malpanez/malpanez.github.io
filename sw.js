@@ -5,34 +5,20 @@
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v1.0.4';
+const CACHE_VERSION = 'v2.0.0';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
-// Assets to cache on install
+// Assets to cache on install - keep minimal for fast SW install
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/offline.html',
     '/assets/css/styles.min.css',
     '/assets/js/main.js',
-    '/assets/js/book-page.js',
-    '/assets/js/modules/analytics.js',
-    '/assets/js/modules/animation-order.js',
-    '/assets/js/modules/back-to-top.js',
-    '/assets/js/modules/performance-monitor.js',
-    '/assets/js/modules/scroll-reveal.js',
-    '/assets/js/modules/script-loader.js',
-    '/assets/js/modules/service-worker-manager.js',
-    '/assets/js/modules/smooth-scroll.js',
-    '/assets/js/modules/theme-manager.js',
-    '/assets/img/logo-256.webp',
-    '/assets/img/logo-512.webp',
-    '/assets/icons/favicon-16x16.png',
+    '/assets/img/hero-logo-512.webp',
+    '/assets/img/hero-logo-256.webp',
     '/assets/icons/favicon-32x32.png',
-    '/assets/icons/favicon-64x64.png',
-    '/assets/icons/apple-touch-icon.png',
     '/assets/icons/icon-192x192.png',
-    '/assets/icons/icon-512x512.png',
     '/manifest.json'
 ];
 
