@@ -9,12 +9,14 @@
 
     if (langButtons[userLang]) {
         langButtons[userLang].style.background = '#ffb366';
-        langButtons[userLang].innerHTML += ' (Recommended)';
+        const label = document.createElement('span');
+        label.textContent = ' (Recommended)';
+        langButtons[userLang].appendChild(label);
     }
 
     // Update copyright year
     const yearSpan = document.querySelector('footer p:last-child');
     if (yearSpan) {
-        yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
+        yearSpan.textContent = yearSpan.textContent.replace('2025', new Date().getFullYear());
     }
 })();

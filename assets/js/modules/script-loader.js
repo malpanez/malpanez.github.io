@@ -17,12 +17,14 @@ export function loadTallyEmbed() {
 
         const script = document.createElement('script');
         script.src = 'https://tally.so/widgets/embed.js';
+        script.async = true;
         script.onload = () => {
             const tally = globalThis.Tally;
             if (tally) {
                 tally.loadEmbeds();
             }
         };
+        script.onerror = () => console.error('[script-loader] Failed to load Tally embed');
         document.body.appendChild(script);
     };
 

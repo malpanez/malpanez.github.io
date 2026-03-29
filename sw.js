@@ -231,51 +231,6 @@ async function networkOnlyStrategy(request) {
     return fetch(request);
 }
 
-/**
- * Background Sync for offline form submissions (if needed)
- */
-globalThis.addEventListener('sync', (event) => {
-    if (event.tag === 'sync-forms') {
-        event.waitUntil(syncForms());
-    }
-});
-
-async function syncForms() {
-    // Placeholder for future implementation
-    console.log('[SW] Syncing offline form submissions');
-}
-
-/**
- * Push Notifications (optional)
- */
-globalThis.addEventListener('push', (event) => {
-    const data = event.data ? event.data.json() : {};
-
-    const options = {
-        body: data.body || 'New update from HomelabForge',
-        icon: '/assets/icons/icon-192x192.png',
-        badge: '/assets/icons/icon-192x192.png',
-        vibrate: [200, 100, 200],
-        data: {
-            url: data.url || '/'
-        }
-    };
-
-    event.waitUntil(
-        globalThis.registration.showNotification(data.title || 'HomelabForge', options)
-    );
-});
-
-/**
- * Notification Click Handler
- */
-globalThis.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-
-    event.waitUntil(
-        clients.openWindow(event.notification.data.url || '/')
-    );
-});
 
 /**
  * Message Handler - Communicate with clients

@@ -19,24 +19,17 @@ export class BackToTop {
     }
 
     attachListeners() {
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (scrollTimeout) return;
-            scrollTimeout = setTimeout(() => {
-                if (window.scrollY > 500) {
-                    this.button.classList.add('visible');
-                } else {
-                    this.button.classList.remove('visible');
-                }
-                scrollTimeout = null;
-            }, 100);
-        }, { passive: true });
+        const sentinel = document.createElement('span');
+        sentinel.setAttribute('aria-hidden', 'true');
+        sentinel.style.cssText = 'position:absolute;top:500px;height:1px;width:1px;pointer-events:none';
+        document.body.prepend(sentinel);
+
+        new IntersectionObserver(([entry]) => {
+            this.button.classList.toggle('visible', !entry.isIntersecting);
+        }).observe(sentinel);
 
         this.button.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 }

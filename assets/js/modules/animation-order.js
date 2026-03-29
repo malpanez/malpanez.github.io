@@ -1,6 +1,7 @@
 export function setAnimationOrder() {
     const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card, index) => {
-        card.style.setProperty('--animation-order', index);
-    });
+    if (!cards.length) return;
+    const style = document.createElement('style');
+    style.textContent = Array.from(cards, (_, i) => `.project-card:nth-child(${i + 1}){--animation-order:${i}}`).join('');
+    document.head.appendChild(style);
 }
