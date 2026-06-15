@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF9900" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
 
     <!-- Primary Meta Tags -->
     <title>Advanced PAM Course for Linux | Enterprise Authentication Guide</title>
-    <meta name="title" content="Advanced PAM Course for Linux | Enterprise Authentication Guide">
-    <meta name="description" content="Master Linux PAM authentication with 15+ hands-on labs. Covers U2F/FIDO2, YubiKey, Active Directory, SSSD, and Ansible automation. 202 pages, 3 languages available.">
-    <meta name="keywords" content="PAM, Linux authentication, YubiKey, U2F, FIDO2, Active Directory, SSSD, Ansible, security, sysadmin, Linux security book, PAM tutorial, enterprise authentication">
+    <meta name="description" content="Master Linux PAM authentication with 15+ hands-on labs. Covers U2F/FIDO2, YubiKey, Active Directory, SSSD, and Ansible automation. 202 pages.">
     <meta name="author" content="Miguel Alpañez">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="language" content="English">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="book">
@@ -21,13 +21,17 @@
     <meta property="og:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Advanced PAM Course for Linux book cover">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:site_name" content="HomelabForge">
+    <meta property="og:locale" content="en_US">
     <meta property="book:author" content="Miguel Alpañez Alcalde">
-    <meta property="book:isbn" content="">
-    <meta property="book:release_date" content="2026-03-01">
+    <meta property="book:release_date" content="2026-09-01">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@malpanez">
+    <meta name="twitter:creator" content="@malpanez">
     <meta name="twitter:title" content="Advanced PAM Course for Linux">
     <meta name="twitter:description" content="Master Linux PAM with 15+ hands-on labs. U2F/FIDO2, YubiKey, Active Directory, Ansible automation. 202 pages.">
     <meta name="twitter:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
@@ -43,25 +47,66 @@
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://amazon.com" crossorigin>
-    <link rel="preconnect" href="https://leanpub.com" crossorigin>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Resource hints (DNS only; full connection deferred until a link is used) -->
     <link rel="dns-prefetch" href="https://amazon.com">
     <link rel="dns-prefetch" href="https://leanpub.com">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/assets/css/styles.min.css">
     <link rel="stylesheet" href="/assets/css/book-page.min.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Book",
+                "@id": "https://homelabforge.dev/books/advanced-pam-course#book",
+                "name": "Advanced PAM Course for Linux",
+                "url": "https://homelabforge.dev/books/advanced-pam-course",
+                "author": {
+                    "@type": "Person",
+                    "name": "Miguel Alpañez Alcalde",
+                    "url": "https://github.com/malpanez"
+                },
+                "publisher": { "@type": "Organization", "name": "HomelabForge" },
+                "inLanguage": "en",
+                "numberOfPages": 202,
+                "bookFormat": "https://schema.org/EBook",
+                "datePublished": "2026-09-01",
+                "image": "https://homelabforge.dev/assets/books/pam-course/cover-en.jpg",
+                "about": ["Linux PAM", "Authentication", "YubiKey", "FIDO2", "Active Directory", "Ansible"],
+                "description": "Master Linux PAM authentication with 15+ hands-on labs covering U2F/FIDO2, YubiKey, Active Directory, SSSD, and Ansible automation."
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homelabforge.dev/" },
+                    { "@type": "ListItem", "position": 2, "name": "Advanced PAM Course for Linux" }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="container">
+        <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
         <!-- Header with Back to Home -->
         <header class="py-20">
-            <a href="/" class="link-accent">
-                ← Back to HomelabForge
-            </a>
+            <nav aria-label="Breadcrumb">
+                <a href="/" class="link-accent">
+                    ← Back to HomelabForge
+                </a>
+            </nav>
         </header>
 
+        <main id="main-content">
         <!-- Hero Section -->
         <section class="book-hero">
             <picture>
@@ -73,7 +118,7 @@
                      width="350"
                      height="500">
             </picture>
-            <div class="cover-placeholder">
+            <div class="cover-placeholder" aria-hidden="true">
                 🔐
             </div>
 
@@ -95,12 +140,12 @@
             </div>
 
             <div class="cta-buttons">
-                <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" target="_blank" rel="noopener">Join Waitlist - Get Notified</a>
+                <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join Waitlist - Get Notified</a>
                 <a href="#sample" class="btn btn-secondary">Free Resources</a>
             </div>
 
             <p class="text-center text-secondary mt-20 fs-095">
-                📅 Expected release: March 2026 | Available on Amazon KDP &amp; LeanPub
+                📅 Expected release: September 2026 | Available on Amazon KDP &amp; LeanPub
             </p>
         </section>
 
@@ -136,37 +181,37 @@
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
+                    <div class="feature-icon" aria-hidden="true">🔐</div>
                     <h3 class="feature-title">Hands-On Labs</h3>
                     <p>15+ practical exercises with Vagrant/Docker environments included. Learn by doing, not just reading.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon" aria-hidden="true">🎯</div>
                     <h3 class="feature-title">Production-Ready</h3>
                     <p>Real enterprise patterns, not toy examples. Battle-tested configurations from actual deployments.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon" aria-hidden="true">🤖</div>
                     <h3 class="feature-title">Automation Included</h3>
                     <p>Ansible roles that follow Red Hat Community of Practice standards. Deploy with confidence.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🔑</div>
+                    <div class="feature-icon" aria-hidden="true">🔑</div>
                     <h3 class="feature-title">YubiKey/U2F Focus</h3>
                     <p>The ONLY book covering hardware token integration in depth. Go beyond passwords.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
+                    <div class="feature-icon" aria-hidden="true">🌍</div>
                     <h3 class="feature-title">Multi-Platform</h3>
                     <p>RHEL, Debian, Ubuntu tested configurations. Works across major distributions.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">📚</div>
+                    <div class="feature-icon" aria-hidden="true">📚</div>
                     <h3 class="feature-title">Enterprise Scenarios</h3>
                     <p>Active Directory, Smart Cards, centralized logging. Real business requirements.</p>
                 </div>
@@ -243,24 +288,24 @@
 
             <div class="features-grid">
                 <div class="feature-card text-center">
-                    <div class="feature-icon">📄</div>
+                    <div class="feature-icon" aria-hidden="true">📄</div>
                     <h3 class="feature-title">Sample Chapter</h3>
-                    <p class="mb-20">Download Chapter 3: "Account Lockout with pam_faillock" (25 pages)</p>
-                    <a href="/assets/books/pam-course/sample-chapter.pdf" class="btn btn-secondary fs-09">Download PDF</a>
+                    <p class="mb-20">Chapter 3: "Account Lockout with pam_faillock" (25 pages) — available at launch</p>
+                    <a href="#buy" class="btn btn-secondary fs-09">Coming Soon — Join Waitlist</a>
                 </div>
 
                 <div class="feature-card text-center">
-                    <div class="feature-icon">📋</div>
+                    <div class="feature-icon" aria-hidden="true">📋</div>
                     <h3 class="feature-title">PAM Cheatsheet</h3>
-                    <p class="mb-20">Quick reference guide for common PAM modules and configurations</p>
-                    <a href="/assets/books/pam-course/cheatsheet.pdf" class="btn btn-secondary fs-09">Download PDF</a>
+                    <p class="mb-20">Quick reference guide for common PAM modules and configurations — available at launch</p>
+                    <a href="#buy" class="btn btn-secondary fs-09">Coming Soon — Join Waitlist</a>
                 </div>
 
                 <div class="feature-card text-center">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon" aria-hidden="true">🤖</div>
                     <h3 class="feature-title">Ansible Collection</h3>
                     <p class="mb-20">Production-ready Ansible roles for PAM hardening (coming soon)</p>
-                    <a href="https://github.com/malpanez/security" class="btn btn-secondary fs-09" target="_blank" rel="noopener">View on GitHub</a>
+                    <a href="https://github.com/malpanez/security" class="btn btn-secondary fs-09" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                 </div>
             </div>
         </section>
@@ -280,7 +325,7 @@
                         when it's available for purchase.
                     </p>
 
-                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
                         Join Waitlist
                     </a>
 
@@ -296,14 +341,14 @@
                     </div>
 
                     <p class="mt-30 fs-09 text-secondary">
-                        📅 Expected release: <strong>March 2026</strong><br>
+                        📅 Expected release: <strong>September 2026</strong><br>
                         📍 Available on: Amazon KDP (Kindle/Paperback) &amp; LeanPub (DRM-Free PDF/EPUB)
                     </p>
                 </div>
             </div>
 
             <p class="mt-40 fs-095">
-                📖 While you wait, check out the free resources below
+                📖 While you wait, check out the free resources above
             </p>
         </section>
 
@@ -315,7 +360,7 @@
                 <picture>
                     <source srcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" type="image/webp">
                     <source srcset="/assets/img/logo-256.png 1x, /assets/img/logo-512.png 2x" type="image/png">
-                    <img src="/assets/img/logo-256.webp" alt="Miguel Alpañez" class="avatar-small">
+                    <img src="/assets/img/logo-256.webp" alt="HomelabForge logo" class="avatar-small">
                 </picture>
 
                 <p class="fs-11 mb-20">
@@ -332,8 +377,8 @@
                 </ul>
 
                 <div class="mt-30">
-                    <a href="https://github.com/malpanez" target="_blank" rel="noopener" class="text-accent mx-15">GitHub</a>
-                    <a href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener" class="text-accent mx-15">LinkedIn</a>
+                    <a href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer" class="text-accent mx-15">GitHub</a>
+                    <a href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener noreferrer" class="text-accent mx-15">LinkedIn</a>
                     <a href="https://homelabforge.dev" class="text-accent mx-15">Website</a>
                 </div>
             </div>
@@ -376,6 +421,8 @@
             </div>
         </section>
 
+        </main>
+
         <!-- Footer -->
         <footer class="footer-simple">
             <p>
@@ -385,12 +432,12 @@
                 📧 Questions? <a href="mailto:miguel@homelabforge.dev" class="text-accent">miguel@homelabforge.dev</a>
             </p>
             <p class="mt-15 fs-09">
-                &copy; 2025 Miguel Alpañez. All rights reserved.
+                &copy; 2026 Miguel Alpañez. All rights reserved.
             </p>
         </footer>
     </div>
 
-    <!-- Language Detection Script -->
+    <!-- Footer copyright-year updater -->
     <script src="/assets/js/book-page.js"></script>
 
 </body>

@@ -34,3 +34,5 @@ next-env.d.ts
 # gemini
 .gemini/
 .claude/
+# GSD planning workspace (local only)
+.planning/

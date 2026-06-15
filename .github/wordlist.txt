@@ -456,3 +456,7 @@ pixelation
 Subsetting
 Heatmaps
 symlink
+HSTS
+iframe
+repo
+ruleset

@@ -4,3 +4,4 @@ Disallow: /.git/
 Disallow: /node_modules/
 
 Sitemap: https://homelabforge.dev/sitemap.xml
+Sitemap: https://blog.homelabforge.dev/sitemap.xml

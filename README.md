@@ -221,6 +221,14 @@ git push origin main
 
 GitHub Pages will deploy automatically within 1-2 minutes.
 
+### Security Headers
+
+HTTP security headers (CSP, HSTS, Permissions-Policy, etc.) are **not** set in this
+repository. GitHub Pages cannot serve custom headers, so they are applied at the
+Cloudflare edge via a Terraform-managed ruleset in a separate IaC repo. When you add a
+new external origin to the site (script, iframe, image, analytics), update the
+Content-Security-Policy in that ruleset accordingly.
+
 ______________________________________________________________________
 
 ## Contributing

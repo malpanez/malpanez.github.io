@@ -54,16 +54,25 @@ export class ThemeManager {
 
     createToggleButton() {
         this.button = document.createElement('button');
+        this.button.type = 'button';
         this.button.className = 'theme-toggle';
-        this.button.setAttribute('aria-label', 'Toggle theme');
-        this.button.innerHTML = this.getIcon();
         this.button.addEventListener('click', () => this.toggle());
+        this.updateButton();
         document.body.appendChild(this.button);
     }
 
     getIcon() {
         const isDark = !document.body.classList.contains('light-mode');
-        return `<span class="theme-toggle-icon">${isDark ? '☀️' : '🌙'}</span>`;
+        return `<span class="theme-toggle-icon" aria-hidden="true">${isDark ? '☀️' : '🌙'}</span>`;
+    }
+
+    // Keep the accessible name and toggle state in sync with the rendered theme
+    // (WCAG 4.1.2 Name, Role, Value).
+    updateButton() {
+        const isLight = document.body.classList.contains('light-mode');
+        this.button.setAttribute('aria-pressed', String(isLight));
+        this.button.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        this.button.innerHTML = this.getIcon();
     }
 
     toggle() {
@@ -78,7 +87,7 @@ export class ThemeManager {
         }
 
         this.setStoredTheme(this.theme);
-        this.button.innerHTML = this.getIcon();
+        this.updateButton();
     }
 
     watchSystemTheme() {

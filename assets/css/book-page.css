@@ -1,5 +1,6 @@
 :root {
-    --primary-blue: #2C5F8D;
+    /* Lightened so headings meet WCAG 1.4.3 on the dark book-page background */
+    --primary-blue: #6fa8dc;
     --accent-orange: #FF8C42;
     --bg-dark: #1a1a2e;
     --bg-card: #21213a;
@@ -171,7 +172,9 @@
 
 .btn-primary {
     background: var(--accent-orange);
-    color: white;
+    /* Dark text on bright orange (~7.6:1) keeps the vivid brand button while
+       passing WCAG 1.4.3 — white on this orange was only 2.31:1. */
+    color: #1a1a2e;
 }
 
 .btn-primary:hover {

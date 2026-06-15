@@ -54,6 +54,9 @@
         --shadow-sm: 0 2px 8px rgb(0 0 0 / 0.05);
         --shadow-md: 0 4px 16px rgb(0 0 0 / 0.08);
         --shadow-lg: 0 8px 32px rgb(0 0 0 / 0.12);
+        /* Darker accent so orange text/links meet WCAG 1.4.3 (4.5:1) on white */
+        --primary-orange: #b45a00;
+        --primary-orange-light: #8a4600;
     }
 }
 
@@ -70,6 +73,9 @@ body.light-mode {
     --shadow-sm: 0 2px 8px rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 16px rgb(0 0 0 / 0.08);
     --shadow-lg: 0 8px 32px rgb(0 0 0 / 0.12);
+    /* Darker accent so orange text/links meet WCAG 1.4.3 (4.5:1) on white */
+    --primary-orange: #b45a00;
+    --primary-orange-light: #8a4600;
 }
 
 /* Reset & Base Styles */
@@ -127,8 +133,11 @@ a:hover {
     left: -9999px;
     z-index: 999;
     padding: 1em;
-    background: var(--primary-orange);
+    /* Theme-independent high-contrast pair (white on #0d1117 ~17:1) so the link
+       is legible whatever the accent resolves to. WCAG 1.4.3. */
+    background: #0d1117;
     color: #ffffff;
+    border: 2px solid var(--primary-orange);
     text-decoration: none;
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
@@ -137,6 +146,13 @@ a:hover {
 .skip-to-main:focus {
     left: 1rem;
     top: 1rem;
+}
+
+/* Visible keyboard focus for all interactive elements (WCAG 2.4.7) */
+:where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--primary-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* Container */
@@ -648,7 +664,7 @@ a:hover {
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
-        scroll-behavior: auto;
+        scroll-behavior: auto !important;
     }
 }
 
