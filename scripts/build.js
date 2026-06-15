@@ -8,7 +8,6 @@ import path from 'node:path';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import imagemin from 'imagemin';
-import imageminGifsicle from 'imagemin-gifsicle';
 import imageminMozjpeg from 'imagemin-mozjpeg';
 import imageminPngquant from 'imagemin-pngquant';
 import imageminSvgo from 'imagemin-svgo';
@@ -42,7 +41,6 @@ const JS_MINIFY_OPTIONS = {
 };
 
 const IMAGE_PLUGINS = [
-  imageminGifsicle(),
   imageminMozjpeg({ quality: 80 }),
   imageminPngquant({ quality: [0.6, 0.8] }),
   imageminSvgo(),
@@ -52,7 +50,6 @@ const WEBP_PLUGINS = [imageminWebp({ quality: 80 })];
 
 const ROOT_FILES = [
   'sw.js',
-  '_headers',
   'CNAME',
   'robots.txt',
   'sitemap.xml',
@@ -60,6 +57,7 @@ const ROOT_FILES = [
   'og-image.png',
   'LICENSE',
   '.nojekyll',
+  '.well-known',
 ];
 
 const ASSET_FOLDERS = ['assets/icons']; // books and img are handled by imagemin
@@ -183,11 +181,11 @@ async function bundleAndMinifyJs() {
 
 async function optimizeImages() {
   console.log('Optimizing and copying images...');
-  await imagemin(['assets/img/**/*.{jpg,jpeg,png,gif,svg}'], {
+  await imagemin(['assets/img/**/*.{jpg,jpeg,png,svg}'], {
     destination: 'dist/assets/img',
     plugins: IMAGE_PLUGINS,
   });
-  await imagemin(['assets/books/**/*.{jpg,jpeg,png,gif,svg}'], {
+  await imagemin(['assets/books/**/*.{jpg,jpeg,png,svg}'], {
     destination: 'dist/assets/books',
     plugins: IMAGE_PLUGINS,
   });

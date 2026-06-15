@@ -10,11 +10,16 @@ on:
     # Run weekly on Sundays at 00:00 UTC
     - cron: '0 0 * * 0'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   # Job 1: Linting (HTML, CSS, JS)
   lint:
     name: 🧪 Lint Code
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
@@ -36,7 +41,8 @@ jobs:
   # Job 2: Modern Link Checker
   check-links:
     name: 🔗 Check Links
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
@@ -46,7 +52,7 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # v2.7.0
         with:
-          args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|ansible-collection-security|webpagetest.org' '**/*.html' '**/*.md'
+          args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|webpagetest.org' '**/*.html' '**/*.md'
           fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,6 +61,7 @@ jobs:
   lighthouse:
     name: ⚡ Lighthouse Audit
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: read
     steps:
@@ -66,7 +73,7 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm install
 
@@ -76,8 +83,7 @@ jobs:
       - name: Start local server
         run: |
           npm run start:dist > /dev/null 2>&1 &
-          sleep 5
-          curl -f http://localhost:8080 || (echo "Server failed to start" && exit 1)
+          curl -sf --retry 10 --retry-delay 2 --retry-all-errors http://localhost:8080 -o /dev/null || (echo "Server failed to start" && exit 1)
 
       - name: Run Lighthouse CI
         run: |
@@ -117,6 +123,7 @@ jobs:
   accessibility:
     name: ♿ Accessibility Audit
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: read
     steps:
@@ -138,7 +145,7 @@ jobs:
       - name: Start local server
         run: |
           npm run start:dist > /dev/null 2>&1 &
-          sleep 5
+          curl -sf --retry 10 --retry-delay 2 --retry-all-errors http://localhost:8080 -o /dev/null || (echo "Server failed to start" && exit 1)
 
       - name: Sync Chrome and ChromeDriver versions
         run: npx browser-driver-manager install chrome
@@ -152,6 +159,7 @@ jobs:
   security-scan:
     name: 🔒 Security Scan
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
       security-events: write
@@ -176,15 +184,13 @@ jobs:
   # Job 6: Advanced SEO Check
   seo-check:
     name: 🔍 SEO Validation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-
-      - name: Install xmllint
-        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
       - name: Check robots.txt
         run: |
@@ -201,8 +207,8 @@ jobs:
             echo "::error::sitemap.xml is missing"
             exit 1
           fi
-          xmllint --noout sitemap.xml && echo "✅ sitemap.xml is valid XML"
-          xmllint --format sitemap.xml | head -50
+          python3 -c "import xml.dom.minidom; xml.dom.minidom.parse('sitemap.xml')" && echo "✅ sitemap.xml is valid XML"
+          head -50 sitemap.xml
 
       - name: Check required meta tags
         run: |
@@ -223,7 +229,8 @@ jobs:
   # Job 7: File Size & Performance Budget
   performance-budget:
     name: 📊 Performance Budget
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
@@ -262,7 +269,8 @@ jobs:
   # Job 8: Markdown Linting
   lint-markdown:
     name: 📝 Lint Markdown
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
@@ -278,6 +286,7 @@ jobs:
   spell-check:
     name: 📖 Spell Check
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
@@ -292,7 +301,8 @@ jobs:
   # Job 10: Dependency Review (for PRs)
   dependency-review:
     name: 🔐 Dependency Review
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
     if: github.event_name == 'pull_request'
     permissions:
       contents: read
@@ -309,7 +319,8 @@ jobs:
   # Job 11: Generate Compliance Report
   compliance-report:
     name: 📋 Compliance Report
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
     needs: [lint, lighthouse, accessibility, security-scan, seo-check]
     if: always()
     permissions:
@@ -345,6 +356,7 @@ jobs:
   deploy:
     name: 🚀 Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [lint, check-links, lighthouse, accessibility, security-scan, seo-check, lint-markdown, spell-check, performance-budget]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
@@ -358,7 +370,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:

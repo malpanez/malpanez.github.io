@@ -5,7 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://homelabforge.dev/</loc>
-        <lastmod>2026-02-15</lastmod>
+        <lastmod>2026-06-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -17,48 +17,10 @@
 
     <!-- Books / Courses -->
     <url>
-        <loc>https://homelabforge.dev/books/advanced-pam-course.html</loc>
-        <lastmod>2026-02-15</lastmod>
+        <loc>https://homelabforge.dev/books/advanced-pam-course</loc>
+        <lastmod>2026-06-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-    </url>
-
-    <!-- GitHub Projects -->
-    <url>
-        <loc>https://github.com/malpanez/ansible-devcontainer-vscode</loc>
-        <lastmod>2026-02-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://github.com/malpanez/terraform-cloudflare-github-pages</loc>
-        <lastmod>2026-02-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://github.com/malpanez</loc>
-        <lastmod>2026-02-15</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- LinkedIn Profile -->
-    <url>
-        <loc>https://www.linkedin.com/in/miguel-alpañez/</loc>
-        <lastmod>2026-02-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Ansible Collection -->
-    <url>
-        <loc>https://github.com/malpanez/ansible-collection-security</loc>
-        <lastmod>2026-02-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
 
 </urlset>

@@ -27,7 +27,6 @@
     "html-validate": "^8.20.0",
     "http-server": "^14.1.1",
     "imagemin": "^8.0.1",
-    "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.1",
