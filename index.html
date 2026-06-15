@@ -6,13 +6,9 @@
 
     <!-- Primary Meta Tags -->
     <title>HomelabForge - DevOps Tools &amp; Templates | Miguel Alpañez</title>
-    <meta name="title" content="HomelabForge - DevOps Tools &amp; Templates | Miguel Alpañez">
     <meta name="description" content="Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and enterprise DevOps. Open source tools by Miguel Alpañez.">
-    <meta name="keywords" content="Terraform modules, Ansible playbooks, DevOps templates, homelab, Infrastructure as Code, AWS, CI/CD, devcontainers, PAM, Linux security">
     <meta name="author" content="Miguel Alpañez">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#FF9900" media="(prefers-color-scheme: light)">
@@ -72,33 +68,38 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "HomelabForge",
-        "url": "https://homelabforge.dev",
-        "description": "Production-ready Terraform modules and Ansible playbooks for homelab and enterprise DevOps",
-        "author": {
-            "@type": "Person",
-            "name": "Miguel Alpañez",
-            "url": "https://github.com/malpanez",
-            "sameAs": [
-                "https://github.com/malpanez",
-                "https://www.linkedin.com/in/miguel-alpañez/",
-                "https://blog.homelabforge.dev"
-            ],
-            "jobTitle": "DevOps Consultant",
-            "worksFor": {
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://homelabforge.dev/#person",
+                "name": "Miguel Alpañez",
+                "url": "https://homelabforge.dev/",
+                "jobTitle": "DevOps Consultant",
+                "knowsAbout": ["Terraform", "Ansible", "AWS", "Cloudflare", "Linux security", "CI/CD", "Infrastructure as Code"],
+                "worksFor": { "@id": "https://homelabforge.dev/#org" },
+                "sameAs": [
+                    "https://github.com/malpanez",
+                    "https://www.linkedin.com/in/miguel-alpañez/",
+                    "https://blog.homelabforge.dev"
+                ]
+            },
+            {
                 "@type": "Organization",
-                "name": "Winning Concepts Limited"
+                "@id": "https://homelabforge.dev/#org",
+                "name": "HomelabForge",
+                "url": "https://homelabforge.dev/",
+                "logo": "https://homelabforge.dev/assets/img/hero-logo-512.png",
+                "founder": { "@id": "https://homelabforge.dev/#person" }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://homelabforge.dev/#website",
+                "url": "https://homelabforge.dev/",
+                "name": "HomelabForge",
+                "description": "Production-ready Terraform modules and Ansible playbooks for homelab and enterprise DevOps",
+                "publisher": { "@id": "https://homelabforge.dev/#org" }
             }
-        },
-        "offers": {
-            "@type": "Offer",
-            "itemOffered": {
-                "@type": "Service",
-                "name": "DevOps Consulting",
-                "description": "Infrastructure as Code, CI/CD pipelines, Cloud automation"
-            }
-        }
+        ]
     }
     </script>
 </head>
@@ -322,6 +323,7 @@
                 Built by Miguel Alpañez |
                 <a href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">Blog</a> |
                 <a href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                <a href="/books/advanced-pam-course">PAM Course</a> |
                 <a href="/sitemap.xml">Sitemap</a>
             </p>
             <p class="footer-note">
