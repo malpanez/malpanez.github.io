@@ -1,0 +1,33 @@
+# Dependabot keeps the build tooling and pinned CI actions patched.
+#
+# Every npm package in this repo is a devDependency (build/test only) — the
+# deployed site is static HTML/CSS/JS and ships none of it. The deep transitive
+# trees come mostly from the browser-automation dev tools (@lhci/cli,
+# @axe-core/cli → puppeteer/selenium/chromedriver), so updates are grouped to
+# avoid a flood of single-package PRs.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      npm-version-updates:
+        applies-to: version-updates
+        patterns: ["*"]
+      npm-security-updates:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      github-actions:
+        patterns: ["*"]
