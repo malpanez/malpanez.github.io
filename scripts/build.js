@@ -18,7 +18,7 @@ const DIST_DIR = 'dist';
 const HTML_MINIFY_OPTIONS = {
   collapseWhitespace: true,
   removeComments: true,
-  removeOptionalTags: true,
+  removeOptionalTags: false,
   removeRedundantAttributes: true,
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
@@ -227,6 +227,18 @@ async function copyRootFiles() {
   }
 }
 
+async function stampSitemap() {
+  const sitemapPath = path.join(DIST_DIR, 'sitemap.xml');
+  if (!(await fs.pathExists(sitemapPath))) {
+    return;
+  }
+  const today = new Date().toISOString().slice(0, 10);
+  const xml = await fs.readFile(sitemapPath, 'utf-8');
+  const stamped = xml.replace(/<lastmod>[^<]*<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+  await fs.writeFile(sitemapPath, stamped);
+  console.log(`Stamped sitemap.xml <lastmod> with build date ${today}`);
+}
+
 try {
   console.log('Starting build process...');
   await cleanDist();
@@ -237,6 +249,7 @@ try {
   await createWebpImages();
   await copyOtherAssets();
   await copyRootFiles();
+  await stampSitemap();
   console.log('Build process completed successfully!');
 } catch (error) {
   console.error('Build process failed:', error);

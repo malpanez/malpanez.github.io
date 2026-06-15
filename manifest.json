@@ -3,6 +3,7 @@
   "short_name": "HomelabForge",
   "description": "Production-ready Terraform modules, Ansible playbooks, and dev containers for homelab and enterprise DevOps",
   "start_url": "/",
+  "id": "/",
   "scope": "/",
   "display_override": ["standalone", "minimal-ui"],
   "display": "standalone",
@@ -38,8 +39,8 @@
       "url": "/#projects-heading",
       "icons": [
         {
-          "src": "/assets/img/logo.png",
-          "sizes": "1024x1024",
+          "src": "/assets/icons/icon-192x192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]
@@ -51,8 +52,8 @@
       "url": "https://blog.homelabforge.dev",
       "icons": [
         {
-          "src": "/assets/img/logo.png",
-          "sizes": "1024x1024",
+          "src": "/assets/icons/icon-192x192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]
@@ -64,8 +65,8 @@
       "url": "mailto:miguel@homelabforge.dev",
       "icons": [
         {
-          "src": "/assets/img/logo.png",
-          "sizes": "1024x1024",
+          "src": "/assets/icons/icon-192x192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]

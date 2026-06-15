@@ -15,6 +15,10 @@
     "start": "http-server .",
     "start:dist": "http-server dist"
   },
+  "browserslist": [
+    "defaults",
+    "not dead"
+  ],
   "devDependencies": {
     "@axe-core/cli": "^4.9.1",
     "@lhci/cli": "^0.13.0",
