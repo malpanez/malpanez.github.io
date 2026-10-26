@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-  schedule:
-    # Run weekly on Sundays at 00:00 UTC
-    - cron: '0 0 * * 0'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -99,12 +96,13 @@ jobs:
         with:
           name: lighthouse-results
           path: .lighthouseci/
+          include-hidden-files: true
           retention-days: 30
           compression-level: 9
 
       - name: Format lighthouse score
         run: |
-          if [ -f .lighthouseci/lhr-*.json ]; then
+          if compgen -G '.lighthouseci/lhr-*.json' > /dev/null; then
             echo "## ⚡ Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             for file in .lighthouseci/lhr-*.json; do
@@ -363,6 +361,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+
+      # Cloudflare keeps HTML for an hour; without a purge the cached pages keep
+      # pointing at the previous build's content-hashed CSS/JS, which no longer exist.
+      - name: Purge Cloudflare cache
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ vars.CLOUDFLARE_ZONE_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN}" ] || [ -z "${CLOUDFLARE_ZONE_ID}" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN secret or CLOUDFLARE_ZONE_ID variable not set: cached HTML may reference missing assets for up to an hour"
+            exit 0
+          fi
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
+            -H @<(printf 'Authorization: Bearer %s\n' "${CLOUDFLARE_API_TOKEN}") \
+            -H 'Content-Type: application/json' \
+            --data '{"purge_everything":true}' | jq -e '.success' > /dev/null
+          echo "Cloudflare cache purged"
 
       - name: Post deployment summary
         run: |
