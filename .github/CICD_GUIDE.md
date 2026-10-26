@@ -47,10 +47,10 @@ Every push and pull request is automatically tested to ensure quality.
 
 ### 6. **Accessibility Audit** ♿
 
-- WCAG AAA compliance testing
-- Screen reader compatibility
-- Keyboard navigation
-- Color contrast validation
+- Runs as part of the Lighthouse job (same axe-core ruleset Lighthouse embeds)
+- Gated by the `categories:accessibility` assertion (minScore 0.93) in `.github/lighthouserc.json`
+- Covers every URL listed in that config (home + book page)
+- Color contrast, ARIA, and keyboard-navigation rules
 
 ### 7. **Security Scan** 🔒
 
@@ -229,12 +229,13 @@ npx http-server -p 8000
 ### 5. **Test Lighthouse Locally**
 
 ```bash
-# Install Lighthouse CI
-npm install -g @lhci/cli
-
-# Run audit
-lhci autorun --config=.github/lighthouserc.json
+# Build and serve, then run Lighthouse CI via npx (no global install needed)
+npm run build && npm run start:dist &
+npx --yes @lhci/cli autorun --config=.github/lighthouserc.json
 ```
+
+> CI runs this through the pinned `treosh/lighthouse-ci-action`, so `@lhci/cli`
+> is not a project dependency — `npx` fetches it on demand for local runs.
 
 ______________________________________________________________________
 
@@ -382,7 +383,7 @@ ______________________________________________________________________
 Our targets (monitored by Lighthouse):
 
 | Metric | Target | Critical |
-|--------|--------|----------|
+| --- | --- | --- |
 | Performance | 90+ | 80+ |
 | Accessibility | 100 | 95+ |
 | Best Practices | 90+ | 85+ |

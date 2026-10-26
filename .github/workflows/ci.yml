@@ -57,9 +57,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # Job 3: Lighthouse CI (Performance, Accessibility, SEO)
+  # Job 3: Lighthouse CI (Performance, Accessibility via axe-core, Best Practices, SEO)
   lighthouse:
-    name: ⚡ Lighthouse Audit
+    name: ⚡ Lighthouse Audit (Perf, A11y, SEO)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -86,9 +86,10 @@ jobs:
           curl -sf --retry 10 --retry-delay 2 --retry-all-errors http://localhost:8080 -o /dev/null || (echo "Server failed to start" && exit 1)
 
       - name: Run Lighthouse CI
-        run: |
-          npx lhci autorun --config=.github/lighthouserc.json
-        continue-on-error: true
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12.6.2
+        with:
+          configPath: .github/lighthouserc.json
+          temporaryPublicStorage: true
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
@@ -119,43 +120,12 @@ jobs:
             done
           fi
 
-  # Job 4: Accessibility with axe-core
-  accessibility:
-    name: ♿ Accessibility Audit
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+  # Accessibility is covered by the Lighthouse job: its `categories:accessibility`
+  # assertion (minScore 0.93) runs the same axe-core ruleset across every URL in
+  # .github/lighthouserc.json. Removed the standalone @axe-core/cli job, which
+  # pulled an unmaintained selenium-webdriver dependency chain.
 
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version-file: '.node-version'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build static assets
-        run: npm run build
-
-      - name: Start local server
-        run: |
-          npm run start:dist > /dev/null 2>&1 &
-          curl -sf --retry 10 --retry-delay 2 --retry-all-errors http://localhost:8080 -o /dev/null || (echo "Server failed to start" && exit 1)
-
-      - name: Sync Chrome and ChromeDriver versions
-        run: npx browser-driver-manager install chrome
-
-      - name: Run axe accessibility tests
-        run: |
-          npx axe http://localhost:8080 --stdout --exit
-          npx axe http://localhost:8080/books/advanced-pam-course.html --stdout --exit
-
-  # Job 5: Security Scan with Grype
+  # Job 4: Security Scan with Grype
   security-scan:
     name: 🔒 Security Scan
     runs-on: ubuntu-latest
@@ -321,7 +291,7 @@ jobs:
     name: 📋 Compliance Report
     runs-on: ubuntu-slim
     timeout-minutes: 5
-    needs: [lint, lighthouse, accessibility, security-scan, seo-check]
+    needs: [lint, lighthouse, security-scan, seo-check]
     if: always()
     permissions:
       contents: read
@@ -344,8 +314,7 @@ jobs:
           echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
           echo "| Linting | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Lighthouse Audit | ${{ needs.lighthouse.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Accessibility | ${{ needs.accessibility.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Lighthouse Audit (incl. a11y) | ${{ needs.lighthouse.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Security Scan | ${{ needs.security-scan.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| SEO Validation | ${{ needs.seo-check.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -357,7 +326,7 @@ jobs:
     name: 🚀 Deploy to GitHub Pages
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [lint, check-links, lighthouse, accessibility, security-scan, seo-check, lint-markdown, spell-check, performance-budget]
+    needs: [lint, check-links, lighthouse, security-scan, seo-check, lint-markdown, spell-check, performance-budget]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: read
