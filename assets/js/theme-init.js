@@ -1,10 +1,10 @@
 (function () {
     try {
-        var theme = localStorage.getItem('theme');
+        const theme = localStorage.getItem('theme');
         if (theme === 'dark' || theme === 'light') {
             document.documentElement.dataset.theme = theme;
         }
-    } catch (error) {
-        return;
+    } catch {
+        // Storage blocked (private mode, cookies off): the system theme applies.
     }
 })();
