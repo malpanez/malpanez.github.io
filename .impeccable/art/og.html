@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>HomelabForge social image artboard (1200x630)</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        html, body { width: 1200px; height: 630px; overflow: hidden; }
+        body { display: grid; grid-template-columns: minmax(0, 1fr) 452px; grid-template-rows: auto 1fr auto; gap: 0 48px; padding: 56px 64px; }
+        .brand { font-size: 1.75rem; gap: 14px; }
+        .brand .mark { width: 40px; height: 40px; border-radius: 10px; font-size: 1.3125rem; }
+        .display { align-self: center; font-size: 4.375rem; }
+        .stage { position: relative; grid-column: 2; grid-row: 1 / 4; align-self: center; margin-top: 96px; }
+        .traces { display: block; width: 452px; height: 290px; clip-path: none; }
+        .traces__signals path:nth-child(1) { stroke-dashoffset: -62; }
+        .traces__signals path:nth-child(2) { stroke-dashoffset: -38; }
+        .traces__signals path:nth-child(3) { stroke-dashoffset: -55; }
+        .traces__signals path:nth-child(4) { stroke-dashoffset: -30; }
+        .traces__signals path:nth-child(5) { stroke-dashoffset: -47; }
+        .svc { grid-template-columns: 10px minmax(0, 1fr) auto; align-items: center; padding: 24px 20px; }
+        .svc > .dot { margin-top: 0; }
+        .svc > .pill { grid-column: auto; }
+        .svc__name { font-size: 1.3125rem; }
+        .label { font-size: 0.9375rem; }
+        .url { grid-column: 1; font-size: 1.125rem; }
+        * { animation: none !important; }
+    </style>
+</head>
+<body>
+    <p class="brand"><span class="mark">hf</span>HomelabForge</p>
+    <h1 class="display">Production DevOps, built in the open.</h1>
+    <p class="url label">homelabforge.dev</p>
+    <div class="stage">
+    <svg class="traces" viewBox="0 0 468 300" aria-hidden="true" focusable="false">
+    <g class="traces__lines">
+        <path pathLength="100" d="M48 300V236L84 200V132"/>
+        <path pathLength="100" d="M112 300V262L164 210V74"/>
+        <path pathLength="100" d="M196 300V176L226 146V0"/>
+        <path pathLength="100" d="M268 300V248L316 200H392"/>
+        <path pathLength="100" d="M332 300V274L372 234V104L404 72H468"/>
+        <path pathLength="100" d="M412 300V262"/>
+    </g>
+    <g class="traces__signals">
+        <path pathLength="100" d="M84 132V200L48 236V300"/>
+        <path pathLength="100" d="M164 74V210L112 262V300"/>
+        <path pathLength="100" d="M226 0V146L196 176V300"/>
+        <path pathLength="100" d="M392 200H316L268 248V300"/>
+        <path pathLength="100" d="M468 72H404L372 104V234L332 274V300"/>
+    </g>
+    <g class="traces__nodes">
+        <circle cx="84" cy="128" r="4"/>
+        <circle cx="164" cy="70" r="4"/>
+        <circle cx="396" cy="200" r="4"/>
+        <circle cx="412" cy="258" r="4"/>
+    </g>
+    <g class="traces__sparks">
+        <path transform="translate(164 70)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+        <path transform="translate(186 48) scale(0.5)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+        <path transform="translate(396 200) scale(0.7)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+    </g>
+</svg>
+    <div class="board">
+        <div class="board__head">
+            <p class="label">Services</p>
+            <p class="label">Status</p>
+        </div>
+        <div class="svc"><span class="dot"></span><span class="svc__name">Consulting</span><span class="pill">Available</span></div>
+        <div class="svc"><span class="dot"></span><span class="svc__name">Open source</span><span class="pill">Public</span></div>
+        <div class="svc"><span class="dot dot--plan"></span><span class="svc__name">Advanced PAM course</span><span class="pill pill--plan">Coming soon</span></div>
+    </div>
+    </div>
+</body>
+</html>

@@ -2,28 +2,29 @@ export function loadTallyEmbed() {
     const iframe = document.querySelector('iframe[data-tally-src]');
     if (!iframe) return;
 
-    const loadEmbed = () => {
-        if (!iframe.src) {
+    const startEmbed = () => {
+        const tally = globalThis.Tally;
+        if (tally) {
+            tally.loadEmbeds();
+        } else if (!iframe.src) {
             iframe.src = iframe.dataset.tallySrc;
         }
+    };
+
+    const loadEmbed = () => {
+        iframe.addEventListener('load', () => {
+            iframe.parentElement.dataset.loaded = 'true';
+        }, { once: true });
 
         if (document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
-            const tally = globalThis.Tally;
-            if (tally) {
-                tally.loadEmbeds();
-            }
+            startEmbed();
             return;
         }
 
         const script = document.createElement('script');
         script.src = 'https://tally.so/widgets/embed.js';
         script.async = true;
-        script.onload = () => {
-            const tally = globalThis.Tally;
-            if (tally) {
-                tally.loadEmbeds();
-            }
-        };
+        script.onload = startEmbed;
         script.onerror = () => console.error('[script-loader] Failed to load Tally embed');
         document.body.appendChild(script);
     };

@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#FF9900" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f2f3ef" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
 
     <!-- Primary Meta Tags -->
-    <title>Advanced PAM Course for Linux | Enterprise Authentication Guide</title>
-    <meta name="description" content="Master Linux PAM authentication with 15+ hands-on labs. Covers U2F/FIDO2, YubiKey, Active Directory, SSSD, and Ansible automation. 202 pages.">
-    <meta name="author" content="Miguel Alpañez">
+    <title>Advanced PAM Course for Linux | HomelabForge</title>
+    <meta name="description" content="A printed book on Linux PAM: security, MFA, enterprise integration and automation. Eleven chapters, nine hands-on labs, three case studies. First edition, 2026.">
+    <meta name="author" content="Miguel Alpañez Alcalde">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://homelabforge.dev/books/advanced-pam-course">
     <meta property="og:title" content="Advanced PAM Course for Linux">
-    <meta property="og:description" content="Master enterprise authentication with 15+ hands-on labs covering PAM, U2F/FIDO2, Active Directory, and Ansible automation. 202 pages.">
-    <meta property="og:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
+    <meta property="og:description" content="Security, MFA, enterprise integration and automation. Eleven chapters, nine hands-on labs and three case studies of real incidents. First edition, 2026.">
+    <meta property="og:image" content="https://homelabforge.dev/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Advanced PAM Course for Linux book cover">
-    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="HomelabForge status board listing the Advanced PAM course as coming soon">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:site_name" content="HomelabForge">
     <meta property="og:locale" content="en_US">
     <meta property="book:author" content="Miguel Alpañez Alcalde">
-    <meta property="book:release_date" content="2026-09-01">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@malpanez">
     <meta name="twitter:creator" content="@malpanez">
     <meta name="twitter:title" content="Advanced PAM Course for Linux">
-    <meta name="twitter:description" content="Master Linux PAM with 15+ hands-on labs. U2F/FIDO2, YubiKey, Active Directory, Ansible automation. 202 pages.">
-    <meta name="twitter:image" content="https://homelabforge.dev/assets/books/pam-course/cover-en.jpg">
-    <meta name="twitter:image:alt" content="Advanced PAM Course cover">
+    <meta name="twitter:description" content="A printed book on Linux PAM: eleven chapters, nine hands-on labs, three case studies. First edition, 2026.">
+    <meta name="twitter:image" content="https://homelabforge.dev/og-image.png">
+    <meta name="twitter:image:alt" content="HomelabForge status board listing the Advanced PAM course as coming soon">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://homelabforge.dev/books/advanced-pam-course">
@@ -46,13 +45,34 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/red-hat-display-latin-wght-normal.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/red-hat-text-latin-wght-normal.woff2" crossorigin>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Resource hints (DNS only; full connection deferred until a link is used) -->
-    <link rel="dns-prefetch" href="https://amazon.com">
-    <link rel="dns-prefetch" href="https://leanpub.com">
+    <!-- Stored theme, applied before first paint -->
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || theme === 'light') {
+                    document.documentElement.dataset.theme = theme;
+                }
+            } catch (error) {
+                return;
+            }
+        })();
+    </script>
+
+    <!-- Critical CSS - Minimal for first paint only -->
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{background:#f2f3ef;color:#12171a}
+        html[data-theme=dark]{background:#0e1113;color:#eef1ee}
+        @media(prefers-color-scheme:dark){html:not([data-theme=light]){background:#0e1113;color:#eef1ee}}
+        body{font-family:'Red Hat Text',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
+    </style>
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/assets/css/styles.min.css">
@@ -67,20 +87,21 @@
                 "@type": "Book",
                 "@id": "https://homelabforge.dev/books/advanced-pam-course#book",
                 "name": "Advanced PAM Course for Linux",
+                "alternativeHeadline": "Security, MFA, Enterprise Integration and Automation",
                 "url": "https://homelabforge.dev/books/advanced-pam-course",
                 "author": {
                     "@type": "Person",
+                    "@id": "https://homelabforge.dev/books/advanced-pam-course#author",
                     "name": "Miguel Alpañez Alcalde",
                     "url": "https://github.com/malpanez"
                 },
-                "publisher": { "@type": "Organization", "name": "HomelabForge" },
-                "inLanguage": "en",
-                "numberOfPages": 202,
-                "bookFormat": "https://schema.org/EBook",
-                "datePublished": "2026-09-01",
-                "image": "https://homelabforge.dev/assets/books/pam-course/cover-en.jpg",
-                "about": ["Linux PAM", "Authentication", "YubiKey", "FIDO2", "Active Directory", "Ansible"],
-                "description": "Master Linux PAM authentication with 15+ hands-on labs covering U2F/FIDO2, YubiKey, Active Directory, SSSD, and Ansible automation."
+                "publisher": { "@id": "https://homelabforge.dev/books/advanced-pam-course#author" },
+                "inLanguage": ["es", "en", "pt-BR"],
+                "bookFormat": "https://schema.org/Paperback",
+                "bookEdition": "First edition",
+                "copyrightYear": 2026,
+                "about": ["Linux PAM", "Authentication", "Multi-factor authentication", "FIDO2", "SSSD", "Ansible"],
+                "description": "A printed book on Linux PAM: security, MFA, enterprise integration and automation. Eleven chapters, nine hands-on labs and three case studies of real incidents."
             },
             {
                 "@type": "BreadcrumbList",
@@ -94,351 +115,389 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    <a href="#main-content" class="skip">Skip to main content</a>
 
-        <!-- Header with Back to Home -->
-        <header class="py-20">
-            <nav aria-label="Breadcrumb">
-                <a href="/" class="link-accent">
-                    ← Back to HomelabForge
-                </a>
+    <header class="bar">
+        <div class="wrap bar__in">
+            <a class="brand" href="/"><span class="mark" aria-hidden="true">hf</span>HomelabForge</a>
+            <nav class="nav" aria-label="Primary">
+                <a href="/#projects">Projects</a>
+                <a href="/books/advanced-pam-course" aria-current="page">Course</a>
+                <a href="/#consulting">Consulting</a>
+                <a href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">Blog<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
             </nav>
-        </header>
+            <button class="theme" type="button" hidden>
+                <svg class="ico ico--moon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z"/></svg>
+                <svg class="ico ico--sun" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg>
+            </button>
+            <a class="btn btn--primary btn--sm" href="#buy">Join the waitlist</a>
+        </div>
+    </header>
 
-        <main id="main-content">
-        <!-- Hero Section -->
-        <section class="book-hero">
-            <picture>
-                <source srcset="/assets/books/pam-course/cover-en.webp" type="image/webp">
-                <source srcset="/assets/books/pam-course/cover-en.jpg" type="image/jpeg">
-                <img src="/assets/books/pam-course/cover-en.jpg"
-                     alt="Advanced PAM Course for Linux book cover"
-                     class="book-cover"
-                     width="350"
-                     height="500">
-            </picture>
-            <div class="cover-placeholder" aria-hidden="true">
-                🔐
+    <main id="main-content">
+        <section class="hero">
+            <div class="wrap">
+                <h1 class="display vt-course">Advanced PAM Course for Linux</h1>
+                <div class="hero__body">
+                    <div class="hero__pitch">
+                        <p class="hero__state"><span class="pill pill--plan">Coming soon</span></p>
+                        <p class="lede">Security, MFA, enterprise integration and automation. A printed book on Linux PAM with eleven chapters, nine hands-on labs and three case studies of real incidents.</p>
+                        <p class="actions">
+                            <a class="btn btn--primary" href="https://tally.so/r/eqqYzO" target="_blank" rel="noopener noreferrer">Join the waitlist<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                            <a class="btn" href="#outline">Table of contents<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+                        </p>
+                        <p class="hero__note">First edition, 2026. Paperback, self-published through Kindle Direct Publishing. Spanish first, then English and Brazilian Portuguese.</p>
+                    </div>
+                    <div class="board">
+                        <div class="board__head">
+                            <h2 class="label">Contents</h2>
+                            <p class="label">First edition, 2026</p>
+                        </div>
+                        <a class="svc" href="#outline">
+                            <span class="dot dot--plan" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name">Table of contents<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
+                                <span class="svc__desc">Eleven chapters, nine labs, three case studies, a list of acronyms and an index.</span>
+                            </span>
+                        </a>
+                        <a class="svc" href="#sample">
+                            <span class="dot dot--off" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name">Companion material<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
+                                <span class="svc__desc">Sample configurations, two PAM modules in C, a cheatsheet and an Ansible role. Not published yet.</span>
+                            </span>
+                            <span class="pill pill--off">Private</span>
+                        </a>
+                        <a class="svc" href="#buy">
+                            <span class="dot dot--pulse" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name">Join the waitlist<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
+                                <span class="svc__desc">Get a message when the book is out.</span>
+                            </span>
+                            <span class="pill">Open</span>
+                        </a>
+                    </div>
+                </div>
+                <dl class="strip facts">
+                    <div>
+                        <dt class="label">Chapters</dt>
+                        <dd>11</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Labs</dt>
+                        <dd>9</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Case studies</dt>
+                        <dd>3</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Languages</dt>
+                        <dd>3</dd>
+                    </div>
+                </dl>
             </div>
-
-            <div class="chip-accent">
-                📚 COMING SOON - In Production
-            </div>
-
-            <h1 class="hero-title">Advanced PAM Course for Linux</h1>
-            <p class="hero-subtitle">
-                Master enterprise authentication with 15+ hands-on labs covering PAM,
-                U2F/FIDO2, Active Directory integration, and Ansible automation
-            </p>
-
-            <div class="social-proof">
-                <span class="proof-item">202 Pages</span>
-                <span class="proof-item">15+ Labs</span>
-                <span class="proof-item">3 Languages</span>
-                <span class="proof-item">Enterprise-Ready</span>
-            </div>
-
-            <div class="cta-buttons">
-                <a href="https://tally.so/r/eqqYzO" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join Waitlist - Get Notified</a>
-                <a href="#sample" class="btn btn-secondary">Free Resources</a>
-            </div>
-
-            <p class="text-center text-secondary mt-20 fs-095">
-                📅 Expected release: September 2026 | Available on Amazon KDP &amp; LeanPub
-            </p>
         </section>
 
-        <!-- Problem/Solution Section -->
-        <section class="section">
-            <h2 class="section-title">Why This Book?</h2>
-
-            <div class="maxw-800">
-                <h3 class="text-accent fs-15 mt-30 mb-15">The Problem</h3>
-                <p class="fs-11 mb-20">
-                    Most Linux sysadmins treat PAM as a "black box" - copying config snippets from
-                    StackOverflow without understanding the security implications. When things break
-                    (and they will), you're locked out with no idea how to fix it.
-                </p>
-
-                <h3 class="text-accent fs-15 mt-30 mb-15">The Solution</h3>
-                <p class="fs-11 mb-20">
-                    This course teaches you PAM from first principles, then builds up to advanced
-                    scenarios like:
-                </p>
-                <ul class="list-inside-secondary">
-                    <li>Multi-factor authentication with YubiKeys</li>
-                    <li>Active Directory integration with SSSD and Smart Cards</li>
-                    <li>Automated hardening with Ansible (CIS/STIG compliant)</li>
-                    <li>Real-world troubleshooting patterns</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- USP Section -->
-        <section class="section">
-            <h2 class="section-title">What Makes This Different?</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔐</div>
-                    <h3 class="feature-title">Hands-On Labs</h3>
-                    <p>15+ practical exercises with Vagrant/Docker environments included. Learn by doing, not just reading.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🎯</div>
-                    <h3 class="feature-title">Production-Ready</h3>
-                    <p>Real enterprise patterns, not toy examples. Battle-tested configurations from actual deployments.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🤖</div>
-                    <h3 class="feature-title">Automation Included</h3>
-                    <p>Ansible roles that follow Red Hat Community of Practice standards. Deploy with confidence.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔑</div>
-                    <h3 class="feature-title">YubiKey/U2F Focus</h3>
-                    <p>The ONLY book covering hardware token integration in depth. Go beyond passwords.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🌍</div>
-                    <h3 class="feature-title">Multi-Platform</h3>
-                    <p>RHEL, Debian, Ubuntu tested configurations. Works across major distributions.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">📚</div>
-                    <h3 class="feature-title">Enterprise Scenarios</h3>
-                    <p>Active Directory, Smart Cards, centralized logging. Real business requirements.</p>
+        <!-- Problem and solution -->
+        <section class="band" aria-labelledby="why-heading">
+            <div class="wrap band__in">
+                <h2 id="why-heading" class="band__title">Why this book?</h2>
+                <div class="band__body prose">
+                    <h3 class="subhead">The problem</h3>
+                    <p>PAM decides who gets into a Linux system, and it is easy to configure by copying snippets without knowing what each line does. One wrong line can lock you out of the machine, or let in a login that should have failed.</p>
+                    <h3 class="subhead">The solution</h3>
+                    <p>The book starts from the PAM architecture and works up, chapter by chapter, to:</p>
+                    <ul class="bullets">
+                        <li>Password policy and account lockout with <span class="mono">pam_pwquality</span> and <span class="mono">pam_faillock</span></li>
+                        <li>Central accounts with SSSD, LDAP, Active Directory and smartcards</li>
+                        <li>A second factor with U2F, FIDO2 and TOTP, for local login and for SSH</li>
+                        <li>Ansible roles tested with Molecule</li>
+                        <li>Writing a PAM module in C</li>
+                    </ul>
+                    <p>Compliance is covered by topic: PCI DSS, NIST SP 800-53, SOC 2, ISO 27001 and the CIS Benchmarks.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Table of Contents -->
-        <section class="section">
-            <h2 class="section-title">What You'll Learn</h2>
-
-            <div class="toc-list">
-                <h3>Part I: PAM Foundations (Chapters 1-3)</h3>
-                <ul>
-                    <li>PAM architecture and control flow</li>
-                    <li>Authentication modules deep dive</li>
-                    <li>Account and session management</li>
-                </ul>
-
-                <h3>Part II: Advanced Authentication (Chapters 4-6)</h3>
-                <ul>
-                    <li>U2F/FIDO2 with pam_u2f</li>
-                    <li>YubiKey enrollment and management</li>
-                    <li>Multi-factor authentication patterns</li>
-                </ul>
-
-                <h3>Part III: Enterprise Integration (Chapters 7-9)</h3>
-                <ul>
-                    <li>Active Directory + SSSD + Smart Cards</li>
-                    <li>Kerberos authentication flows</li>
-                    <li>Observability and audit logging</li>
-                </ul>
-
-                <h3>Part IV: Automation (Chapters 10-11)</h3>
-                <ul>
-                    <li>Ansible roles for PAM hardening</li>
-                    <li>Red Hat CoP best practices</li>
-                    <li>Production-ready blueprints</li>
-                </ul>
-
-                <h3>Appendices</h3>
-                <ul>
-                    <li>Module reference guide</li>
-                    <li>Troubleshooting cheatsheet</li>
-                    <li>Lab environment setup</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Target Audience -->
-        <section class="section">
-            <h2 class="section-title">Who Is This For?</h2>
-
-            <div class="maxw-700">
-                <h3 class="text-success fs-13 my-20">✅ Perfect for:</h3>
-                <ul class="list-plain">
-                    <li>✓ Linux SysAdmins managing enterprise authentication</li>
-                    <li>✓ DevOps Engineers implementing security automation</li>
-                    <li>✓ Security Engineers hardening Linux systems</li>
-                    <li>✓ IT teams migrating to centralized authentication</li>
-                </ul>
-
-                <h3 class="text-danger fs-13 mt-30 mb-20">❌ Not for:</h3>
-                <ul class="list-plain-secondary">
-                    <li>✗ Complete Linux beginners (requires basic Linux knowledge)</li>
-                    <li>✗ Windows-only administrators</li>
-                    <li>✗ Those looking for a quick reference (get the cheatsheet instead)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Free Resources -->
-        <section class="section" id="sample">
-            <h2 class="section-title">Free Resources</h2>
-
-            <div class="features-grid">
-                <div class="feature-card text-center">
-                    <div class="feature-icon" aria-hidden="true">📄</div>
-                    <h3 class="feature-title">Sample Chapter</h3>
-                    <p class="mb-20">Chapter 3: "Account Lockout with pam_faillock" (25 pages) — available at launch</p>
-                    <a href="#buy" class="btn btn-secondary fs-09">Coming Soon — Join Waitlist</a>
-                </div>
-
-                <div class="feature-card text-center">
-                    <div class="feature-icon" aria-hidden="true">📋</div>
-                    <h3 class="feature-title">PAM Cheatsheet</h3>
-                    <p class="mb-20">Quick reference guide for common PAM modules and configurations — available at launch</p>
-                    <a href="#buy" class="btn btn-secondary fs-09">Coming Soon — Join Waitlist</a>
-                </div>
-
-                <div class="feature-card text-center">
-                    <div class="feature-icon" aria-hidden="true">🤖</div>
-                    <h3 class="feature-title">Ansible Collection</h3>
-                    <p class="mb-20">Production-ready Ansible roles for PAM hardening (coming soon)</p>
-                    <a href="https://github.com/malpanez/security" class="btn btn-secondary fs-09" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        <!-- What is in the book -->
+        <section class="band" aria-labelledby="different-heading">
+            <div class="wrap band__in">
+                <h2 id="different-heading" class="band__title">What is in the book</h2>
+                <div class="band__body">
+                    <ul class="items items--split">
+                        <li class="item">
+                            <h3 class="subhead">Hands-on labs</h3>
+                            <p>Nine labs, each tied to a chapter. They are meant for virtual machines, never for a production host.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Tested configurations</h3>
+                            <p>The labs and every printed configuration were run in containers of AlmaLinux 9.8, Rocky Linux 9.8, Ubuntu 24.04 and Debian 13.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Not tested</h3>
+                            <p>Anything that needs a physical FIDO2 key, SELinux in enforcing mode or a real Active Directory join.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Two distribution families</h3>
+                            <p>The RHEL family with <span class="mono">authselect</span>, Debian and Ubuntu with <span class="mono">pam-auth-update</span>. Chapter 11 is the Debian and Ubuntu guide.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Automation</h3>
+                            <p>Ansible roles for password quality and account lockout, tested with Molecule.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Case studies</h3>
+                            <p>Three real incidents: GitLab (2017), Code Spaces (2014) and Equifax (2017).</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Legibility</h3>
+                            <p>The interior is set in Atkinson Hyperlegible. The layout aims for legibility, including for neurodivergent readers.</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Waitlist Section -->
-        <section class="buy-section" id="buy">
-            <h2 class="fs-25 mb-20">Join the Waitlist</h2>
-            <p class="fs-11 mb-40 text-light">
-                Be the first to know when the book is released • Early bird discount • Exclusive launch bonuses
-            </p>
+        <!-- Table of contents -->
+        <section class="band" id="outline" aria-labelledby="outline-heading">
+            <div class="wrap band__in">
+                <h2 id="outline-heading" class="band__title">Table of contents</h2>
+                <div class="band__body">
+                    <ul class="items items--split toc">
+                        <li class="item">
+                            <div class="toc__head">
+                                <h3 class="subhead">Chapters</h3>
+                                <p class="label">1 to 11</p>
+                            </div>
+                            <ul class="toc__list">
+                                <li>1. PAM Architecture and Fundamentals</li>
+                                <li>2. Password Policies and Hashing</li>
+                                <li>3. Faillock: Brute Force Protection</li>
+                                <li>4. Access Control and Session</li>
+                                <li>5. SSSD and Smartcard Integration</li>
+                                <li>6. Multi-Factor Authentication (MFA) with U2F and YubiKey</li>
+                                <li>7. Observability and Auditing</li>
+                                <li>8. Automation and Testing</li>
+                                <li>9. Custom PAM Module Development</li>
+                                <li>10. Corporate PAM Blueprint</li>
+                                <li>11. Debian/Ubuntu Specific Guide</li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <div class="toc__head">
+                                <h3 class="subhead">Hands-on labs</h3>
+                                <p class="label">Nine labs</p>
+                            </div>
+                            <ul class="toc__list">
+                                <li>Lab 2.1: Basic Pwquality Configuration</li>
+                                <li>Lab 3.1: Basic Faillock Configuration</li>
+                                <li>Lab 4.1: Multi-Layer Access Control</li>
+                                <li>Lab 5.1: Central Accounts with SSSD and an LDAP Directory</li>
+                                <li>Lab 6.1: Basic YubiKey MFA with <span class="mono">pam_u2f</span></li>
+                                <li>Lab 6.2: SSH with Public Key, Password and TOTP</li>
+                                <li>Lab 8.1: Basic Ansible PAM Hardening</li>
+                                <li>Lab 9.1: Build, Install and Test Your Own PAM Module</li>
+                                <li>Lab 11.1: Account Lockout and Password History on Debian and Ubuntu</li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <div class="toc__head">
+                                <h3 class="subhead">Case studies</h3>
+                                <p class="label">Three incidents</p>
+                            </div>
+                            <ul class="toc__list">
+                                <li>GitLab, 2017</li>
+                                <li>Code Spaces, 2014</li>
+                                <li>Equifax, 2017</li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <div class="toc__head">
+                                <h3 class="subhead">Reference</h3>
+                            </div>
+                            <ul class="toc__list">
+                                <li>Acronyms</li>
+                                <li>Index</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-            <div class="maxw-600">
-                <div class="buy-option text-center">
-                    <h3 class="fs-18 mb-20">📬 Get Notified at Launch</h3>
-                    <p class="mb-25">
-                        Sign up to receive updates on the book's progress and get notified
-                        when it's available for purchase.
-                    </p>
-
-                    <a href="https://tally.so/r/eqqYzO" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
-                        Join Waitlist
-                    </a>
-
-                    <div class="section-divider">
-                        <h4 class="text-accent mb-15 fs-12">🎁 Waitlist Benefits:</h4>
-                        <ul class="benefits benefits-narrow">
-                            <li>✅ Early bird discount at launch</li>
-                            <li>✅ Exclusive bonus chapters</li>
-                            <li>✅ Free updates for life (LeanPub)</li>
-                            <li>✅ Behind-the-scenes content</li>
-                            <li>✅ Priority support</li>
+        <!-- Target audience -->
+        <section class="band" aria-labelledby="audience-heading">
+            <div class="wrap band__in">
+                <h2 id="audience-heading" class="band__title">Who is this for?</h2>
+                <div class="band__body pair">
+                    <div>
+                        <h3 class="subhead">Written for</h3>
+                        <ul class="ticks">
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>Linux system administrators</li>
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>DevOps and SRE engineers automating infrastructure</li>
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>Security engineers hardening Linux systems</li>
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>IT consultants advising on Linux security</li>
                         </ul>
                     </div>
+                    <div>
+                        <h3 class="subhead">Not for</h3>
+                        <ul class="ticks ticks--no">
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4 4 12"/></svg>Readers new to Linux: the book assumes basic Linux and command-line knowledge</li>
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4 4 12"/></svg>Windows-only administrators</li>
+                            <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4 4 12"/></svg>Readers who want a quick reference: the chapters build on each other and are meant to be read in order</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <p class="mt-30 fs-09 text-secondary">
-                        📅 Expected release: <strong>September 2026</strong><br>
-                        📍 Available on: Amazon KDP (Kindle/Paperback) &amp; LeanPub (DRM-Free PDF/EPUB)
+        <!-- Companion material -->
+        <section class="band" id="sample" aria-labelledby="sample-heading">
+            <div class="wrap band__in">
+                <h2 id="sample-heading" class="band__title">Companion material</h2>
+                <div class="band__body">
+                    <ul class="items items--split">
+                        <li class="item">
+                            <h3 class="subhead">Sample configurations</h3>
+                            <div class="item__body">
+                                <p>PAM configuration examples and Ansible playbooks. Not published yet.</p>
+                                <p><span class="pill pill--off">Private</span></p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">PAM modules in C</h3>
+                            <div class="item__body">
+                                <p>The source of two sample modules. Not published yet.</p>
+                                <p><span class="pill pill--off">Private</span></p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">PAM cheatsheet</h3>
+                            <div class="item__body">
+                                <p>A quick reference, in Spanish and in English. Not published yet.</p>
+                                <p><span class="pill pill--off">Private</span></p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Ansible role</h3>
+                            <div class="item__body">
+                                <p>A PAM hardening role with Molecule scenarios. Not published yet.</p>
+                                <p><span class="pill pill--off">Private</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist -->
+        <section class="section" id="buy" aria-labelledby="buy-heading">
+            <div class="wrap split buy">
+                <div class="split__text">
+                    <h2 id="buy-heading" class="section__title">Join the waitlist</h2>
+                    <p class="lede">The book is not out yet. Leave your address and you get a message when it is.</p>
+                </div>
+                <div class="dock buy__dock">
+                    <h3 class="dock__title">Get a message when it is out</h3>
+                    <p class="dock__lead">The Spanish edition comes first, then English, then Brazilian Portuguese.</p>
+                    <iframe
+                        data-tally-src="https://tally.so/embed/eqqYzO?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+                        height="480"
+                        loading="lazy"
+                        title="Waitlist signup form">
+                    </iframe>
+                    <p class="dock__alt">
+                        <a class="link jump" href="https://tally.so/r/eqqYzO" target="_blank" rel="noopener noreferrer">Open the form in a new tab<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                    </p>
+                </div>
+                <div class="buy__more">
+                    <p class="buy__note"><strong>First edition, 2026</strong><br>One edition in three languages: Spanish, English and Brazilian Portuguese.</p>
+                    <h3 class="subhead">The printed book</h3>
+                    <ul class="ticks">
+                        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>Paperback, 7.5 by 9.25 inches</li>
+                        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>Eleven chapters, nine labs and three case studies</li>
+                        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>A list of acronyms and an index</li>
+                        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>Self-published through Kindle Direct Publishing</li>
+                    </ul>
+                    <p>The full <a class="link" href="#outline">table of contents</a> is above.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About the author -->
+        <section class="band" aria-labelledby="author-heading">
+            <div class="wrap band__in">
+                <h2 id="author-heading" class="band__title">About the author</h2>
+                <div class="band__body prose">
+                    <p><strong>Miguel Alpañez Alcalde</strong> is a Linux security and automation consultant. He publishes his infrastructure tooling as open source under the name HomelabForge.</p>
+                    <ul class="bullets">
+                        <li>Founder of Winning Concepts Limited</li>
+                        <li>Author of <span class="mono">ansible-devcontainer-vscode</span>, <span class="mono">terraform-cloudflare-github-pages</span> and <span class="mono">tempus</span></li>
+                        <li>Writes tutorials and guides on the HomelabForge blog</li>
+                    </ul>
+                    <p class="jumps">
+                        <a class="link jump" href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer">GitHub<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                        <a class="link jump" href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                        <a class="link jump" href="https://homelabforge.dev">Website<svg class="ico ico--right" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
                     </p>
                 </div>
             </div>
-
-            <p class="mt-40 fs-095">
-                📖 While you wait, check out the free resources above
-            </p>
         </section>
 
-        <!-- Author Section -->
-        <section class="section">
-            <h2 class="section-title">About the Author</h2>
+        <!-- Frequently asked questions -->
+        <section class="band" aria-labelledby="faq-heading">
+            <div class="wrap band__in">
+                <h2 id="faq-heading" class="band__title">Frequently asked questions</h2>
+                <div class="band__body">
+                    <ul class="items">
+                        <li class="item">
+                            <h3 class="subhead">Do I need prior PAM experience?</h3>
+                            <p>No. Chapter 1 starts from the PAM architecture. The book assumes basic Linux and command-line knowledge.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Which Linux distributions are covered?</h3>
+                            <p>The RHEL family and Debian/Ubuntu. The labs and the printed configurations were run on AlmaLinux 9.8, Rocky Linux 9.8, Ubuntu 24.04 and Debian 13, in containers.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Do I need a YubiKey to follow the labs?</h3>
+                            <p>Only for Lab 6.1, which asks for a physical YubiKey. Lab 6.2 sets up SSH with a public key, a password and TOTP, and needs no hardware key.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">What was not tested?</h3>
+                            <p>Anything that needs a physical FIDO2 key, SELinux in enforcing mode or a real Active Directory join.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">Which languages will it be in?</h3>
+                            <p>Spanish first, then English, then Brazilian Portuguese. It is the same book in each language: one edition, with no tiers and no bundles.</p>
+                        </li>
+                        <li class="item">
+                            <h3 class="subhead">When will it be out?</h3>
+                            <p>The first edition is dated 2026, and no release day has been announced. The waitlist gets a message when the book is out.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <div class="maxw-700 text-center">
-                <picture>
-                    <source srcset="/assets/img/logo-256.webp 1x, /assets/img/logo-512.webp 2x" type="image/webp">
-                    <source srcset="/assets/img/logo-256.png 1x, /assets/img/logo-512.png 2x" type="image/png">
-                    <img src="/assets/img/logo-256.webp" alt="HomelabForge logo" class="avatar-small">
-                </picture>
-
-                <p class="fs-11 mb-20">
-                    <strong class="text-accent">Miguel Alpañez Alcalde</strong> is a systems engineer specializing in Linux security
-                    and enterprise authentication. He has implemented PAM-based authentication systems
-                    for organizations across Europe.
+    <footer class="foot">
+        <div class="wrap">
+            <nav class="uplinks uplinks--pair" aria-label="Footer">
+                <a class="uplink" href="/">
+                    <span class="uplink__name"><svg class="ico ico--left" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M13 8H3M7 4 3 8l4 4"/></svg>Back to HomelabForge</span>
+                </a>
+                <p class="uplink">
+                    <span class="uplink__name">Questions?</span>
+                    <a class="uplink__desc link" href="mailto:miguel@homelabforge.dev">miguel@homelabforge.dev</a>
                 </p>
-
-                <ul class="list-plain maxw-500">
-                    <li>🏢 Founder of Winning Concepts Limited</li>
-                    <li>🔧 Creator of <a href="https://github.com/malpanez/security" class="text-accent">security</a> Ansible collection</li>
-                    <li>🌐 Contributor to open-source security tools</li>
-                    <li>📝 Technical writer and educator</li>
-                </ul>
-
-                <div class="mt-30">
-                    <a href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer" class="text-accent mx-15">GitHub</a>
-                    <a href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener noreferrer" class="text-accent mx-15">LinkedIn</a>
-                    <a href="https://homelabforge.dev" class="text-accent mx-15">Website</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="section">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-
-            <div class="maxw-800">
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Do I need prior PAM experience?</h3>
-                    <p>A: No, but you should be comfortable with Linux command line and basic system administration.</p>
-                </div>
-
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Which Linux distributions are covered?</h3>
-                    <p>A: RHEL 8/9, Debian 12, Ubuntu 22.04/24.04. Most concepts apply to any distro.</p>
-                </div>
-
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Do I need a YubiKey to follow the labs?</h3>
-                    <p>A: No, the U2F labs are optional. All core PAM concepts work without hardware.</p>
-                </div>
-
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Is the Ansible code production-ready?</h3>
-                    <p>A: The book contains educational examples. For production use, see the <a href="https://github.com/malpanez/security" class="text-accent">malpanez.security collection</a>.</p>
-                </div>
-
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Will there be updates?</h3>
-                    <p>A: LeanPub version receives free updates. Amazon KDP follows a fixed edition model.</p>
-                </div>
-
-                <div class="stack-m-30">
-                    <h3 class="text-accent mb-10">Q: Can I get a refund?</h3>
-                    <p>A: Amazon: 7 days. LeanPub: 60-day happiness guarantee.</p>
-                </div>
-            </div>
-        </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer-simple">
-            <p>
-                <a href="/" class="text-accent">← Back to HomelabForge</a>
+            </nav>
+            <p class="foot__small">
+                <span>&copy; <span id="current-year">2026</span> Miguel Alpañez. All rights reserved.</span>
             </p>
-            <p class="mt-15">
-                📧 Questions? <a href="mailto:miguel@homelabforge.dev" class="text-accent">miguel@homelabforge.dev</a>
-            </p>
-            <p class="mt-15 fs-09">
-                &copy; 2026 Miguel Alpañez. All rights reserved.
-            </p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <!-- Footer copyright-year updater -->
-    <script src="/assets/js/book-page.js"></script>
-
+    <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>

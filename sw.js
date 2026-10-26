@@ -1,11 +1,10 @@
-/* eslint-env serviceworker */
 /* global Headers */
 /**
  * HomelabForge Service Worker
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v2.1.0';
+const CACHE_VERSION = 'v3.0.0';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
 // Assets to cache on install - keep minimal for fast SW install
@@ -15,8 +14,9 @@ const STATIC_ASSETS = [
     '/offline.html',
     '/assets/css/styles.min.css',
     '/assets/js/main.js',
-    '/assets/img/hero-logo-512.webp',
-    '/assets/img/hero-logo-256.webp',
+    '/assets/fonts/red-hat-display-latin-wght-normal.woff2',
+    '/assets/fonts/red-hat-text-latin-wght-normal.woff2',
+    '/assets/fonts/red-hat-mono-latin-wght-normal.woff2',
     '/assets/icons/favicon-32x32.png',
     '/assets/icons/icon-192x192.png',
     '/manifest.json'
@@ -88,7 +88,7 @@ globalThis.addEventListener('fetch', (event) => {
     // Navigations (e.g. "/", "/books/advanced-pam-course") have no file extension;
     // route them by request mode so the offline fallback actually works.
     if (request.mode === 'navigate') {
-        event.respondWith(networkFirstStrategy(request));
+        event.respondWith(networkFirstStrategy(event));
         return;
     }
 
@@ -97,12 +97,24 @@ globalThis.addEventListener('fetch', (event) => {
     if (CACHE_STRATEGIES.staleWhileRevalidate.includes(fileExtension)) {
         event.respondWith(staleWhileRevalidateStrategy(event));
     } else if (CACHE_STRATEGIES.cacheFirst.includes(fileExtension)) {
-        event.respondWith(cacheFirstStrategy(request));
+        event.respondWith(cacheFirstStrategy(event));
     } else if (CACHE_STRATEGIES.networkFirst.includes(fileExtension)) {
-        event.respondWith(networkFirstStrategy(request));
+        event.respondWith(networkFirstStrategy(event));
     }
     // Everything else falls through to the network with no SW involvement.
 });
+
+/**
+ * Store a copy of the response without delaying it; the event stays alive until
+ * the write ends, and a failed write (e.g. quota) is logged, not left unhandled.
+ */
+function storeInCache(event, cache, response) {
+    event.waitUntil(
+        cache.put(event.request, response.clone()).catch((error) => {
+            console.warn('[SW] Cache write failed:', event.request.url, error);
+        })
+    );
+}
 
 /**
  * Stale-While-Revalidate - return cache immediately, refresh in background.
@@ -115,7 +127,7 @@ async function staleWhileRevalidateStrategy(event) {
     const fetchPromise = fetch(event.request)
         .then((response) => {
             if (response?.status === 200) {
-                cache.put(event.request, response.clone());
+                storeInCache(event, cache, response);
             }
             return response;
         })
@@ -134,7 +146,8 @@ async function staleWhileRevalidateStrategy(event) {
  * Cache First Strategy - Try cache, fallback to network.
  * Best for: images and fonts.
  */
-async function cacheFirstStrategy(request) {
+async function cacheFirstStrategy(event) {
+    const { request } = event;
     const cache = await caches.open(CACHE_NAME);
 
     try {
@@ -145,7 +158,7 @@ async function cacheFirstStrategy(request) {
 
         const response = await fetch(request);
         if (response?.status === 200) {
-            cache.put(request, response.clone());
+            storeInCache(event, cache, response);
         }
         return response;
     } catch (error) {
@@ -159,13 +172,14 @@ async function cacheFirstStrategy(request) {
  * Network First Strategy - Try network, fallback to cache, then offline page.
  * Best for: HTML documents and navigations.
  */
-async function networkFirstStrategy(request) {
+async function networkFirstStrategy(event) {
+    const { request } = event;
     const cache = await caches.open(CACHE_NAME);
 
     try {
         const response = await fetch(request);
         if (response?.status === 200) {
-            cache.put(request, response.clone());
+            storeInCache(event, cache, response);
         }
         return response;
     } catch {

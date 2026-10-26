@@ -1,0 +1,881 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T16:00:14Z",
+  "title": "Design System: HomelabForge",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Ground (light theme)",
+        "canonical": "#f2f3ef",
+        "tonalRamp": [
+          "oklch(15% 0.005 118)",
+          "oklch(27% 0.005 118)",
+          "oklch(38% 0.005 118)",
+          "oklch(50% 0.005 118)",
+          "oklch(61% 0.005 118)",
+          "oklch(73% 0.005 118)",
+          "oklch(84% 0.005 118)",
+          "oklch(95% 0.005 118)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel (light theme)",
+        "canonical": "#fbfbf9",
+        "tonalRamp": [
+          "oklch(15% 0.003 106)",
+          "oklch(27% 0.003 106)",
+          "oklch(38% 0.003 106)",
+          "oklch(50% 0.003 106)",
+          "oklch(61% 0.003 106)",
+          "oklch(73% 0.003 106)",
+          "oklch(84% 0.003 106)",
+          "oklch(95% 0.003 106)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink (light theme)",
+        "canonical": "#12171a",
+        "tonalRamp": [
+          "oklch(15% 0.01 234)",
+          "oklch(27% 0.01 234)",
+          "oklch(38% 0.01 234)",
+          "oklch(50% 0.01 234)",
+          "oklch(61% 0.01 234)",
+          "oklch(73% 0.01 234)",
+          "oklch(84% 0.01 234)",
+          "oklch(95% 0.01 234)"
+        ]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Muted Ink (light theme)",
+        "canonical": "#4c5651",
+        "tonalRamp": [
+          "oklch(15% 0.015 164)",
+          "oklch(27% 0.015 164)",
+          "oklch(38% 0.015 164)",
+          "oklch(50% 0.015 164)",
+          "oklch(61% 0.015 164)",
+          "oklch(73% 0.015 164)",
+          "oklch(84% 0.015 164)",
+          "oklch(95% 0.015 164)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline (light theme)",
+        "canonical": "#d4d8cf",
+        "tonalRamp": [
+          "oklch(15% 0.013 126)",
+          "oklch(27% 0.013 126)",
+          "oklch(38% 0.013 126)",
+          "oklch(50% 0.013 126)",
+          "oklch(61% 0.013 126)",
+          "oklch(73% 0.013 126)",
+          "oklch(84% 0.013 126)",
+          "oklch(95% 0.013 126)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Line (light theme)",
+        "canonical": "#848d86",
+        "tonalRamp": [
+          "oklch(15% 0.015 152)",
+          "oklch(27% 0.015 152)",
+          "oklch(38% 0.015 152)",
+          "oklch(50% 0.015 152)",
+          "oklch(61% 0.015 152)",
+          "oklch(73% 0.015 152)",
+          "oklch(84% 0.015 152)",
+          "oklch(95% 0.015 152)"
+        ]
+      },
+      "ok": {
+        "role": "tertiary",
+        "displayName": "Operational Green (light theme)",
+        "canonical": "#12734a",
+        "tonalRamp": [
+          "oklch(15% 0.107 159)",
+          "oklch(27% 0.107 159)",
+          "oklch(38% 0.107 159)",
+          "oklch(50% 0.107 159)",
+          "oklch(61% 0.107 159)",
+          "oklch(73% 0.107 159)",
+          "oklch(84% 0.107 159)",
+          "oklch(95% 0.107 159)"
+        ]
+      },
+      "ok-bg": {
+        "role": "tertiary",
+        "displayName": "Operational Green Tint (light theme)",
+        "canonical": "#e2efe6",
+        "tonalRamp": [
+          "oklch(15% 0.018 156)",
+          "oklch(27% 0.018 156)",
+          "oklch(38% 0.018 156)",
+          "oklch(50% 0.018 156)",
+          "oklch(61% 0.018 156)",
+          "oklch(73% 0.018 156)",
+          "oklch(84% 0.018 156)",
+          "oklch(95% 0.018 156)"
+        ]
+      },
+      "plan": {
+        "role": "tertiary",
+        "displayName": "Planned Amber (light theme)",
+        "canonical": "#8a5407",
+        "tonalRamp": [
+          "oklch(15% 0.107 67)",
+          "oklch(27% 0.107 67)",
+          "oklch(38% 0.107 67)",
+          "oklch(50% 0.107 67)",
+          "oklch(61% 0.107 67)",
+          "oklch(73% 0.107 67)",
+          "oklch(84% 0.107 67)",
+          "oklch(95% 0.107 67)"
+        ]
+      },
+      "plan-bg": {
+        "role": "tertiary",
+        "displayName": "Planned Amber Tint (light theme)",
+        "canonical": "#f3e7cf",
+        "tonalRamp": [
+          "oklch(15% 0.034 85)",
+          "oklch(27% 0.034 85)",
+          "oklch(38% 0.034 85)",
+          "oklch(50% 0.034 85)",
+          "oklch(61% 0.034 85)",
+          "oklch(73% 0.034 85)",
+          "oklch(84% 0.034 85)",
+          "oklch(95% 0.034 85)"
+        ]
+      },
+      "off": {
+        "role": "neutral",
+        "displayName": "Neutral State (light theme)",
+        "canonical": "#4c5651",
+        "tonalRamp": [
+          "oklch(15% 0.015 164)",
+          "oklch(27% 0.015 164)",
+          "oklch(38% 0.015 164)",
+          "oklch(50% 0.015 164)",
+          "oklch(61% 0.015 164)",
+          "oklch(73% 0.015 164)",
+          "oklch(84% 0.015 164)",
+          "oklch(95% 0.015 164)"
+        ]
+      },
+      "off-bg": {
+        "role": "neutral",
+        "displayName": "Neutral State Tint (light theme)",
+        "canonical": "#e4e6e0",
+        "tonalRamp": [
+          "oklch(15% 0.008 122)",
+          "oklch(27% 0.008 122)",
+          "oklch(38% 0.008 122)",
+          "oklch(50% 0.008 122)",
+          "oklch(61% 0.008 122)",
+          "oklch(73% 0.008 122)",
+          "oklch(84% 0.008 122)",
+          "oklch(95% 0.008 122)"
+        ]
+      },
+      "btn": {
+        "role": "primary",
+        "displayName": "Primary Button Fill (light theme)",
+        "canonical": "#12171a",
+        "tonalRamp": [
+          "oklch(15% 0.01 234)",
+          "oklch(27% 0.01 234)",
+          "oklch(38% 0.01 234)",
+          "oklch(50% 0.01 234)",
+          "oklch(61% 0.01 234)",
+          "oklch(73% 0.01 234)",
+          "oklch(84% 0.01 234)",
+          "oklch(95% 0.01 234)"
+        ]
+      },
+      "btn-ink": {
+        "role": "primary",
+        "displayName": "Primary Button Text (light theme)",
+        "canonical": "#fbfbf9",
+        "tonalRamp": [
+          "oklch(15% 0.003 106)",
+          "oklch(27% 0.003 106)",
+          "oklch(38% 0.003 106)",
+          "oklch(50% 0.003 106)",
+          "oklch(61% 0.003 106)",
+          "oklch(73% 0.003 106)",
+          "oklch(84% 0.003 106)",
+          "oklch(95% 0.003 106)"
+        ]
+      },
+      "dock": {
+        "role": "neutral",
+        "displayName": "Dock (light theme)",
+        "canonical": "#12171a",
+        "tonalRamp": [
+          "oklch(15% 0.01 234)",
+          "oklch(27% 0.01 234)",
+          "oklch(38% 0.01 234)",
+          "oklch(50% 0.01 234)",
+          "oklch(61% 0.01 234)",
+          "oklch(73% 0.01 234)",
+          "oklch(84% 0.01 234)",
+          "oklch(95% 0.01 234)"
+        ]
+      },
+      "dock-ink": {
+        "role": "neutral",
+        "displayName": "Dock Text (both themes)",
+        "canonical": "#eef1ee",
+        "tonalRamp": [
+          "oklch(15% 0.005 146)",
+          "oklch(27% 0.005 146)",
+          "oklch(38% 0.005 146)",
+          "oklch(50% 0.005 146)",
+          "oklch(61% 0.005 146)",
+          "oklch(73% 0.005 146)",
+          "oklch(84% 0.005 146)",
+          "oklch(95% 0.005 146)"
+        ]
+      },
+      "dock-line": {
+        "role": "neutral",
+        "displayName": "Dock Border (light theme)",
+        "canonical": "#12171a",
+        "tonalRamp": [
+          "oklch(15% 0.01 234)",
+          "oklch(27% 0.01 234)",
+          "oklch(38% 0.01 234)",
+          "oklch(50% 0.01 234)",
+          "oklch(61% 0.01 234)",
+          "oklch(73% 0.01 234)",
+          "oklch(84% 0.01 234)",
+          "oklch(95% 0.01 234)"
+        ]
+      },
+      "ember": {
+        "role": "secondary",
+        "displayName": "Forge Ember (light theme)",
+        "canonical": "#d9660b",
+        "tonalRamp": [
+          "oklch(15% 0.167 49)",
+          "oklch(27% 0.167 49)",
+          "oklch(38% 0.167 49)",
+          "oklch(50% 0.167 49)",
+          "oklch(61% 0.167 49)",
+          "oklch(73% 0.167 49)",
+          "oklch(84% 0.167 49)",
+          "oklch(95% 0.167 49)"
+        ]
+      },
+      "bg-dark": {
+        "role": "neutral",
+        "displayName": "Ground (dark theme)",
+        "canonical": "#0e1113",
+        "tonalRamp": [
+          "oklch(15% 0.006 237)",
+          "oklch(27% 0.006 237)",
+          "oklch(38% 0.006 237)",
+          "oklch(50% 0.006 237)",
+          "oklch(61% 0.006 237)",
+          "oklch(73% 0.006 237)",
+          "oklch(84% 0.006 237)",
+          "oklch(95% 0.006 237)"
+        ]
+      },
+      "panel-dark": {
+        "role": "neutral",
+        "displayName": "Panel (dark theme)",
+        "canonical": "#15191c",
+        "tonalRamp": [
+          "oklch(15% 0.009 240)",
+          "oklch(27% 0.009 240)",
+          "oklch(38% 0.009 240)",
+          "oklch(50% 0.009 240)",
+          "oklch(61% 0.009 240)",
+          "oklch(73% 0.009 240)",
+          "oklch(84% 0.009 240)",
+          "oklch(95% 0.009 240)"
+        ]
+      },
+      "ink-dark": {
+        "role": "primary",
+        "displayName": "Ink (dark theme)",
+        "canonical": "#eef1ee",
+        "tonalRamp": [
+          "oklch(15% 0.005 146)",
+          "oklch(27% 0.005 146)",
+          "oklch(38% 0.005 146)",
+          "oklch(50% 0.005 146)",
+          "oklch(61% 0.005 146)",
+          "oklch(73% 0.005 146)",
+          "oklch(84% 0.005 146)",
+          "oklch(95% 0.005 146)"
+        ]
+      },
+      "mute-dark": {
+        "role": "neutral",
+        "displayName": "Muted Ink (dark theme)",
+        "canonical": "#a3ada8",
+        "tonalRamp": [
+          "oklch(15% 0.013 165)",
+          "oklch(27% 0.013 165)",
+          "oklch(38% 0.013 165)",
+          "oklch(50% 0.013 165)",
+          "oklch(61% 0.013 165)",
+          "oklch(73% 0.013 165)",
+          "oklch(84% 0.013 165)",
+          "oklch(95% 0.013 165)"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Hairline (dark theme)",
+        "canonical": "#262c30",
+        "tonalRamp": [
+          "oklch(15% 0.011 237)",
+          "oklch(27% 0.011 237)",
+          "oklch(38% 0.011 237)",
+          "oklch(50% 0.011 237)",
+          "oklch(61% 0.011 237)",
+          "oklch(73% 0.011 237)",
+          "oklch(84% 0.011 237)",
+          "oklch(95% 0.011 237)"
+        ]
+      },
+      "line-strong-dark": {
+        "role": "neutral",
+        "displayName": "Strong Line (dark theme)",
+        "canonical": "#646e76",
+        "tonalRamp": [
+          "oklch(15% 0.017 242)",
+          "oklch(27% 0.017 242)",
+          "oklch(38% 0.017 242)",
+          "oklch(50% 0.017 242)",
+          "oklch(61% 0.017 242)",
+          "oklch(73% 0.017 242)",
+          "oklch(84% 0.017 242)",
+          "oklch(95% 0.017 242)"
+        ]
+      },
+      "ok-dark": {
+        "role": "tertiary",
+        "displayName": "Operational Green (dark theme)",
+        "canonical": "#4ccb8f",
+        "tonalRamp": [
+          "oklch(15% 0.143 159)",
+          "oklch(27% 0.143 159)",
+          "oklch(38% 0.143 159)",
+          "oklch(50% 0.143 159)",
+          "oklch(61% 0.143 159)",
+          "oklch(73% 0.143 159)",
+          "oklch(84% 0.143 159)",
+          "oklch(95% 0.143 159)"
+        ]
+      },
+      "ok-bg-dark": {
+        "role": "tertiary",
+        "displayName": "Operational Green Tint (dark theme)",
+        "canonical": "#13291f",
+        "tonalRamp": [
+          "oklch(15% 0.034 163)",
+          "oklch(27% 0.034 163)",
+          "oklch(38% 0.034 163)",
+          "oklch(50% 0.034 163)",
+          "oklch(61% 0.034 163)",
+          "oklch(73% 0.034 163)",
+          "oklch(84% 0.034 163)",
+          "oklch(95% 0.034 163)"
+        ]
+      },
+      "plan-dark": {
+        "role": "tertiary",
+        "displayName": "Planned Amber (dark theme)",
+        "canonical": "#e3ab4f",
+        "tonalRamp": [
+          "oklch(15% 0.127 77)",
+          "oklch(27% 0.127 77)",
+          "oklch(38% 0.127 77)",
+          "oklch(50% 0.127 77)",
+          "oklch(61% 0.127 77)",
+          "oklch(73% 0.127 77)",
+          "oklch(84% 0.127 77)",
+          "oklch(95% 0.127 77)"
+        ]
+      },
+      "plan-bg-dark": {
+        "role": "tertiary",
+        "displayName": "Planned Amber Tint (dark theme)",
+        "canonical": "#2e2412",
+        "tonalRamp": [
+          "oklch(15% 0.033 81)",
+          "oklch(27% 0.033 81)",
+          "oklch(38% 0.033 81)",
+          "oklch(50% 0.033 81)",
+          "oklch(61% 0.033 81)",
+          "oklch(73% 0.033 81)",
+          "oklch(84% 0.033 81)",
+          "oklch(95% 0.033 81)"
+        ]
+      },
+      "off-dark": {
+        "role": "neutral",
+        "displayName": "Neutral State (dark theme)",
+        "canonical": "#a3ada8",
+        "tonalRamp": [
+          "oklch(15% 0.013 165)",
+          "oklch(27% 0.013 165)",
+          "oklch(38% 0.013 165)",
+          "oklch(50% 0.013 165)",
+          "oklch(61% 0.013 165)",
+          "oklch(73% 0.013 165)",
+          "oklch(84% 0.013 165)",
+          "oklch(95% 0.013 165)"
+        ]
+      },
+      "off-bg-dark": {
+        "role": "neutral",
+        "displayName": "Neutral State Tint (dark theme)",
+        "canonical": "#1e2428",
+        "tonalRamp": [
+          "oklch(15% 0.012 237)",
+          "oklch(27% 0.012 237)",
+          "oklch(38% 0.012 237)",
+          "oklch(50% 0.012 237)",
+          "oklch(61% 0.012 237)",
+          "oklch(73% 0.012 237)",
+          "oklch(84% 0.012 237)",
+          "oklch(95% 0.012 237)"
+        ]
+      },
+      "btn-dark": {
+        "role": "primary",
+        "displayName": "Primary Button Fill (dark theme)",
+        "canonical": "#eef1ee",
+        "tonalRamp": [
+          "oklch(15% 0.005 146)",
+          "oklch(27% 0.005 146)",
+          "oklch(38% 0.005 146)",
+          "oklch(50% 0.005 146)",
+          "oklch(61% 0.005 146)",
+          "oklch(73% 0.005 146)",
+          "oklch(84% 0.005 146)",
+          "oklch(95% 0.005 146)"
+        ]
+      },
+      "btn-ink-dark": {
+        "role": "primary",
+        "displayName": "Primary Button Text (dark theme)",
+        "canonical": "#0e1113",
+        "tonalRamp": [
+          "oklch(15% 0.006 237)",
+          "oklch(27% 0.006 237)",
+          "oklch(38% 0.006 237)",
+          "oklch(50% 0.006 237)",
+          "oklch(61% 0.006 237)",
+          "oklch(73% 0.006 237)",
+          "oklch(84% 0.006 237)",
+          "oklch(95% 0.006 237)"
+        ]
+      },
+      "dock-dark": {
+        "role": "neutral",
+        "displayName": "Dock (dark theme)",
+        "canonical": "#15191c",
+        "tonalRamp": [
+          "oklch(15% 0.009 240)",
+          "oklch(27% 0.009 240)",
+          "oklch(38% 0.009 240)",
+          "oklch(50% 0.009 240)",
+          "oklch(61% 0.009 240)",
+          "oklch(73% 0.009 240)",
+          "oklch(84% 0.009 240)",
+          "oklch(95% 0.009 240)"
+        ]
+      },
+      "dock-line-dark": {
+        "role": "neutral",
+        "displayName": "Dock Border (dark theme)",
+        "canonical": "#262c30",
+        "tonalRamp": [
+          "oklch(15% 0.011 237)",
+          "oklch(27% 0.011 237)",
+          "oklch(38% 0.011 237)",
+          "oklch(50% 0.011 237)",
+          "oklch(61% 0.011 237)",
+          "oklch(73% 0.011 237)",
+          "oklch(84% 0.011 237)",
+          "oklch(95% 0.011 237)"
+        ]
+      },
+      "ember-dark": {
+        "role": "secondary",
+        "displayName": "Forge Ember (dark theme)",
+        "canonical": "#ff8f2e",
+        "tonalRamp": [
+          "oklch(15% 0.169 56)",
+          "oklch(27% 0.169 56)",
+          "oklch(38% 0.169 56)",
+          "oklch(50% 0.169 56)",
+          "oklch(61% 0.169 56)",
+          "oklch(73% 0.169 56)",
+          "oklch(84% 0.169 56)",
+          "oklch(95% 0.169 56)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Red Hat Display 800. The one page headline; the closing section of the home page repeats the size."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Red Hat Display 800. Section titles."
+      },
+      "band-title": {
+        "displayName": "Band Title",
+        "purpose": "Red Hat Display 800. The smaller headline cut that titles the bands of the course page."
+      },
+      "row-title": {
+        "displayName": "Title",
+        "purpose": "Red Hat Display 700. Project row titles, the dock title and footer link names."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Red Hat Display 700. Subheads inside the bands of the course page."
+      },
+      "name": {
+        "displayName": "Service Name",
+        "purpose": "Red Hat Display 700. The name of a service on the board; the site name in the bar uses the size at 800."
+      },
+      "lede": {
+        "displayName": "Lead",
+        "purpose": "Red Hat Text 400. The one paragraph under a headline, at most 31em wide."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Red Hat Text 400. Running text, capped between 34em and 36em."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Red Hat Text 400. Service descriptions, notes and the small print of the footer."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Red Hat Text 650. Action text; 1rem in the small button, up to 1.25rem in the large one."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Red Hat Mono 500, uppercase, tracked, muted. The board header, terms in a term list and chapter ranges."
+      },
+      "pill": {
+        "displayName": "Pill",
+        "purpose": "Red Hat Mono 600, sentence case. The text of a state pill."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Red Hat Mono 500. Repository names, and literal identifiers inside a sentence at 0.92em."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The one easing token (--ease). Every transition and the animations of the board use it. The two scroll-driven effects are linear, and the circuit traces keep slower curves of their own."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Hover changes of fill, border and underline colour on buttons (the primary button mixes 14% of the ground into its fill), navigation links, the theme switch, board rows and text links. Kept under reduced motion."
+      },
+      {
+        "name": "icon-nudge",
+        "value": "transform 220ms; translate(2px, -2px) for a diagonal arrow, 3px along the axis for the others",
+        "purpose": "The icon after a link, and the arrow after a board row name, moves in the direction it points on hover. Removed under prefers-reduced-motion: reduce, together with the 1px pressed shift of a button."
+      },
+      {
+        "name": "check-in",
+        "value": "420ms, fill backwards; delays 350ms, 600ms, 850ms per row; indicator from opacity 0.15 and scale 0.4, pill from opacity 0 and translateX(8px)",
+        "purpose": "On load each board row checks in: its indicator fills and its pill arrives, one row after another. Only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "pulse",
+        "value": "2.6s, infinite, after 1.5s; scale 1 to 3.4, opacity 0.45 to 0",
+        "purpose": "A slow ring around the indicator of the one service on a board that is open right now. Only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "signal",
+        "value": "7s, infinite, cubic-bezier(0.5, 0, 0.3, 1); stroke-dashoffset 6 to -100 over the first 45%; delays 0s, 1.3s, 2.9s, 4.1s, 5.2s",
+        "purpose": "Ember dashes travel down five of the circuit traces towards the home board. Only under prefers-reduced-motion: no-preference; otherwise the dashes are not drawn."
+      },
+      {
+        "name": "spark",
+        "value": "3.6s, infinite, ease-in-out; opacity 0.35 to 1 and back; delays 0s, 1.2s, 2.1s",
+        "purpose": "Three ember sparks at the nodes of the circuit traces fade and return. Only under prefers-reduced-motion: no-preference; otherwise they stay at full strength."
+      },
+      {
+        "name": "settle",
+        "value": "animation-timeline: view(); animation-range: entry 0% entry 60%; from opacity 0 and translateY(14px)",
+        "purpose": "Project rows rise and fade in as they enter the screen, where scroll-driven animation is supported. Only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "bar-line",
+        "value": "animation-timeline: scroll(); animation-range: 0 64px; border-bottom-color from transparent to --line",
+        "purpose": "The pinned bar gains its bottom hairline over the first 64px of scroll. Where scroll-driven animation is not supported the hairline is always drawn."
+      },
+      {
+        "name": "theme-reveal",
+        "value": "560ms; clip-path: circle(0) to circle(150vmax) at the centre of the theme switch (--vt-x, --vt-y)",
+        "purpose": "Changing theme opens the new theme as a circle from the switch, through a view transition. Skipped under reduced motion and where view transitions are missing."
+      },
+      {
+        "name": "page-transition",
+        "value": "@view-transition { navigation: auto }; named groups: bar, course-title",
+        "purpose": "Moving between the home page and the course page keeps the bar in place and morphs the course name into the headline of the course page. Only under prefers-reduced-motion: no-preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "below-360",
+        "value": "359px"
+      },
+      {
+        "name": "below-400",
+        "value": "399px"
+      },
+      {
+        "name": "below-480",
+        "value": "479px"
+      },
+      {
+        "name": "below-560",
+        "value": "559px"
+      },
+      {
+        "name": "from-560",
+        "value": "560px"
+      },
+      {
+        "name": "from-800",
+        "value": "800px"
+      },
+      {
+        "name": "from-900",
+        "value": "900px"
+      },
+      {
+        "name": "from-1000",
+        "value": "1000px"
+      },
+      {
+        "name": "from-1400",
+        "value": "1400px"
+      },
+      {
+        "name": "container-540",
+        "value": "540px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Service Board",
+      "kind": "custom",
+      "refersTo": "board",
+      "description": "The signature component: one bordered panel per page that lists services with their true state. Each row is a link with an indicator, a name followed by a muted direction arrow, a description, an optional mono line of detail and a state pill. Below 560px the pill sits directly under the name.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-board__head\"><span class=\"ds-label\">Services</span><span class=\"ds-label\">2 live, 1 coming soon</span></div><a class=\"ds-svc\" href=\"#\"><span class=\"ds-dot ds-dot--pulse\" aria-hidden=\"true\"></span><span class=\"ds-svc__main\"><span class=\"ds-svc__name\">Consulting<svg class=\"ds-ico ds-ico--down\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M8 3v10M4 9l4 4 4-4\"/></svg></span><span class=\"ds-svc__desc\">Ireland and remote worldwide. Automation, Infrastructure as Code, CI/CD, team training.</span><span class=\"ds-svc__meta\">Ireland</span></span><span class=\"ds-pill\">Available</span></a><a class=\"ds-svc\" href=\"#\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><span class=\"ds-svc__main\"><span class=\"ds-svc__name\">Open source<svg class=\"ds-ico ds-ico--down\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M8 3v10M4 9l4 4 4-4\"/></svg></span><span class=\"ds-svc__desc\">Terraform modules, dev containers and CLI tools I use in production.</span><span class=\"ds-svc__meta\">On GitHub</span></span><span class=\"ds-pill\">Public</span></a><a class=\"ds-svc\" href=\"#\"><span class=\"ds-dot ds-dot--plan\" aria-hidden=\"true\"></span><span class=\"ds-svc__main\"><span class=\"ds-svc__name\">Advanced PAM course<svg class=\"ds-ico ds-ico--right\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></span><span class=\"ds-svc__desc\">202 pages, 15+ hands-on labs.</span><span class=\"ds-svc__meta\">Waitlist open</span></span><span class=\"ds-pill ds-pill--plan\">Coming soon</span></a></div>",
+      "css": ".ds-board { max-width: 540px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--ink); font-family: var(--text); font-size: 1.0625rem; line-height: 1.55; } .ds-board__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; padding: 13px 20px; border-bottom: 1px solid var(--line); } .ds-board__head > * { white-space: nowrap; } .ds-label { font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); } .ds-svc { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 10px 14px; padding: 20px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: background-color 160ms var(--ease); } .ds-svc:last-child { border-bottom: 0; } .ds-svc:hover { background: color-mix(in srgb, var(--ink) 5%, var(--panel)); } .ds-svc:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; border-radius: 10px; } .ds-svc__name, .ds-svc__desc, .ds-svc__meta { display: block; } .ds-svc .ds-svc__name { display: flex; align-items: center; gap: 8px; } .ds-svc__name .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; font-size: 0.875em; color: var(--mute); transition: transform 220ms var(--ease); } .ds-svc:hover .ds-ico--down { transform: translateY(3px); } .ds-svc:hover .ds-ico--right { transform: translateX(3px); } .ds-svc__name { font-family: var(--display); font-size: 1.1875rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.012em; } .ds-svc__desc { margin-top: 2px; font-size: 0.9375rem; line-height: 1.5; color: var(--mute); } .ds-svc__meta { margin-top: 8px; font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; line-height: 1.5; font-variant-numeric: tabular-nums; color: var(--mute); } .ds-dot { position: relative; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); } .ds-dot--plan { border: 2px solid var(--plan); background: none; } .ds-dot--off { border: 2px solid var(--off); background: none; } .ds-svc > .ds-dot { margin-top: 8px; } .ds-dot--pulse::after { content: \"\"; position: absolute; inset: 0; border-radius: 50%; background: var(--ok); opacity: 0; } .ds-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); font-family: var(--mono); font-size: 0.8125rem; font-weight: 600; line-height: 1; white-space: nowrap; } .ds-pill--plan { background: var(--plan-bg); color: var(--plan); } .ds-pill--off { background: var(--off-bg); color: var(--off); } .ds-svc > .ds-pill { align-self: start; justify-self: end; } @media (max-width: 559px) { .ds-svc { grid-template-columns: 10px minmax(0, 1fr); row-gap: 0; } .ds-svc__main { display: contents; } .ds-svc__main > *, .ds-svc > .ds-pill { grid-column: 2; } .ds-svc__name { order: 1; } .ds-svc > .ds-pill { order: 2; justify-self: start; margin-block: 8px; } .ds-svc__desc { order: 3; margin-top: 0; } .ds-svc__meta { order: 4; } } @keyframes ds-checkin-dot { from { opacity: 0.15; transform: scale(0.4); } to { opacity: 1; transform: none; } } @keyframes ds-checkin-pill { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: none; } } @keyframes ds-pulse { from { opacity: 0.45; transform: scale(1); } to { opacity: 0; transform: scale(3.4); } } @media (prefers-reduced-motion: no-preference) { .ds-svc > .ds-dot { animation: ds-checkin-dot 420ms var(--ease) backwards; } .ds-svc > .ds-pill { animation: ds-checkin-pill 420ms var(--ease) backwards; } .ds-svc:nth-of-type(1) > :is(.ds-dot, .ds-pill) { animation-delay: 350ms; } .ds-svc:nth-of-type(2) > :is(.ds-dot, .ds-pill) { animation-delay: 600ms; } .ds-svc:nth-of-type(3) > :is(.ds-dot, .ds-pill) { animation-delay: 850ms; } .ds-dot--pulse::after { animation: ds-pulse 2.6s var(--ease) 1.5s infinite; } } @media (prefers-reduced-motion: reduce) { .ds-svc__name .ds-ico { transition: none; } .ds-svc:hover .ds-svc__name .ds-ico { transform: none; } }"
+    },
+    {
+      "name": "Circuit Traces",
+      "kind": "custom",
+      "description": "The forge, home page only: hairline circuit traces that end on the top edge of the service board, with ring nodes, ember signals that travel down five traces and three ember sparks. With the mark, the only place ember appears. Decoration: hidden from assistive technology, shown from 1000px, removed in print; without motion the signals are not drawn and the sparks stay still.",
+      "html": "<svg class=\"ds-traces\" viewBox=\"0 0 468 300\" aria-hidden=\"true\" focusable=\"false\"><g class=\"ds-traces__lines\"><path pathLength=\"100\" d=\"M48 300V236L84 200V132\"/><path pathLength=\"100\" d=\"M112 300V262L164 210V74\"/><path pathLength=\"100\" d=\"M196 300V176L226 146V0\"/><path pathLength=\"100\" d=\"M268 300V248L316 200H392\"/><path pathLength=\"100\" d=\"M332 300V274L372 234V104L404 72H468\"/><path pathLength=\"100\" d=\"M412 300V262\"/></g><g class=\"ds-traces__signals\"><path pathLength=\"100\" d=\"M84 132V200L48 236V300\"/><path pathLength=\"100\" d=\"M164 74V210L112 262V300\"/><path pathLength=\"100\" d=\"M226 0V146L196 176V300\"/><path pathLength=\"100\" d=\"M392 200H316L268 248V300\"/><path pathLength=\"100\" d=\"M468 72H404L372 104V234L332 274V300\"/></g><g class=\"ds-traces__nodes\"><circle cx=\"84\" cy=\"128\" r=\"4\"/><circle cx=\"164\" cy=\"70\" r=\"4\"/><circle cx=\"396\" cy=\"200\" r=\"4\"/><circle cx=\"412\" cy=\"258\" r=\"4\"/></g><g class=\"ds-traces__sparks\"><path transform=\"translate(164 70)\" d=\"M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z\"/><path transform=\"translate(186 48) scale(0.5)\" d=\"M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z\"/><path transform=\"translate(396 200) scale(0.7)\" d=\"M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z\"/></g></svg>",
+      "css": ".ds-traces { display: block; width: 468px; max-width: 100%; height: auto; overflow: visible; fill: none; } .ds-traces__lines { stroke: var(--line-strong); stroke-width: 1; opacity: 0.7; } .ds-traces__nodes { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1.5; } .ds-traces__signals { stroke: var(--ember); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 5 100; stroke-dashoffset: 6; } .ds-traces__sparks { fill: var(--ember); } @keyframes ds-signal { 0% { stroke-dashoffset: 6; } 45%, 100% { stroke-dashoffset: -100; } } @keyframes ds-spark { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } } @media (prefers-reduced-motion: no-preference) { .ds-traces__signals path { animation: ds-signal 7s cubic-bezier(0.5, 0, 0.3, 1) infinite; } .ds-traces__signals path:nth-child(2) { animation-delay: 1.3s; } .ds-traces__signals path:nth-child(3) { animation-delay: 2.9s; } .ds-traces__signals path:nth-child(4) { animation-delay: 4.1s; } .ds-traces__signals path:nth-child(5) { animation-delay: 5.2s; } .ds-traces__sparks path { animation: ds-spark 3.6s ease-in-out infinite; } .ds-traces__sparks path:nth-child(2) { animation-delay: 1.2s; } .ds-traces__sparks path:nth-child(3) { animation-delay: 2.1s; } }"
+    },
+    {
+      "name": "Status Pills and Indicators",
+      "kind": "chip",
+      "refersTo": "pill-ok",
+      "description": "The only place hue appears. State labels are a closed set: Available, Public and Open are green; Coming soon is amber; Private and Offline are neutral. A pill sets state text on its own tint; an indicator is a 10px circle, filled for live and a 2px ring otherwise.",
+      "html": "<p class=\"ds-states\"><span class=\"ds-state\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><span class=\"ds-pill\">Available</span></span><span class=\"ds-state\"><span class=\"ds-dot ds-dot--plan\" aria-hidden=\"true\"></span><span class=\"ds-pill ds-pill--plan\">Coming soon</span></span><span class=\"ds-state\"><span class=\"ds-dot ds-dot--off\" aria-hidden=\"true\"></span><span class=\"ds-pill ds-pill--off\">Private</span></span></p>",
+      "css": ".ds-states { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; } .ds-state { display: inline-flex; align-items: center; gap: 10px; } .ds-dot { position: relative; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); } .ds-dot--plan { border: 2px solid var(--plan); background: none; } .ds-dot--off { border: 2px solid var(--off); background: none; } .ds-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); font-family: var(--mono); font-size: 0.8125rem; font-weight: 600; line-height: 1; white-space: nowrap; } .ds-pill--plan { background: var(--plan-bg); color: var(--plan); } .ds-pill--off { background: var(--off-bg); color: var(--off); }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink fill with the inverse text, one per action group. On hover the fill is mixed with 14% of the ground and the trailing icon moves in the direction it points; under reduced motion only the colour changes. The large size, 64px tall, is used once as the closing action of the home page.",
+      "html": "<a class=\"ds-btn ds-btn--primary\" href=\"#\">Schedule a call<svg class=\"ds-ico ds-ico--ext\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4.5 11.5 11.5 4.5M5.5 4.5h6v6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 1px solid var(--line-strong); border-radius: 8px; background: transparent; color: var(--ink); font-family: var(--text); font-size: 1.0625rem; font-weight: 650; line-height: 1.2; text-decoration: none; white-space: nowrap; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); } .ds-btn:hover { border-color: var(--ink); background: var(--panel); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } .ds-btn--primary { border-color: var(--btn); background: var(--btn); color: var(--btn-ink); } .ds-btn--primary:hover { border-color: var(--btn); background: color-mix(in srgb, var(--btn) 86%, var(--bg)); } .ds-btn--sm { min-height: 44px; padding: 0 16px; font-size: 1rem; } .ds-btn--xl { min-height: 64px; padding: 0 28px; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); } .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 220ms var(--ease); } .ds-btn:hover > .ds-ico--ext, .ds-link:hover > .ds-ico--ext, .ds-uplink:hover .ds-ico--ext { transform: translate(2px, -2px); } .ds-btn:hover > .ds-ico--down { transform: translateY(3px); } @media (prefers-reduced-motion: reduce) { .ds-ico { transition: none; } :is(.ds-btn, .ds-link, .ds-uplink, .ds-svc, .ds-nav a):hover .ds-ico { transform: none; } .ds-btn:active { transform: none; } }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Transparent with a one-pixel strong line border. On hover the border turns ink and the fill turns panel.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Browse the projects<svg class=\"ds-ico ds-ico--down\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M8 3v10M4 9l4 4 4-4\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 1px solid var(--line-strong); border-radius: 8px; background: transparent; color: var(--ink); font-family: var(--text); font-size: 1.0625rem; font-weight: 650; line-height: 1.2; text-decoration: none; white-space: nowrap; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); } .ds-btn:hover { border-color: var(--ink); background: var(--panel); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } .ds-btn--primary { border-color: var(--btn); background: var(--btn); color: var(--btn-ink); } .ds-btn--primary:hover { border-color: var(--btn); background: color-mix(in srgb, var(--btn) 86%, var(--bg)); } .ds-btn--sm { min-height: 44px; padding: 0 16px; font-size: 1rem; } .ds-btn--xl { min-height: 64px; padding: 0 28px; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); } .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 220ms var(--ease); } .ds-btn:hover > .ds-ico--ext, .ds-link:hover > .ds-ico--ext, .ds-uplink:hover .ds-ico--ext { transform: translate(2px, -2px); } .ds-btn:hover > .ds-ico--down { transform: translateY(3px); } @media (prefers-reduced-motion: reduce) { .ds-ico { transition: none; } :is(.ds-btn, .ds-link, .ds-uplink, .ds-svc, .ds-nav a):hover .ds-ico { transform: none; } .ds-btn:active { transform: none; } }"
+    },
+    {
+      "name": "Bar",
+      "kind": "nav",
+      "refersTo": "bar",
+      "description": "The pinned bar: the ember \"hf\" mark and the site name, section links, the theme switch and a small primary button, over a bottom hairline that appears once the page has scrolled. Section links are shown from 900px. The theme switch keeps the label \"Dark theme\" and reports the current theme as its pressed state.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-mark\" aria-hidden=\"true\">hf</span>HomelabForge</a><nav class=\"ds-nav\" aria-label=\"Primary\"><a href=\"#\">Projects</a><a href=\"#\" aria-current=\"page\">Course</a><a href=\"#\">Consulting</a><a href=\"#\">Blog<svg class=\"ds-ico ds-ico--ext\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4.5 11.5 11.5 4.5M5.5 4.5h6v6\"/></svg></a></nav><button class=\"ds-theme\" type=\"button\" aria-pressed=\"false\" aria-label=\"Dark theme\"><svg class=\"ds-ico\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z\"/></svg></button><a class=\"ds-btn ds-btn--primary ds-btn--sm\" href=\"#\">Schedule a call</a></header>",
+      "css": ".ds-bar { display: flex; align-items: center; gap: 8px; height: var(--bar-h); padding-inline: 20px; border-bottom: 1px solid var(--line); background: var(--bg); color: var(--ink); font-family: var(--text); } .ds-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-right: auto; color: inherit; font-family: var(--display); font-size: 1.1875rem; font-weight: 800; line-height: 1; letter-spacing: -0.015em; text-decoration: none; } .ds-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 7px; background: var(--ember); color: #14100b; font-size: 0.9375rem; letter-spacing: -0.06em; } .ds-nav { display: flex; gap: 2px; margin-right: 8px; } .ds-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 8px; color: inherit; font-size: 1rem; font-weight: 500; text-decoration: none; transition: background-color 160ms var(--ease); } .ds-nav a:hover, .ds-nav a[aria-current] { background: var(--panel); } .ds-nav a:hover > .ds-ico--ext { transform: translate(2px, -2px); } .ds-nav a:focus-visible, .ds-brand:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } .ds-theme { display: inline-grid; flex: none; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 8px; background: none; color: inherit; font-size: 1.25rem; cursor: pointer; transition: background-color 160ms var(--ease); } .ds-theme:hover { background: var(--panel); } .ds-theme:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; border-radius: 8px; } .ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 22px; border: 1px solid var(--line-strong); border-radius: 8px; background: transparent; color: var(--ink); font-family: var(--text); font-size: 1.0625rem; font-weight: 650; line-height: 1.2; text-decoration: none; white-space: nowrap; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); } .ds-btn:hover { border-color: var(--ink); background: var(--panel); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } .ds-btn--primary { border-color: var(--btn); background: var(--btn); color: var(--btn-ink); } .ds-btn--primary:hover { border-color: var(--btn); background: color-mix(in srgb, var(--btn) 86%, var(--bg)); } .ds-btn--sm { min-height: 44px; padding: 0 16px; font-size: 1rem; } .ds-btn--xl { min-height: 64px; padding: 0 28px; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); } .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 220ms var(--ease); } @media (prefers-reduced-motion: reduce) { .ds-ico { transition: none; } :is(.ds-btn, .ds-link, .ds-uplink, .ds-svc, .ds-nav a):hover .ds-ico { transform: none; } .ds-btn:active { transform: none; } }"
+    },
+    {
+      "name": "Project Row",
+      "kind": "custom",
+      "description": "Repeated content as a row between hairlines: a title, a short body with a mono technology line, and a side column with a state pill and the repository name in mono. Never a card.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><h3 class=\"ds-row__title\">Automate Cloudflare in 5 minutes</h3><div class=\"ds-row__body\"><p>DNS, SSL, and security headers for GitHub Pages. Transform 2 hours of clicking into 5 minutes of code.</p><p class=\"ds-row__tech\">Terraform / Cloudflare / GitHub Pages</p></div><div class=\"ds-row__side\"><span class=\"ds-pill\">Public</span><a class=\"ds-repo ds-link\" href=\"#\">terraform-cloudflare-github-pages<svg class=\"ds-ico ds-ico--ext\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4.5 11.5 11.5 4.5M5.5 4.5h6v6\"/></svg></a></div></li><li class=\"ds-row\"><h3 class=\"ds-row__title\">Config files, ready to stow</h3><div class=\"ds-row__body\"><p>Curated dotfiles with sane defaults, ready to symlink into $HOME using GNU Stow.</p><p class=\"ds-row__tech\">GNU Stow / Dotfiles / CLI</p></div><div class=\"ds-row__side\"><span class=\"ds-pill ds-pill--off\">Private</span><span class=\"ds-repo\">config_files</span></div></li></ul>",
+      "css": ".ds-rows { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; color: var(--ink); font-family: var(--text); font-size: 1.0625rem; line-height: 1.55; } .ds-row { display: grid; gap: 10px 32px; padding: 22px 0 24px; border-bottom: 1px solid var(--line); } .ds-row__title { margin: 0; font-family: var(--display); font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.016em; } .ds-row__body p { max-width: 36em; margin: 0; } .ds-row__body .ds-row__tech { margin-top: 10px; font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; line-height: 1.5; color: var(--mute); } .ds-row__side { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; } .ds-repo { display: inline-flex; align-items: center; gap: 8px; min-height: 28px; font-family: var(--mono); font-size: 0.9375rem; font-weight: 500; overflow-wrap: anywhere; } .ds-repo:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } @media (min-width: 800px) { .ds-row { grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(11rem, 3fr); } .ds-row__side { flex-direction: column; align-items: flex-end; text-align: right; } } .ds-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); font-family: var(--mono); font-size: 0.8125rem; font-weight: 600; line-height: 1; white-space: nowrap; } .ds-pill--plan { background: var(--plan-bg); color: var(--plan); } .ds-pill--off { background: var(--off-bg); color: var(--off); } .ds-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1.5px; text-decoration-color: var(--line-strong); text-underline-offset: 0.2em; transition: text-decoration-color 160ms var(--ease); } .ds-link:hover { text-decoration-color: currentcolor; } .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 220ms var(--ease); } .ds-btn:hover > .ds-ico--ext, .ds-link:hover > .ds-ico--ext, .ds-uplink:hover .ds-ico--ext { transform: translate(2px, -2px); } .ds-btn:hover > .ds-ico--down { transform: translateY(3px); } @media (prefers-reduced-motion: reduce) { .ds-ico { transition: none; } :is(.ds-btn, .ds-link, .ds-uplink, .ds-svc, .ds-nav a):hover .ds-ico { transform: none; } .ds-btn:active { transform: none; } }"
+    },
+    {
+      "name": "Term List",
+      "kind": "custom",
+      "description": "Term and value pairs between hairlines. The term is an uppercase mono label in a 7rem column; the value is Red Hat Text 600 with tabular figures.",
+      "html": "<dl class=\"ds-spec\"><div><dt>IaC</dt><dd>Terraform, Ansible</dd></div><div><dt>Cloud</dt><dd>AWS, Azure</dd></div><div><dt>CI/CD</dt><dd>GitHub Actions, Jenkins</dd></div><div><dt>Local time</dt><dd>Ireland</dd></div></dl>",
+      "css": ".ds-spec { max-width: 26rem; margin: 0; border-top: 1px solid var(--line); color: var(--ink); font-family: var(--text); font-size: 1.0625rem; } .ds-spec > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); } .ds-spec dt { padding-top: 3px; font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); } .ds-spec dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.4; }"
+    },
+    {
+      "name": "Dock",
+      "kind": "card",
+      "refersTo": "dock",
+      "description": "The one panel that stays dark in both themes. It holds the third-party waiting list form, which has light text, and a plain link that opens the same form in a new tab. Selection and the focus ring inside it take the dock text colour.",
+      "html": "<div class=\"ds-dock\"><h3 class=\"ds-dock__title\">Join the waitlist</h3><p class=\"ds-dock__alt\"><a class=\"ds-link\" href=\"#\">Open the form in a new tab</a></p></div>",
+      "css": ".ds-dock { max-width: 30rem; padding: 24px 20px 12px; border: 1px solid var(--dock-line); border-radius: 12px; background: var(--dock); color: var(--dock-ink); font-family: var(--text); line-height: 1.55; } .ds-dock ::selection { background: var(--dock-ink); color: var(--dock); } .ds-dock :focus-visible { outline: 2px solid var(--dock-ink); outline-offset: 3px; border-radius: 4px; } .ds-dock__title { margin: 0 8px; font-family: var(--display); font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.016em; } .ds-dock__alt { margin: 16px 8px 12px; font-size: 0.9375rem; } .ds-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1.5px; text-decoration-color: var(--line-strong); text-underline-offset: 0.2em; transition: text-decoration-color 160ms var(--ease); } .ds-link:hover { text-decoration-color: currentcolor; }"
+    },
+    {
+      "name": "Footer Link",
+      "kind": "nav",
+      "description": "A title-sized name with a direction icon and one muted line under it. The footer sets them two across, then four from 900px. On hover only the icon moves.",
+      "html": "<a class=\"ds-uplink\" href=\"#\"><span class=\"ds-uplink__name\">Blog<svg class=\"ds-ico ds-ico--ext\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4.5 11.5 11.5 4.5M5.5 4.5h6v6\"/></svg></span><span class=\"ds-uplink__desc\">Tutorials and guides</span></a>",
+      "css": ".ds-uplink { display: block; color: var(--ink); font-family: var(--text); font-size: 1.0625rem; line-height: 1.55; text-decoration: none; } .ds-uplink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; } .ds-uplink__name { display: inline-flex; align-items: center; gap: 10px; min-height: 32px; font-family: var(--display); font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.016em; } .ds-uplink__desc { display: block; color: var(--mute); } .ds-ico { flex: none; width: 1em; height: 1em; fill: none; stroke: currentcolor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform 220ms var(--ease); } .ds-btn:hover > .ds-ico--ext, .ds-link:hover > .ds-ico--ext, .ds-uplink:hover .ds-ico--ext { transform: translate(2px, -2px); } .ds-btn:hover > .ds-ico--down { transform: translateY(3px); } @media (prefers-reduced-motion: reduce) { .ds-ico { transition: none; } :is(.ds-btn, .ds-link, .ds-uplink, .ds-svc, .ds-nav a):hover .ds-ico { transform: none; } .ds-btn:active { transform: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Status Board",
+    "overview": "The site reads as the status board of a small infrastructure practice. Every page opens with one bordered board that lists what is on offer as services. Each row is a link and carries an indicator, a name with an arrow, one line of description and, on most rows, a state pill. The board is the proof, the in-page navigation and the first thing a visitor reads.\n\nThe system is restrained and neutral. It ships two themes of equal standing, dark and light, with the same roles. The page follows the system setting and remembers a manual choice made with a visible switch. Grounds are near-neutral with a slight green cast, structure is drawn in one-pixel hairlines, and nothing casts a shadow. Hue appears only as state: green for what is live, amber for what is coming, neutral for what is not available. The one exception is the forge: ember orange, the brand colour, on the mark and on the circuit traces above the home board, approved by the owner. A drenched multi-colour direction was built first and rejected by the owner as too colourful; this system replaces it.\n\nThree Red Hat typefaces split the work: one for headings and names, one for reading and controls, one for labels, states and literal identifiers. Motion is tied to the board: on the home page ember signals travel down the traces into it, its indicators check in on load, the local time and the last push are live data, and changing theme is a circular reveal from the switch.",
+    "keyCharacteristics": [
+      "Two themes of equal standing with identical roles; every colour is read through a custom property.",
+      "Hue as state: green, amber or neutral. Everything else is ink, muted ink and hairlines.",
+      "Ember, the brand colour, only on the forge: the mark and the circuit traces.",
+      "State labels from a closed set of six.",
+      "One bordered board per page, with rows as links.",
+      "One-pixel hairlines and rows instead of cards.",
+      "No shadows, no gradients, no blur.",
+      "Three Red Hat typefaces with fixed jobs.",
+      "Gently rounded controls (`8px`), panels (`12px`) and full pills for states.",
+      "Authored animation only when the reader has not asked for reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The State Only Rule",
+        "body": "Outside the forge, hue says what state something is in and does nothing else. Green is live, amber is coming, neutral is not available. No heading, link, button or surface carries a hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Forge Rule",
+        "body": "Ember is the brand colour and belongs to the forge alone: the ground of the mark, and the signals and sparks of the circuit traces. It is the one exception to the State Only Rule, approved by the owner. Ember never sets text, never fills a button, a pill or a surface, and never stands for a state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Closed Set Rule",
+        "body": "A state is named with one of six labels. Green: Available, Public, Open. Amber: Coming soon. Neutral: Private, Offline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tint Pair Rule",
+        "body": "A state colour sets text only on its own tint, as a pill. On any other ground it appears only as a `10px` indicator.",
+        "section": "colors"
+      },
+      {
+        "name": "The Shared Roles Rule",
+        "body": "Components name roles, never literal colours. Both themes define every role, so a component is written once and the theme switch never touches it. The one literal in the build is the lettering of the mark, which is the same dark in both themes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Faces Rule",
+        "body": "Display sets headings and names. Text sets reading and controls. Mono sets labels, states and literal identifiers. A face is never borrowed for another job.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Weights Rule",
+        "body": "Display appears at 800 for the site name and the headings of a page and its sections, and at 700 for titles and names inside them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Capitals Rule",
+        "body": "Uppercase with tracking belongs to the mono label alone. It captions data: a board header, a term, a range.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Board Rule",
+        "body": "A surface is a panel tone and a hairline. Nothing floats and nothing casts a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure is drawn with one-pixel lines. Thickness is never used for emphasis.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Shape Scale Rule",
+        "body": "`8px` for a control, `12px` for a panel, a full pill for a state, a circle for an indicator. A focus ring follows the shape it sits in.",
+        "section": "shapes"
+      },
+      {
+        "name": "The One Board Rule",
+        "body": "A page has one board. The dock is the only other bordered panel, and it exists to hold a third-party form. Everything else is rows between hairlines.",
+        "section": "components"
+      },
+      {
+        "name": "The True State Rule",
+        "body": "An indicator or a pill states something that is true today. Live detail always has a plain text fallback in the markup.",
+        "section": "components"
+      },
+      {
+        "name": "The Quiet Motion Rule",
+        "body": "One easing curve, `cubic-bezier(0.16, 1, 0.3, 1)`, drives every transition and the animations of the board; the traces keep slower curves of their own. The check-in, the pulse, the signals, the sparks, the settle, the theme reveal and the page transition run only under `prefers-reduced-motion: no-preference`. Under `prefers-reduced-motion: reduce` the icon movement on hover and the pressed shift of a button are removed as well, and only colour transitions remain.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do read every colour from a role (`--bg`, `--panel`, `--ink`, `--mute`, `--line`, `--line-strong` and the state pairs), so both themes follow.",
+      "Do use green, amber and neutral only to state what is live, what is coming and what is not available.",
+      "Do put state colour on its own tint as a pill, or alone as a `10px` indicator.",
+      "Do keep ember to the forge: the ground of the mark, and the signals and sparks of the circuit traces.",
+      "Do name a state with one of the six labels: Available, Public, Open, Coming soon, Private, Offline.",
+      "Do open a page with one board whose rows are links and whose states are true today.",
+      "Do separate repeated content with one-pixel hairlines and rows.",
+      "Do set headings and names in Red Hat Display at 800 or 700, reading text and controls in Red Hat Text, and labels, states and literal identifiers in Red Hat Mono.",
+      "Do keep text blocks to a measure between `31em` and `36em`.",
+      "Do use `8px` for controls, `12px` for panels and a full pill for states.",
+      "Do keep every button and every target in the bar at least `44px` tall; the standard button is `52px`.",
+      "Do give live detail a plain text fallback that is true without script.",
+      "Do gate authored animation behind `prefers-reduced-motion: no-preference`, and remove movement on hover and on press under `prefers-reduced-motion: reduce`.",
+      "Do check both themes: text pairs measure at least `4.9:1` and the strong line at least `3:1`."
+    ],
+    "donts": [
+      "Don't use hue as decoration outside the forge: no coloured headings, links, buttons, section fills or icons. A drenched multi-colour direction was built and rejected by the owner.",
+      "Don't use ember for text, for a button, for a pill, for a surface or for a state.",
+      "Don't write a literal colour in a component, and don't ship a component that works in one theme only. The dock is the one inverted surface, dark in both themes.",
+      "Don't add shadows, gradients or blur. The build has none.",
+      "Don't box repeated content into cards. The board and the dock are the only bordered panels.",
+      "Don't use line thickness for emphasis; rules and borders stay at one pixel.",
+      "Don't set uppercase or tracked text outside the mono label.",
+      "Don't use Red Hat Mono for headings or running text.",
+      "Don't show a state that is not true on the day it is published."
+    ]
+  }
+}

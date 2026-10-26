@@ -36,3 +36,9 @@ next-env.d.ts
 .claude/
 # GSD planning workspace (local only)
 .planning/
+# impeccable working files (captures, decision payloads)
+.impeccable/review/
+.impeccable/decision/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/variants/

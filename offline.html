@@ -4,46 +4,366 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#f2f3ef" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
     <title>Offline | HomelabForge</title>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || theme === 'light') {
+                    document.documentElement.dataset.theme = theme;
+                }
+            } catch (error) {
+                return;
+            }
+        })();
+    </script>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        @font-face {
+            font-family: "Red Hat Display";
+            src: url("/assets/fonts/red-hat-display-latin-wght-normal.woff2") format("woff2");
+            font-weight: 300 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Red Hat Text";
+            src: url("/assets/fonts/red-hat-text-latin-wght-normal.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Red Hat Mono";
+            src: url("/assets/fonts/red-hat-mono-latin-wght-normal.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            color-scheme: light;
+
+            --bg: #f2f3ef;
+            --panel: #fbfbf9;
+            --ink: #12171a;
+            --mute: #4c5651;
+            --line: #d4d8cf;
+            --line-strong: #848d86;
+            --off: #4c5651;
+            --off-bg: #e4e6e0;
+            --ember: #d9660b;
+            --btn: #12171a;
+            --btn-ink: #fbfbf9;
+            --display: "Red Hat Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --text: "Red Hat Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --mono: "Red Hat Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+            --pad: clamp(20px, 5vw, 72px);
+            --bar-h: 72px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+
+            --bg: #0e1113;
+            --panel: #15191c;
+            --ink: #eef1ee;
+            --mute: #a3ada8;
+            --line: #262c30;
+            --line-strong: #646e76;
+            --off: #a3ada8;
+            --off-bg: #1e2428;
+            --ember: #ff8f2e;
+            --btn: #eef1ee;
+            --btn-ink: #0e1113;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+
+                --bg: #0e1113;
+                --panel: #15191c;
+                --ink: #eef1ee;
+                --mute: #a3ada8;
+                --line: #262c30;
+                --line-strong: #646e76;
+                --off: #a3ada8;
+                --off-bg: #1e2428;
+                --ember: #ff8f2e;
+                --btn: #eef1ee;
+                --btn-ink: #0e1113;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
-            text-align: center;
+            padding: 0;
         }
-        .container {
-            max-width: 600px;
-            padding: 2rem;
+
+        html {
+            -webkit-tap-highlight-color: transparent;
+            text-size-adjust: 100%;
         }
+
+        body {
+            font-family: var(--text);
+            font-size: 1.0625rem;
+            line-height: 1.55;
+            color: var(--ink);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
         h1 {
-            font-size: 2.5rem;
-            color: #ff4500;
+            text-wrap: balance;
         }
+
         p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            text-wrap: pretty;
         }
+
         a {
-            color: #1e90ff;
+            color: inherit;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .wrap {
+            max-width: 1440px;
+            margin-inline: auto;
+            padding-inline: var(--pad);
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+
+        .link {
+            text-decoration: underline;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: var(--line-strong);
+            text-underline-offset: 0.2em;
+            transition: text-decoration-color 160ms var(--ease);
+        }
+
+        .link:hover {
+            text-decoration-color: currentcolor;
+        }
+
+        .dot {
+            flex: none;
+            width: 10px;
+            height: 10px;
+            border: 2px solid var(--off);
+            border-radius: 50%;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 11px;
+            border-radius: 999px;
+            background: var(--off-bg);
+            color: var(--off);
+            font-family: var(--mono);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 22px;
+            border: 1px solid var(--btn);
+            border-radius: 8px;
+            background: var(--btn);
+            color: var(--btn-ink);
+            font-family: var(--text);
+            font-size: 1.0625rem;
+            font-weight: 650;
+            line-height: 1.2;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .bar__in {
+            display: flex;
+            align-items: center;
+            height: var(--bar-h);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 44px;
+            font-family: var(--display);
+            font-size: 1.1875rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.015em;
             text-decoration: none;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .mark {
+            display: inline-grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: var(--ember);
+            color: #14100b;
+            font-size: 0.9375rem;
+            letter-spacing: -0.06em;
+        }
+
+        .hero {
+            padding-block: clamp(36px, 6vw, 88px) clamp(48px, 6vw, 80px);
+        }
+
+        .display {
+            font-family: var(--display);
+            font-size: clamp(2.5rem, 1.1rem + 5.4vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.038em;
+            overflow-wrap: break-word;
+        }
+
+        .hero__body {
+            display: grid;
+            gap: 40px clamp(32px, 5vw, 72px);
+            margin-top: clamp(28px, 4vw, 52px);
+        }
+
+        .lede {
+            max-width: 31em;
+            font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+            line-height: 1.5;
+        }
+
+        .lede + p {
+            max-width: 34em;
+            margin-top: 14px;
+            color: var(--mute);
+        }
+
+        .actions {
+            margin-top: 28px;
+        }
+
+        .board {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--panel);
+        }
+
+        .board__head {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 13px 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .svc {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px;
+        }
+
+        .svc__name {
+            margin-right: auto;
+            font-family: var(--display);
+            font-size: 1.1875rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.012em;
+        }
+
+        @media (max-width: 479px) {
+            .brand {
+                gap: 8px;
+                font-size: 1.0625rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .hero__body {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 540px);
+                align-items: start;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>You are Offline</h1>
-        <p>It seems you've lost your internet connection. The page you were trying to access isn't available in the cache.</p>
-        <p>Please check your connection and <a href="/">try returning to the homepage</a> once you're back online.</p>
-    </div>
+    <header>
+        <div class="wrap bar__in">
+            <a class="brand" href="/"><span class="mark" aria-hidden="true">hf</span>HomelabForge</a>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="wrap">
+            <h1 class="display">You are offline</h1>
+            <div class="hero__body">
+                <div>
+                    <p class="lede">It seems you've lost your internet connection. The page you were trying to access isn't available in the cache.</p>
+                    <p>Please check your connection and <a class="link" href="/">try returning to the homepage</a> once you're back online.</p>
+                    <p class="actions"><a class="btn" href="">Try again</a></p>
+                </div>
+                <div class="board">
+                    <div class="board__head">
+                        <h2 class="label">Status</h2>
+                    </div>
+                    <p class="svc">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span class="svc__name">Connection</span>
+                        <span class="pill">Offline</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

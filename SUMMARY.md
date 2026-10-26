@@ -101,7 +101,7 @@ ______________________________________________________________________
 - ✅ Características del libro (USP)
 - ✅ Tabla de contenidos preview
 - ✅ Target audience section
-- ✅ Free resources (sample chapter, cheatsheet)
+- ✅ Companion material (cheatsheet, Ansible role; not published yet)
 - ✅ Waitlist integration (Tally)
 - ✅ FAQ section
 - ✅ Author bio
@@ -321,7 +321,7 @@ ______________________________________________________________________
 ## 📊 Comparación Antes/Después
 
 | Aspecto | Antes | Después |
-|---------|-------|---------|
+| --- | --- | --- |
 | **Archivos** | 2 archivos (CNAME, index.html) | 18 archivos organizados |
 | **Líneas de código** | ~500 | ~3000+ (optimizadas) |
 | **Performance** | ~70-80 | **95+** target |

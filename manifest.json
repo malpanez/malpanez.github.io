@@ -7,8 +7,8 @@
   "scope": "/",
   "display_override": ["standalone", "minimal-ui"],
   "display": "standalone",
-  "background_color": "#0D1117",
-  "theme_color": "#FF9900",
+  "background_color": "#0e1113",
+  "theme_color": "#0e1113",
   "orientation": "any",
   "icons": [
     {
@@ -36,7 +36,7 @@
       "name": "Projects",
       "short_name": "Projects",
       "description": "View open source projects",
-      "url": "/#projects-heading",
+      "url": "/#projects",
       "icons": [
         {
           "src": "/assets/icons/icon-192x192.png",

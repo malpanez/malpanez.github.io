@@ -1,7 +1,10 @@
 {
   "ci": {
     "collect": {
-      "url": ["http://localhost:8080/"],
+      "url": [
+        "http://localhost:8080/",
+        "http://localhost:8080/books/advanced-pam-course.html"
+      ],
       "numberOfRuns": 3,
       "settings": {
         "preset": "desktop",
