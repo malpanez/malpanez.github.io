@@ -8,18 +8,9 @@
     <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
     <title>Offline | HomelabForge</title>
-    <script>
-        (function () {
-            try {
-                var theme = localStorage.getItem('theme');
-                if (theme === 'dark' || theme === 'light') {
-                    document.documentElement.dataset.theme = theme;
-                }
-            } catch (error) {
-                return;
-            }
-        })();
-    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <script src="/assets/js/theme-init.js"></script>
     <style>
         @font-face {
             font-family: "Red Hat Display";

@@ -54,18 +54,7 @@
     <link rel="dns-prefetch" href="https://calendly.com">
 
     <!-- Stored theme, applied before first paint -->
-    <script>
-        (function () {
-            try {
-                var theme = localStorage.getItem('theme');
-                if (theme === 'dark' || theme === 'light') {
-                    document.documentElement.dataset.theme = theme;
-                }
-            } catch (error) {
-                return;
-            }
-        })();
-    </script>
+    <script src="/assets/js/theme-init.js"></script>
 
     <!-- Critical CSS - Minimal for first paint only -->
     <style>

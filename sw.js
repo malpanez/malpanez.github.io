@@ -4,7 +4,7 @@
  * Optimized for performance and offline capabilities
  */
 
-const CACHE_VERSION = 'v3.0.0';
+const CACHE_VERSION = 'v3.1.0';
 const CACHE_NAME = `homelabforge-${CACHE_VERSION}`;
 
 // Assets to cache on install - keep minimal for fast SW install
@@ -14,6 +14,7 @@ const STATIC_ASSETS = [
     '/offline.html',
     '/assets/css/styles.min.css',
     '/assets/js/main.js',
+    '/assets/js/theme-init.js',
     '/assets/fonts/red-hat-display-latin-wght-normal.woff2',
     '/assets/fonts/red-hat-text-latin-wght-normal.woff2',
     '/assets/fonts/red-hat-mono-latin-wght-normal.woff2',
