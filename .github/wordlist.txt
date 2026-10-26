@@ -495,3 +495,8 @@ authselect
 pwquality
 smartcard
 smartcards
+
+# Product notes (PRODUCT.md)
+LTS
+PDFs
+sellable
