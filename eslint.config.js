@@ -1,7 +1,9 @@
 export default [
   {
+    ignores: ["dist/", "node_modules/", "**/*.min.js"]
+  },
+  {
     files: ["**/*.js"],
-    ignores: ["**/*.min.js", "node_modules/"],
     languageOptions: {
       ecmaVersion: 2024,
       sourceType: "module",
