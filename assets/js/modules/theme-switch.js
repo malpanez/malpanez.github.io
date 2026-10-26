@@ -59,7 +59,8 @@ export class ThemeSwitch {
         this.root.style.setProperty('--vt-x', `${box.left + box.width / 2}px`);
         this.root.style.setProperty('--vt-y', `${box.top + box.height / 2}px`);
         this.root.classList.add('theme-swap');
-        document.startViewTransition(() => this.apply(next)).finished.finally(() => {
+        const transition = document.startViewTransition(() => this.apply(next));
+        void transition.finished.finally(() => {
             this.root.classList.remove('theme-swap');
         });
     }

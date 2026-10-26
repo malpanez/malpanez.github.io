@@ -153,13 +153,13 @@ async function bundleAndMinifyJs() {
   let bundled = '(function(){\n"use strict";\n';
   for (const [modPath, content] of Object.entries(moduleContents)) {
     const stripped = content
-      .replace(/^\s*export\s+(class|function|const|let|var)\s/gm, '$1 ')
-      .replace(/^\s*export\s*\{[^}]*\}.*$/gm, '');
+      .replace(/^[ \t]*export[ \t]+(class|function|const|let|var)[ \t]/gm, '$1 ')
+      .replace(/^[ \t]*export[ \t]*\{[^}]*\}.*$/gm, '');
     bundled += `// --- ${modPath} ---\n${stripped}\n`;
   }
   // Strip imports from main and add it
   const mainStripped = mainContent
-    .replace(/^\s*import\s+.*$/gm, '');
+    .replace(/^[ \t]*import[ \t].*$/gm, '');
   bundled += `// --- main ---\n${mainStripped}\n`;
   bundled += '})();\n';
 
