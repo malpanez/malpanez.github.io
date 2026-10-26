@@ -51,7 +51,7 @@ Automate DNS, SSL, and security headers for GitHub Pages.
 A printed book on Linux PAM: security, MFA, enterprise integration and automation.
 
 - 📚 Eleven chapters, nine hands-on labs and three case studies
-- 🔐 First edition, 2026, in Spanish, English and Brazilian Portuguese
+- 🔐 One edition in Spanish, English and Brazilian Portuguese
 - 🎯 Not released yet; the waitlist is on the course page
 
 ______________________________________________________________________
