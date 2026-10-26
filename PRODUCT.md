@@ -50,8 +50,8 @@ written for neurodivergent learners.
 - No framework and no runtime dependencies; the build has no bundler beyond the concatenation in
   `scripts/build.js`. The owner asked about Astro and plain static files were kept.
 - Public repository: no secrets.
-- Course dates (resolved 2026-10-08): the copy says "First edition, 2026" and that no release day has been
-  announced. If the book does not ship in 2026, that line becomes false on 2027-01-01.
+- Course dates (owner, 2026-10-26): the copy names no edition, year or release date; it says "Coming soon" and
+  "Not released yet" until there is a store link.
 
 ## Brand Commitments
 
@@ -97,8 +97,9 @@ written for neurodivergent learners.
 - The `security` Ansible collection is private by the owner's decision (2026-10-05) and is labelled "Private" on
   both pages.
 - Course facts on the site (2026-10-08): a printed book, eleven chapters, nine labs, three case studies, three
-  languages, self-published through Kindle Direct Publishing. No page count and no cover image are shown;
-  `assets/books/pam-course/cover-en.jpg` is not used by any page but is still deployed.
+  languages, self-published through Kindle Direct Publishing. No page count and no cover image are shown; the old
+  `cover-en.jpg` was removed on 2026-10-26: not the book cover but a `1200x630` placeholder of the old raster logo,
+  generator watermark included.
 - Consulting scope named on the site: DevOps automation, Infrastructure as Code, CI/CD pipelines, team training;
   Ireland and remote worldwide.
 - Blog at `blog.homelabforge.dev`.

@@ -78,9 +78,13 @@ ______________________________________________________________________
 
 ### Automatic Triggers
 
-- **Push to `main`:** Runs CI + Deploy
+- **Push to `main`:** Runs CI + Deploy, then purges the Cloudflare cache (needs the `CLOUDFLARE_API_TOKEN` secret,
+  Zone > Cache Purge only, and the `CLOUDFLARE_ZONE_ID` variable; without them the step warns and skips)
 - **Push to `develop`:** Runs CI only
 - **Pull Requests to `main`:** Runs full CI suite
+- **No schedule:** GitHub disables a workflow that has a cron after 60 days without repository activity, and this
+  one also carries the PR checks and the deploy (it happened on 2026-08-16). New advisories arrive through
+  Dependabot alerts and Renovate.
 
 ### Manual Trigger
 
