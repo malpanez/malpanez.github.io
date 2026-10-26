@@ -2,27 +2,23 @@
  * HomelabForge - Main JavaScript
  * Modern ES6+ with progressive enhancement
  */
-import { BackToTop } from './modules/back-to-top.js';
-import { ScrollReveal } from './modules/scroll-reveal.js';
 import { ServiceWorkerManager } from './modules/service-worker-manager.js';
-import { ThemeManager } from './modules/theme-manager.js';
-import { setAnimationOrder } from './modules/animation-order.js';
+import { ThemeSwitch } from './modules/theme-switch.js';
 import { loadTallyEmbed } from './modules/script-loader.js';
+import { showLastPush, startClocks } from './modules/live.js';
 
 function init() {
     try {
-        setAnimationOrder();
-
         const yearEl = document.getElementById('current-year');
         if (yearEl) {
             yearEl.textContent = new Date().getFullYear();
         }
 
-        new ThemeManager();
-        new ScrollReveal();
+        new ThemeSwitch();
         new ServiceWorkerManager();
-        new BackToTop();
 
+        startClocks();
+        showLastPush();
         loadTallyEmbed();
     } catch (error) {
         console.error('Failed to initialize:', error);

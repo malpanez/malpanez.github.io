@@ -8,11 +8,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
-import imagemin from 'imagemin';
-import imageminMozjpeg from 'imagemin-mozjpeg';
-import imageminPngquant from 'imagemin-pngquant';
-import imageminSvgo from 'imagemin-svgo';
-import imageminWebp from 'imagemin-webp';
+import sharp from 'sharp';
 
 const DIST_DIR = 'dist';
 
@@ -58,13 +54,12 @@ const JS_MINIFY_OPTIONS = {
   },
 };
 
-const IMAGE_PLUGINS = [
-  imageminMozjpeg({ quality: 80 }),
-  imageminPngquant({ quality: [0.6, 0.8] }),
-  imageminSvgo(),
+// Glob patterns for raster sources that get re-encoded (optimized + WebP sibling).
+const RASTER_GLOBS = [
+  'assets/img/**/*.{jpg,jpeg,png}',
+  'assets/books/**/*.{jpg,jpeg,png}',
 ];
-
-const WEBP_PLUGINS = [imageminWebp({ quality: 80 })];
+const SVG_GLOBS = ['assets/img/**/*.svg', 'assets/books/**/*.svg'];
 
 const ROOT_FILES = [
   'sw.js',
@@ -78,7 +73,7 @@ const ROOT_FILES = [
   '.well-known',
 ];
 
-const ASSET_FOLDERS = ['assets/icons']; // books and img are handled by imagemin
+const ASSET_FOLDERS = ['assets/icons', 'assets/fonts']; // books and img are handled by optimizeImages
 
 async function cleanDist() {
   console.log(`Cleaning ${DIST_DIR} directory...`);
@@ -207,30 +202,36 @@ async function bundleAndMinifyJs() {
   }
 }
 
+// Re-encode every raster (jpg/png) with sharp into an optimized same-format file
+// plus a WebP sibling, preserving the source path under dist/. SVGs are copied
+// through unchanged (sharp rasterizes rather than minifies SVG).
 async function optimizeImages() {
-  console.log('Optimizing and copying images...');
-  await imagemin(['assets/img/**/*.{jpg,jpeg,png,svg}'], {
-    destination: 'dist/assets/img',
-    plugins: IMAGE_PLUGINS,
-  });
-  await imagemin(['assets/books/**/*.{jpg,jpeg,png,svg}'], {
-    destination: 'dist/assets/books',
-    plugins: IMAGE_PLUGINS,
-  });
-  console.log('Successfully optimized images.');
-}
+  console.log('Optimizing images and generating WebP...');
+  const rasters = await glob(RASTER_GLOBS, { ignore: [`${DIST_DIR}/**`] });
+  for (const file of rasters) {
+    const destPath = path.join(DIST_DIR, file);
+    await fs.ensureDir(path.dirname(destPath));
 
-async function createWebpImages() {
-  console.log('Creating WebP versions of images...');
-  await imagemin(['assets/img/**/*.{jpg,jpeg,png}'], {
-    destination: 'dist/assets/img',
-    plugins: WEBP_PLUGINS,
-  });
-  await imagemin(['assets/books/**/*.{jpg,jpeg,png}'], {
-    destination: 'dist/assets/books',
-    plugins: WEBP_PLUGINS,
-  });
-  console.log('Successfully created WebP images.');
+    const pipeline = sharp(await fs.readFile(file));
+    const isPng = path.extname(file).toLowerCase() === '.png';
+    const optimized = isPng
+      ? await pipeline.clone().png({ compressionLevel: 9, palette: true, quality: 80 }).toBuffer()
+      : await pipeline.clone().jpeg({ quality: 80, mozjpeg: true }).toBuffer();
+    await fs.writeFile(destPath, optimized);
+
+    const webpDest = destPath.replace(/\.(jpe?g|png)$/i, '.webp');
+    await fs.writeFile(webpDest, await pipeline.clone().webp({ quality: 80 }).toBuffer());
+    console.log(`Optimized ${file} (+ WebP)`);
+  }
+
+  const svgs = await glob(SVG_GLOBS, { ignore: [`${DIST_DIR}/**`] });
+  for (const file of svgs) {
+    const destPath = path.join(DIST_DIR, file);
+    await fs.ensureDir(path.dirname(destPath));
+    await fs.copy(file, destPath);
+    console.log(`Copied ${file} (SVG, not re-encoded)`);
+  }
+  console.log('Successfully optimized images.');
 }
 
 async function copyOtherAssets() {
@@ -304,7 +305,6 @@ try {
   await bundleAndMinifyJs();
   await minifyHtmlFiles();
   await optimizeImages();
-  await createWebpImages();
   await copyOtherAssets();
   await copyRootFiles();
   await stampSitemap();

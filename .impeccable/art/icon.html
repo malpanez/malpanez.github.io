@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomelabForge icon artboard (512x512)</title>
+    <style>
+        @font-face { font-family: "Red Hat Display"; src: url("/assets/fonts/red-hat-display-latin-wght-normal.woff2") format("woff2"); font-weight: 300 900; }
+        * { margin: 0; box-sizing: border-box; }
+        html, body { width: 512px; height: 512px; overflow: hidden; background: transparent; }
+        .tile { display: grid; place-items: center; width: 512px; height: 512px; padding-bottom: 28px; background: #ff8f2e; color: #14100b; font: 800 300px/1 "Red Hat Display", sans-serif; letter-spacing: -0.06em; }
+        .round .tile { border-radius: 112px; }
+        .small .tile { padding-bottom: 36px; font-size: 372px; }
+    </style>
+</head>
+<body>
+    <div class="tile">hf</div>
+    <script>
+        document.body.className = new URLSearchParams(location.search).get('v') || '';
+    </script>
+</body>
+</html>

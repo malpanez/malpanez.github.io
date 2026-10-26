@@ -48,11 +48,11 @@ Automate DNS, SSL, and security headers for GitHub Pages.
 
 ### 3. **Advanced PAM Course** (Coming Soon)
 
-Deep-dive course on Linux PAM authentication.
+A printed book on Linux PAM: security, MFA, enterprise integration and automation.
 
-- 📚 Designed for neurodivergent learners
-- 🔐 15+ hands-on labs
-- 🎯 Enterprise-ready patterns
+- 📚 Eleven chapters, nine hands-on labs and three case studies
+- 🔐 First edition, 2026, in Spanish, English and Brazilian Portuguese
+- 🎯 Not released yet; the waitlist is on the course page
 
 ______________________________________________________________________
 

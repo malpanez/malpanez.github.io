@@ -11,8 +11,8 @@
     <meta name="robots" content="index, follow">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#FF9900" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f2f3ef" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
 
     <!-- Open Graph / Facebook -->
@@ -37,11 +37,12 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://homelabforge.dev/">
 
-    <!-- Favicons -->
+        <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    <link rel="preload" as="image" href="/assets/img/hero-logo-512.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/red-hat-display-latin-wght-normal.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/red-hat-text-latin-wght-normal.woff2" crossorigin>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -52,13 +53,27 @@
     <link rel="dns-prefetch" href="https://tally.so">
     <link rel="dns-prefetch" href="https://calendly.com">
 
+    <!-- Stored theme, applied before first paint -->
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || theme === 'light') {
+                    document.documentElement.dataset.theme = theme;
+                }
+            } catch (error) {
+                return;
+            }
+        })();
+    </script>
+
     <!-- Critical CSS - Minimal for first paint only -->
     <style>
-        :root{--primary-orange:#FF9900;--bg-primary:#0D1117;--bg-secondary:#1a1f2e;--text-primary:#e6edf3}
-        @media(prefers-color-scheme:light){:root{--bg-primary:#fff;--bg-secondary:#f6f8fa;--text-primary:#1f2328}}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(135deg,var(--bg-primary),var(--bg-secondary));color:var(--text-primary);line-height:1.6;min-height:100vh}
-        .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+        html{background:#f2f3ef;color:#12171a}
+        html[data-theme=dark]{background:#0e1113;color:#eef1ee}
+        @media(prefers-color-scheme:dark){html:not([data-theme=light]){background:#0e1113;color:#eef1ee}}
+        body{font-family:'Red Hat Text',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
     </style>
 
     <!-- Main stylesheet (render-blocking to avoid FOUC/CLS) -->
@@ -88,7 +103,7 @@
                 "@id": "https://homelabforge.dev/#org",
                 "name": "HomelabForge",
                 "url": "https://homelabforge.dev/",
-                "logo": "https://homelabforge.dev/assets/img/hero-logo-512.png",
+                "logo": "https://homelabforge.dev/assets/icons/icon-512x512.png",
                 "founder": { "@id": "https://homelabforge.dev/#person" }
             },
             {
@@ -104,233 +119,270 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <!-- Skip to main content for accessibility -->
-        <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    <a href="#main-content" class="skip">Skip to main content</a>
 
-        <header class="header">
-            <div class="logo-container">
-                <picture>
-                    <source srcset="/assets/img/hero-logo-256.webp 256w, /assets/img/hero-logo-512.webp 512w" sizes="(max-width: 768px) 256px, 420px" type="image/webp">
-                    <source srcset="/assets/img/hero-logo-256.png 256w, /assets/img/hero-logo-512.png 512w" sizes="(max-width: 768px) 256px, 420px" type="image/png">
-                    <img src="/assets/img/hero-logo-512.png" alt="HomelabForge logo - Production DevOps tools and templates for homelabs" class="logo-img" width="512" height="512" loading="eager" fetchpriority="high">
-                </picture>
+    <header class="bar">
+        <div class="wrap bar__in">
+            <a class="brand" href="/"><span class="mark" aria-hidden="true">hf</span>HomelabForge</a>
+            <nav class="nav" aria-label="Primary">
+                <a href="#projects">Projects</a>
+                <a href="#course">Course</a>
+                <a href="#consulting">Consulting</a>
+                <a href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">Blog<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+            </nav>
+            <button class="theme" type="button" hidden>
+                <svg class="ico ico--moon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z"/></svg>
+                <svg class="ico ico--sun" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/></svg>
+            </button>
+            <a class="btn btn--primary btn--sm" href="https://calendly.com/miguel-alpanez" target="_blank" rel="noopener noreferrer">Schedule a call</a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="wrap">
+                <h1 class="display">Production DevOps, built in the open.</h1>
+                <div class="hero__body">
+                    <svg class="traces" viewBox="0 0 468 300" aria-hidden="true" focusable="false">
+                        <g class="traces__lines">
+                            <path pathLength="100" d="M48 300V236L84 200V132"/>
+                            <path pathLength="100" d="M112 300V262L164 210V74"/>
+                            <path pathLength="100" d="M196 300V176L226 146V0"/>
+                            <path pathLength="100" d="M268 300V248L316 200H392"/>
+                            <path pathLength="100" d="M332 300V274L372 234V104L404 72H468"/>
+                            <path pathLength="100" d="M412 300V262"/>
+                        </g>
+                        <g class="traces__signals">
+                            <path pathLength="100" d="M84 132V200L48 236V300"/>
+                            <path pathLength="100" d="M164 74V210L112 262V300"/>
+                            <path pathLength="100" d="M226 0V146L196 176V300"/>
+                            <path pathLength="100" d="M392 200H316L268 248V300"/>
+                            <path pathLength="100" d="M468 72H404L372 104V234L332 274V300"/>
+                        </g>
+                        <g class="traces__nodes">
+                            <circle cx="84" cy="128" r="4"/>
+                            <circle cx="164" cy="70" r="4"/>
+                            <circle cx="396" cy="200" r="4"/>
+                            <circle cx="412" cy="258" r="4"/>
+                        </g>
+                        <g class="traces__sparks">
+                            <path transform="translate(164 70)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+                            <path transform="translate(186 48) scale(0.5)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+                            <path transform="translate(396 200) scale(0.7)" d="M0-11Q0 0 11 0Q0 0 0 11Q0 0-11 0Q0 0 0-11Z"/>
+                        </g>
+                    </svg>
+                    <div class="hero__pitch">
+                        <p class="lede">I'm Miguel Alpañez. I build and automate Linux infrastructure with Terraform, Ansible and CI/CD, and I publish the tooling as open source.</p>
+                        <p class="actions">
+                            <a class="btn btn--primary" href="https://calendly.com/miguel-alpanez" target="_blank" rel="noopener noreferrer">Schedule a call<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                            <a class="btn" href="#projects">Browse the projects<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></a>
+                        </p>
+                    </div>
+                    <div class="board">
+                        <div class="board__head">
+                            <h2 class="label">Services</h2>
+                            <p class="label">2 live, 1 coming soon</p>
+                        </div>
+                        <a class="svc" href="#consulting">
+                            <span class="dot dot--pulse" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name">Consulting<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
+                                <span class="svc__desc">Ireland and remote worldwide. Automation, Infrastructure as Code, CI/CD, team training.</span>
+                                <span class="svc__meta label" data-clock="Dublin">Ireland</span>
+                            </span>
+                            <span class="pill">Available</span>
+                        </a>
+                        <a class="svc" href="#projects">
+                            <span class="dot" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name">Open source<svg class="ico ico--down" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span>
+                                <span class="svc__desc">Terraform modules, dev containers and CLI tools I use in production.</span>
+                                <span class="svc__meta label" data-last-push="ansible-devcontainer-vscode,terraform-cloudflare-github-pages,tempus">On GitHub</span>
+                            </span>
+                            <span class="pill">Public</span>
+                        </a>
+                        <a class="svc" href="/books/advanced-pam-course">
+                            <span class="dot dot--plan" aria-hidden="true"></span>
+                            <span class="svc__main">
+                                <span class="svc__name"><span class="vt-course">Advanced PAM course</span><svg class="ico ico--right" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                                <span class="svc__desc">11 chapters, 9 hands-on labs, 3 case studies.</span>
+                                <span class="svc__meta label">Waitlist open</span>
+                            </span>
+                            <span class="pill pill--plan">Coming soon</span>
+                        </a>
+                    </div>
+                    <ul class="strip">
+                        <li>Credentials</li>
+                        <li>AWS Solutions Architect Associate <span class="strip__note">2021, valid to Feb 2027</span></li>
+                        <li>Red Hat Delivery Specialist: Automation II, RHEL <span class="strip__note">2023, not renewed</span></li>
+                        <li>Azure Fundamentals <span class="strip__note">2021</span></li>
+                        <li>Terraform Associate (002) <span class="strip__note">2021, not renewed</span></li>
+                    </ul>
+                </div>
             </div>
-            <h1 class="logo">HomelabForge</h1>
-            <p class="tagline">Open Source DevOps Tools</p>
-            <p class="subtitle">Terraform modules, dev containers, and automation for your homelab</p>
-            <ul class="certs">
-                <li class="cert-badge">AWS Solutions Architect</li>
-                <li class="cert-badge">Red Hat Ansible</li>
-                <li class="cert-badge">Azure Fundamentals</li>
-            </ul>
-        </header>
+        </section>
 
-        <main id="main-content">
-            <!-- Open Source Projects -->
-            <section aria-labelledby="projects-heading">
-                <div class="section-header js-reveal">
-                    <h2 id="projects-heading" class="section-title">🛠️ Open Source Projects</h2>
-                    <p class="section-subtitle">Battle-tested tools I use in production</p>
-                </div>
+        <!-- Open Source Projects -->
+        <section class="section" id="projects" aria-labelledby="projects-heading">
+            <div class="wrap">
+                <header class="section__head">
+                    <h2 id="projects-heading" class="section__title">Open source projects</h2>
+                    <p class="section__sub">Battle-tested tools I use in production.</p>
+                </header>
 
-                <div class="projects-grid">
-                    <article class="project-card js-reveal">
-                        <span class="project-badge">Open Source</span>
-                        <h3 class="project-title">Dev Environments That Just Work</h3>
-                        <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub stars for ansible-devcontainer-vscode repository" loading="lazy" width="100" height="20">
-                            <img src="https://img.shields.io/github/forks/malpanez/ansible-devcontainer-vscode?style=social" alt="GitHub forks for ansible-devcontainer-vscode repository" loading="lazy" width="100" height="20">
+                <ul class="rows">
+                    <li class="row">
+                        <h3 class="row__title">Dev environments that just work</h3>
+                        <div class="row__body">
+                            <p>Multi-stack dev environments for Ansible, Terraform, Golang, and LaTeX. Signed images, CI/CD ready, zero local setup.</p>
+                            <p class="row__tech label">VS Code / Docker / GitHub Actions / Cosign</p>
                         </div>
-                        <p class="project-description">Multi-stack dev environments for Ansible, Terraform, Golang, and LaTeX. Signed images, CI/CD ready, zero local setup.</p>
-                        <p class="project-tech">VS Code • Docker • GitHub Actions • Cosign</p>
-                <a href="https://github.com/malpanez/ansible-devcontainer-vscode"
-                   class="project-button"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View on GitHub
-                </a>
-                    </article>
-
-                    <article class="project-card js-reveal">
-                        <span class="project-badge">Open Source</span>
-                        <h3 class="project-title">Automate Cloudflare in 5 Minutes</h3>
-                        <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub stars for terraform-cloudflare-github-pages repository" loading="lazy" width="100" height="20">
-                            <img src="https://img.shields.io/github/forks/malpanez/terraform-cloudflare-github-pages?style=social" alt="GitHub forks for terraform-cloudflare-github-pages repository" loading="lazy" width="100" height="20">
+                        <div class="row__side">
+                            <span class="pill">Public</span>
+                            <a class="repo link" href="https://github.com/malpanez/ansible-devcontainer-vscode" target="_blank" rel="noopener noreferrer">ansible-devcontainer-vscode<span class="sr-only"> on GitHub</span><svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
                         </div>
-                        <p class="project-description">DNS, SSL, and security headers for GitHub Pages. Transform 2 hours of clicking into 5 minutes of code.</p>
-                        <p class="project-tech">Terraform • Cloudflare • GitHub Pages</p>
-                <a href="https://github.com/malpanez/terraform-cloudflare-github-pages"
-                   class="project-button"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View on GitHub
-                </a>
-                    </article>
-
-                    <article class="project-card js-reveal">
-                        <span class="project-badge">Open Source</span>
-                        <h3 class="project-title">Config Files, Ready to Stow</h3>
-                        <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/config_files?style=social" alt="GitHub stars for config_files repository" loading="lazy" width="100" height="20">
-                            <img src="https://img.shields.io/github/forks/malpanez/config_files?style=social" alt="GitHub forks for config_files repository" loading="lazy" width="100" height="20">
-                        </div>
-                        <p class="project-description">Curated dotfiles with sane defaults, ready to symlink into $HOME using GNU Stow. Fast setup across shells, Git, SSH, and editors.</p>
-                        <p class="project-tech">GNU Stow • Dotfiles • CLI</p>
-                <a href="https://github.com/malpanez/config_files"
-                   class="project-button"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View on GitHub
-                </a>
-                    </article>
-
-                    <article class="project-card js-reveal">
-                        <span class="project-badge">Open Source</span>
-                        <h3 class="project-title">Tempus: Neurodivergent-Friendly Calendars</h3>
-                        <div class="github-stats">
-                            <img src="https://img.shields.io/github/stars/malpanez/tempus?style=social" alt="GitHub stars for tempus repository" loading="lazy" width="100" height="20">
-                            <img src="https://img.shields.io/github/forks/malpanez/tempus?style=social" alt="GitHub forks for tempus repository" loading="lazy" width="100" height="20">
-                        </div>
-                        <p class="project-description">CLI for RFC 5545 calendars with smart timezones, batch templates, and cognitive load reduction for ADHD/ASD workflows.</p>
-                        <p class="project-tech">Go • CLI • RFC 5545</p>
-                <a href="https://github.com/malpanez/tempus"
-                   class="project-button"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View on GitHub
-                </a>
-                    </article>
-
-                    <article class="project-card js-reveal">
-                        <span class="project-badge coming">Coming Soon</span>
-                        <h3 class="project-title">Linux Security for ADHD Brains</h3>
-                        <p class="project-description">Deep-dive PAM course with clear explanations and step-by-step labs designed for neurodivergent learners. Early access Q1 2026.</p>
-                        <p class="project-tech">Linux • Security • Education</p>
-                    <a href="https://tally.so/r/eqqYzO?transparentBackground=1&hideTitle=1"
-                       class="project-button"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Join Waitlist
-                    </a>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Newsletter/Waitlist -->
-            <section class="newsletter">
-                <iframe
-                    class="newsletter-frame"
-                    data-tally-src="https://tally.so/embed/eqqYzO"
-                    height="520"
-                    loading="lazy"
-                    title="Newsletter signup form"
-                    aria-label="Newsletter signup form">
-                </iframe>
-            </section>
-
-            <!-- Connect Section -->
-            <section aria-labelledby="connect-heading">
-                <div class="section-header js-reveal">
-                    <h2 id="connect-heading" class="section-title">📚 Learn &amp; Connect</h2>
-                </div>
-
-                <nav class="links-grid" aria-label="External links">
-                    <a href="https://blog.homelabforge.dev"
-                       class="link-card js-reveal"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <div class="link-icon" aria-hidden="true">📝</div>
-                        <h3 class="link-title">Blog</h3>
-                        <p class="link-description">Tutorials &amp; guides</p>
-                    </a>
-
-                    <a href="https://github.com/malpanez"
-                       class="link-card js-reveal"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <div class="link-icon" aria-hidden="true">🐙</div>
-                        <h3 class="link-title">GitHub</h3>
-                        <p class="link-description">All projects</p>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/miguel-alpañez/"
-                       class="link-card js-reveal"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <div class="link-icon" aria-hidden="true">💼</div>
-                        <h3 class="link-title">LinkedIn</h3>
-                        <p class="link-description">Professional</p>
-                    </a>
-
-                    <a href="mailto:miguel@homelabforge.dev"
-                       class="link-card js-reveal">
-                        <div class="link-icon" aria-hidden="true">✉️</div>
-                        <h3 class="link-title">Contact</h3>
-                        <p class="link-description">Get in touch</p>
-                    </a>
-                </nav>
-            </section>
-
-            <!-- Consulting CTA -->
-            <section class="cta-section" aria-labelledby="consulting-heading">
-                <h2 id="consulting-heading" class="cta-title">Need Custom Solutions?</h2>
-                <p class="cta-text">
-                    DevOps automation • Infrastructure as Code • CI/CD pipelines • Team training<br>
-                    Available for consulting in Ireland and remote worldwide
-                </p>
-                <a href="https://calendly.com/miguel-alpanez"
-                   class="cta-button"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Schedule a Call
-                </a>
-            </section>
-
-            <!-- Skills -->
-            <section aria-labelledby="skills-heading">
-                <ul class="skills-grid">
-                    <li class="skill-card js-reveal">
-                        <div class="skill-icon" aria-hidden="true">🏗️</div>
-                        <h3 class="skill-title">IaC</h3>
-                        <p class="skill-description">Terraform, Ansible</p>
                     </li>
-
-                    <li class="skill-card js-reveal">
-                        <div class="skill-icon" aria-hidden="true">☁️</div>
-                        <h3 class="skill-title">Cloud</h3>
-                        <p class="skill-description">AWS, Azure</p>
+                    <li class="row">
+                        <h3 class="row__title">Automate Cloudflare in 5 minutes</h3>
+                        <div class="row__body">
+                            <p>DNS, SSL, and security headers for GitHub Pages. Transform 2 hours of clicking into 5 minutes of code.</p>
+                            <p class="row__tech label">Terraform / Cloudflare / GitHub Pages</p>
+                        </div>
+                        <div class="row__side">
+                            <span class="pill">Public</span>
+                            <a class="repo link" href="https://github.com/malpanez/terraform-cloudflare-github-pages" target="_blank" rel="noopener noreferrer">terraform-cloudflare-github-pages<span class="sr-only"> on GitHub</span><svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                        </div>
                     </li>
-
-                    <li class="skill-card js-reveal">
-                        <div class="skill-icon" aria-hidden="true">🔄</div>
-                        <h3 class="skill-title">CI/CD</h3>
-                        <p class="skill-description">GitHub Actions, Jenkins</p>
+                    <li class="row">
+                        <h3 class="row__title">Config files, ready to stow</h3>
+                        <div class="row__body">
+                            <p>Curated dotfiles with sane defaults, ready to symlink into $HOME using GNU Stow. Fast setup across shells, Git, SSH, and editors.</p>
+                            <p class="row__tech label">GNU Stow / Dotfiles / CLI</p>
+                        </div>
+                        <div class="row__side">
+                            <span class="pill pill--off">Private</span>
+                            <span class="repo">config_files</span>
+                        </div>
                     </li>
-
-                    <li class="skill-card js-reveal">
-                        <div class="skill-icon" aria-hidden="true">🐳</div>
-                        <h3 class="skill-title">Containers</h3>
-                        <p class="skill-description">Docker, Podman</p>
+                    <li class="row">
+                        <h3 class="row__title">Tempus: neurodivergent-friendly calendars</h3>
+                        <div class="row__body">
+                            <p>CLI for RFC 5545 calendars with smart timezones, batch templates, and cognitive load reduction for ADHD/ASD workflows.</p>
+                            <p class="row__tech label">Go / CLI / RFC 5545</p>
+                        </div>
+                        <div class="row__side">
+                            <span class="pill">Public</span>
+                            <a class="repo link" href="https://github.com/malpanez/tempus" target="_blank" rel="noopener noreferrer">tempus<span class="sr-only"> on GitHub</span><svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                        </div>
                     </li>
                 </ul>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer class="footer">
-            <p>
-                Built by Miguel Alpañez |
-                <a href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">Blog</a> |
-                <a href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="/books/advanced-pam-course">PAM Course</a> |
-                <a href="/sitemap.xml">Sitemap</a>
+        <!-- Course and waitlist -->
+        <section class="section" id="course" aria-labelledby="course-heading">
+            <div class="wrap split">
+                <div class="split__text">
+                    <h2 id="course-heading" class="section__title">Advanced PAM Course for Linux</h2>
+                    <p><span class="pill pill--plan">Coming soon</span></p>
+                    <p>A printed book on Linux PAM: security, MFA, enterprise integration and automation, with hands-on labs and case studies of real incidents. The interior is set in Atkinson Hyperlegible and the layout aims for legibility, including for neurodivergent readers. First edition, 2026.</p>
+                    <p class="label">Linux / Security / Education</p>
+                    <dl class="spec spec--narrow">
+                        <div>
+                            <dt>Chapters</dt>
+                            <dd>11</dd>
+                        </div>
+                        <div>
+                            <dt>Labs</dt>
+                            <dd>9</dd>
+                        </div>
+                        <div>
+                            <dt>Languages</dt>
+                            <dd>3</dd>
+                        </div>
+                    </dl>
+                    <p class="actions">
+                        <a class="btn" href="/books/advanced-pam-course">See the table of contents<svg class="ico ico--right" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+                    </p>
+                </div>
+                <div class="dock">
+                    <h3 class="dock__title">Join the waitlist</h3>
+                    <iframe
+                        data-tally-src="https://tally.so/embed/eqqYzO?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+                        height="480"
+                        loading="lazy"
+                        title="Waitlist signup form">
+                    </iframe>
+                    <p class="dock__alt">
+                        <a class="link" href="https://tally.so/r/eqqYzO" target="_blank" rel="noopener noreferrer">Open the form in a new tab</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consulting -->
+        <section class="section section--close" id="consulting" aria-labelledby="consulting-heading">
+            <div class="wrap split">
+                <div class="split__text">
+                    <h2 id="consulting-heading" class="section__title">Need custom solutions?</h2>
+                    <p class="lede">DevOps automation, Infrastructure as Code, CI/CD pipelines and team training. Available for consulting in Ireland and remote worldwide.</p>
+                    <p class="actions">
+                        <a class="btn btn--primary btn--xl" href="https://calendly.com/miguel-alpanez" target="_blank" rel="noopener noreferrer">Schedule a call<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>
+                    </p>
+                </div>
+                <dl class="spec">
+                    <div>
+                        <dt>IaC</dt>
+                        <dd>Terraform, Ansible</dd>
+                    </div>
+                    <div>
+                        <dt>Cloud</dt>
+                        <dd>AWS, Azure</dd>
+                    </div>
+                    <div>
+                        <dt>CI/CD</dt>
+                        <dd>GitHub Actions, Jenkins</dd>
+                    </div>
+                    <div>
+                        <dt>Containers</dt>
+                        <dd>Docker, Podman</dd>
+                    </div>
+                    <div>
+                        <dt>Local time</dt>
+                        <dd data-clock="Dublin">Ireland</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap">
+            <nav class="uplinks" aria-label="Elsewhere">
+                <a class="uplink" href="https://blog.homelabforge.dev" target="_blank" rel="noopener noreferrer">
+                    <span class="uplink__name">Blog<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></span>
+                    <span class="uplink__desc">Tutorials and guides</span>
+                </a>
+                <a class="uplink" href="https://github.com/malpanez" target="_blank" rel="noopener noreferrer">
+                    <span class="uplink__name">GitHub<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></span>
+                    <span class="uplink__desc">All projects</span>
+                </a>
+                <a class="uplink" href="https://www.linkedin.com/in/miguel-alpañez/" target="_blank" rel="noopener noreferrer">
+                    <span class="uplink__name">LinkedIn<svg class="ico ico--ext" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></span>
+                    <span class="uplink__desc">Professional</span>
+                </a>
+                <a class="uplink" href="mailto:miguel@homelabforge.dev">
+                    <span class="uplink__name">Contact<svg class="ico ico--right" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+                    <span class="uplink__desc">Get in touch</span>
+                </a>
+            </nav>
+            <p class="foot__small">
+                <span>&copy; <span id="current-year">2026</span> HomelabForge. Built by Miguel Alpañez, open source.</span>
+                <a class="link" href="/books/advanced-pam-course">PAM course</a>
+                <a class="link" href="/sitemap.xml">Sitemap</a>
             </p>
-            <p class="footer-note">
-                &copy; <span id="current-year">2026</span> HomelabForge. Open source with <span aria-hidden="true">❤️</span>
-            </p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <!-- Main JavaScript - Deferred for performance -->
     <script type="module" src="/assets/js/main.js"></script>
