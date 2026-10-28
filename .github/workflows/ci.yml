@@ -15,7 +15,7 @@ jobs:
   # Job 1: Linting (HTML, CSS, JS)
   lint:
     name: 🧪 Lint Code
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 10
     permissions:
       contents: read
@@ -46,10 +46,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static assets
+        run: npm run build
+
+      # lychee >= 0.24 resolves root-relative links in local files, so the built
+      # site is checked: the source HTML points at .min.css files only the build creates.
       - name: Link Checker
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          args: --verbose --no-progress --exclude-all-private --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|webpagetest.org' '**/*.html' '**/*.md'
+          args: --verbose --no-progress --exclude-all-private --root-dir ${{ github.workspace }}/dist --fallback-extensions html --exclude-path node_modules --exclude 'amazon.com|leanpub.com|calendly.com|tally.so|blog.homelabforge.dev|webpagetest.org' 'dist/**/*.html' '**/*.md'
           fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
